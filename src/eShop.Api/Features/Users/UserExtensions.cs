@@ -1,4 +1,3 @@
-using System;
 using eShop.Api.Models;
 
 namespace eShop.Api.Features
@@ -7,10 +6,11 @@ namespace eShop.Api.Features
     {
         public static UserDto ToDto(this User user)
         {
-                return new ()
-                {
-                    UserId = user.UserId
-                };
+            return new ()
+            {
+                UserId = user.UserId,
+                Username = user.Username                
+            };
         }
         
     }
