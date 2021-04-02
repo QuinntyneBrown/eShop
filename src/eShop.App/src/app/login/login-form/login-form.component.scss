@@ -1,0 +1,14 @@
+@import 'src/scss/base/variables';
+
+:host {
+    display: block;
+
+    mat-form-field {
+        display: block;
+    }
+    
+    mat-card-title, form {
+        padding-bottom: 30px;
+    }
+}
+
