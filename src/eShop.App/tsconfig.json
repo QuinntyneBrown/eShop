@@ -28,10 +28,10 @@
       "@shared/*": [
         "src/app/@shared/*"
       ],
-      "@shared": [
+      "@shell": [
         "src/app/@shell"
       ],
-      "@shared/*": [
+      "@shell/*": [
         "src/app/@shell/*"
       ]      
     }
