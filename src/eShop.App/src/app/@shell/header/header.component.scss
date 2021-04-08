@@ -1,12 +1,14 @@
 @import 'src/scss/breakpoints.scss';
 @import 'src/scss/variables.scss';
 
+$height-xs: 95px;
+$height-min-md: 150px;
+
 :host {
     display: block;
-    height: 95px;
+    height: $height-xs;
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    padding: 0 17px;
     overflow: hidden;
 
     img {
@@ -17,7 +19,7 @@
     h1 {
         text-transform: uppercase;
         text-align: center;
-        line-height: 95px;
+        line-height: $height-xs;
     }
 
     mat-icon {
@@ -45,15 +47,14 @@
 
 @media screen and (min-width: $screen-md) {
     :host {
-        height: 150px;
-        padding: 0 40px;
+        height: $height-min-md;
         img {
             height: 250px;
             margin: 0 auto;
         }
 
         div {
-            height: 150px;
+            height: $height-min-md;
         }
 
         .shoppingCart, .profile {

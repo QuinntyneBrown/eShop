@@ -1,0 +1,12 @@
+@import 'src/scss/breakpoints.scss';
+@import 'src/scss/variables.scss';
+
+.g_layout_container {
+    padding: 0 17px;
+}
+
+@media screen and (min-width: $screen-md) {
+    .g_layout_container {
+        padding: 0 40px;
+    }
+}
