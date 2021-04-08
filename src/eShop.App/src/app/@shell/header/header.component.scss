@@ -5,7 +5,7 @@
     display: block;
     height: 95px;
     display: grid;
-    grid-template-columns: min-content 1fr min-content;
+    grid-template-columns: 33% 33% 33%;
     padding: 0 17px;
     overflow: hidden;
 
@@ -35,6 +35,11 @@
 
     .shoppingCart, .profile {
         display: none;
+    }
+    .actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
     }
 }
 
