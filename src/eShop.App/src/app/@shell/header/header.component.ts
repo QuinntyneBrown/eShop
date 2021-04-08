@@ -1,11 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   host: {
-    'class':'g_layout_container'
+    'class':'g-layout__container'
   }
 })
 export class HeaderComponent {
@@ -16,4 +16,6 @@ export class HeaderComponent {
   @Output() profileClick: EventEmitter<any> = new EventEmitter();
 
   @Output() shoppingCartClick: EventEmitter<any> = new EventEmitter();
+
+  @Input() logoUrl: string;
 }
