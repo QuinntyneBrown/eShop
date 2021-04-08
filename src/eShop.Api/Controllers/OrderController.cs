@@ -23,12 +23,12 @@ namespace eShop.Api.Controllers
         public async Task<ActionResult<GetOrderById.Response>> GetById([FromRoute] GetOrderById.Request request)
         {
             var response = await _mediator.Send(request);
-        
+
             if (response.Order == null)
             {
                 return new NotFoundObjectResult(request.OrderId);
             }
-        
+
             return response;
         }
 

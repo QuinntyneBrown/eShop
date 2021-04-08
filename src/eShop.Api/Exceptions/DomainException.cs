@@ -2,7 +2,7 @@
 
 namespace eShop.Api.Exceptions
 {
-    public class DomainException: Exception
+    public class DomainException : Exception
     {
     }
 }

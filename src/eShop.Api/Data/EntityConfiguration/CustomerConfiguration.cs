@@ -8,7 +8,7 @@ namespace eShop.Api.Data.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
-            
+
         }
     }
 }

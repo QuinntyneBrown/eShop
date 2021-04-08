@@ -2,5 +2,5 @@ using FluentValidation;
 
 namespace eShop.Api.Features
 {
-    public class DigitalAssetValidator: AbstractValidator<DigitalAssetDto> { }
+    public class DigitalAssetValidator : AbstractValidator<DigitalAssetDto> { }
 }

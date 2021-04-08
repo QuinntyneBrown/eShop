@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace eShop.Api.Models
 {
-    public class Basket: BaseEntity
+    public class Basket : BaseEntity
     {
         public Guid BasketId { get; set; }
         public Guid CustomerId { get; private set; }
@@ -25,7 +25,7 @@ namespace eShop.Api.Models
                 BasketItems.Add(new BasketItem(catalogItemId, quantity, price));
                 return this;
             }
-            
+
             var existingItem = BasketItems.FirstOrDefault(i => i.CatalogItemId == catalogItemId);
 
             existingItem.AddQuantity(quantity);

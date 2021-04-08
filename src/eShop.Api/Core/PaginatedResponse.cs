@@ -2,7 +2,7 @@
 
 namespace eShop.Api.Core
 {
-    public class PaginatedResponse<TEntity>: ResponseBase
+    public class PaginatedResponse<TEntity> : ResponseBase
     {
         public int Index { get; private set; }
         public int Length { get; private set; }

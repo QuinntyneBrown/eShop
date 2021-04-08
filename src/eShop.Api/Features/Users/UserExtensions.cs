@@ -6,12 +6,12 @@ namespace eShop.Api.Features
     {
         public static UserDto ToDto(this User user)
         {
-            return new ()
+            return new()
             {
                 UserId = user.UserId,
-                Username = user.Username                
+                Username = user.Username
             };
         }
-        
+
     }
 }

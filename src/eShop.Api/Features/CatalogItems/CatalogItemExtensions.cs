@@ -7,11 +7,11 @@ namespace eShop.Api.Features
     {
         public static CatalogItemDto ToDto(this CatalogItem catalogItem)
         {
-                return new ()
-                {
-                    CatalogItemId = catalogItem.CatalogItemId
-                };
+            return new()
+            {
+                CatalogItemId = catalogItem.CatalogItemId
+            };
         }
-        
+
     }
 }

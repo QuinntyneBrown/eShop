@@ -20,17 +20,17 @@ namespace eShop.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(GetBasketById.Response), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
-        public async Task<ActionResult<GetBasketById.Response>> GetById([FromRoute]GetBasketById.Request request)
+        public async Task<ActionResult<GetBasketById.Response>> GetById([FromRoute] GetBasketById.Request request)
         {
             var response = await _mediator.Send(request);
-        
+
             if (response.Basket == null)
             {
                 return new NotFoundObjectResult(request.BasketId);
             }
-        
+
             return response;
         }
-        
+
     }
 }

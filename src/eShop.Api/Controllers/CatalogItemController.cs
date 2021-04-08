@@ -20,17 +20,17 @@ namespace eShop.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(GetCatalogItemById.Response), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
-        public async Task<ActionResult<GetCatalogItemById.Response>> GetById([FromRoute]GetCatalogItemById.Request request)
+        public async Task<ActionResult<GetCatalogItemById.Response>> GetById([FromRoute] GetCatalogItemById.Request request)
         {
             var response = await _mediator.Send(request);
-        
+
             if (response.CatalogItem == null)
             {
                 return new NotFoundObjectResult(request.CatalogItemId);
             }
-        
+
             return response;
         }
-        
+
     }
 }

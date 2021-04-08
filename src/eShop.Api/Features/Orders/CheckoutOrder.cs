@@ -20,7 +20,8 @@ namespace eShop.Api.Features
             }
         }
 
-        public class Request : IRequest<Response> { 
+        public class Request : IRequest<Response>
+        {
             public Guid OrderId { get; set; }
             public string Number { get; set; }
             public long ExpMonth { get; set; }
@@ -28,7 +29,7 @@ namespace eShop.Api.Features
             public string Cvc { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public OrderDto Order { get; set; }
         }
@@ -37,13 +38,15 @@ namespace eShop.Api.Features
         {
             private readonly IEShopDbContext _context;
 
-            public Handler(IEShopDbContext context){
+            public Handler(IEShopDbContext context)
+            {
                 _context = context;
             }
 
-            public async Task<Response> Handle(Request request, CancellationToken cancellationToken) {
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            {
 
-                var order = await  _context.Orders.Include(x => x.OrderItems).SingleAsync(x => x.OrderId == request.OrderId);
+                var order = await _context.Orders.Include(x => x.OrderItems).SingleAsync(x => x.OrderId == request.OrderId);
 
                 order.SetProcessingPaymentStatus();
 
@@ -76,7 +79,7 @@ namespace eShop.Api.Features
 
                 var charge = await service.CreateAsync(options, cancellationToken: cancellationToken);
 
-                if(charge.Paid)
+                if (charge.Paid)
                 {
                     order.SetPaidStatus();
                     await _context.SaveChangesAsync(cancellationToken);
@@ -84,7 +87,7 @@ namespace eShop.Api.Features
                 }
 
                 throw new Exception("Payment Failed");
-                
+
             }
         }
     }

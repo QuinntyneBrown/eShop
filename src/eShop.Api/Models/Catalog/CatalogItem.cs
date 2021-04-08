@@ -26,7 +26,7 @@ namespace eShop.Api.Models
 
         public CatalogItem RemoveStock(int quantity)
         {
-            if(QuantityInStock == 0)
+            if (QuantityInStock == 0)
             {
                 throw new DomainException();
             }

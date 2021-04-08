@@ -7,11 +7,11 @@ namespace eShop.Api.Features
     {
         public static DigitalAssetDto ToDto(this DigitalAsset digitalAsset)
         {
-                return new ()
-                {
-                    DigitalAssetId = digitalAsset.DigitalAssetId
-                };
+            return new()
+            {
+                DigitalAssetId = digitalAsset.DigitalAssetId
+            };
         }
-        
+
     }
 }

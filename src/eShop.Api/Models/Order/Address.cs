@@ -29,7 +29,7 @@ namespace eShop.Api.Models
 
         public static Result<Address> Create(string street, string city, string province, string postalCode)
         {
-            return Result.Success(new Address(street,city,province,postalCode));
+            return Result.Success(new Address(street, city, province, postalCode));
         }
 
         protected override IEnumerable<object> GetEqualityComponents()

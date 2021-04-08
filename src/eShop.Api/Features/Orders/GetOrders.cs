@@ -12,26 +12,27 @@ namespace eShop.Api.Features
 {
     public class GetOrders
     {
-        public class Request: IRequest<Response> { }
+        public class Request : IRequest<Response> { }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public List<OrderDto> Orders { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly IEShopDbContext _context;
-        
+
             public Handler(IEShopDbContext context)
                 => _context = context;
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                return new () {
+                return new()
+                {
                     Orders = await _context.Orders.Select(x => x.ToDto()).ToListAsync()
                 };
             }
-            
+
         }
     }
 }

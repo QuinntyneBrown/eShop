@@ -21,7 +21,7 @@ namespace eShop.Api.Models
 
         public Order SetProcessingPaymentStatus()
         {
-            if(Status == OrderStatus.ProcessingPayment || Status == OrderStatus.Paid)
+            if (Status == OrderStatus.ProcessingPayment || Status == OrderStatus.Paid)
             {
                 throw new Exception();
             }
@@ -50,7 +50,7 @@ namespace eShop.Api.Models
 
         public Order SetCancelledStatus()
         {
-            if(Status == OrderStatus.Paid || Status == OrderStatus.Shipped)
+            if (Status == OrderStatus.Paid || Status == OrderStatus.Shipped)
             {
                 throw new Exception();
             }

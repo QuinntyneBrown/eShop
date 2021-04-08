@@ -10,25 +10,26 @@ namespace eShop.Api.Features
 {
     public class GetOrderById
     {
-        public class Request: IRequest<Response>
+        public class Request : IRequest<Response>
         {
             public Guid OrderId { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public OrderDto Order { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly IEShopDbContext _context;
-        
+
             public Handler(IEShopDbContext context)
                 => _context = context;
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                return new () {
+                return new()
+                {
                     Order = (await _context.Orders.SingleOrDefaultAsync()).ToDto()
                 };
             }

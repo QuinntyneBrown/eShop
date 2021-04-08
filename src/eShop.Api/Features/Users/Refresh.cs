@@ -42,7 +42,7 @@ namespace eShop.Api.Features
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new (accessToken, user.RefreshToken);
+                return new(accessToken, user.RefreshToken);
             }
         }
     }

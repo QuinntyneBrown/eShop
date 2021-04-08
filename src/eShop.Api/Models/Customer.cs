@@ -3,7 +3,7 @@ using System;
 
 namespace eShop.Api.Models
 {
-    public class Customer: BaseEntity
+    public class Customer : BaseEntity
     {
         public Guid CustomerId { get; set; }
         public string Firstname { get; set; }

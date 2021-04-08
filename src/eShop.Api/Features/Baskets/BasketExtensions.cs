@@ -7,11 +7,11 @@ namespace eShop.Api.Features
     {
         public static BasketDto ToDto(this Basket basket)
         {
-                return new ()
-                {
-                    BasketId = basket.BasketId
-                };
+            return new()
+            {
+                BasketId = basket.BasketId
+            };
         }
-        
+
     }
 }
