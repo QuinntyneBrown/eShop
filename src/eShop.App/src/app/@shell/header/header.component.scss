@@ -16,12 +16,6 @@ $height-min-md: 150px;
         margin: 0 auto;
     }
 
-    h1 {
-        text-transform: uppercase;
-        text-align: center;
-        line-height: $height-xs;
-    }
-
     mat-icon {
         padding: 0 12px;
         color: rgba(0,0,0,.55);
@@ -61,5 +55,4 @@ $height-min-md: 150px;
             display: initial;
         }        
     }    
-
 }
