@@ -1,8 +1,7 @@
-import { Component, forwardRef, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, forwardRef, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
-import { fromEvent } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
 import { fromEvent, Subject } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
 import { CatalogItem } from '../catalog-item';
 
 @Component({
@@ -34,22 +33,8 @@ export class CatalogItemEditorComponent implements ControlValueAccessor,  Valida
     private readonly _elementRef: ElementRef
   ) { }
 
-  validate(control: AbstractControl): ValidationErrors {
-      ? null
-      : Object.keys(this.form.controls).reduce(
-          (accumulatedErrors, formControlName) => {
-            const errors = { ...accumulatedErrors };
+  validate(control: AbstractControl): ValidationErrors | any {
 
-            const controlErrors = this.form.controls[formControlName].errors;
-
-            if (controlErrors) {
-              errors[formControlName] = controlErrors;
-            }
-
-            return errors;
-          },
-          {}
-        );
   }
   
   writeValue(catalogItem: CatalogItem): void {   
