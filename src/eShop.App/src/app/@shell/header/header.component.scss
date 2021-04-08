@@ -1,0 +1,59 @@
+@import 'src/scss/breakpoints.scss';
+@import 'src/scss/variables.scss';
+
+:host {
+    display: block;
+    height: 95px;
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    padding: 0 17px;
+    overflow: hidden;
+
+    img {
+        height: 170px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 95px;
+    }
+
+    mat-icon {
+        padding: 0 12px;
+        color: rgba(0,0,0,.55);
+        cursor: pointer;
+    }
+
+    div {
+        height: 95px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+
+    .shoppingCart, .profile {
+        display: none;
+    }
+}
+
+@media screen and (min-width: $screen-md) {
+    :host {
+        height: 150px;
+        padding: 0 40px;
+        img {
+            height: 250px;
+            margin: 0 auto;
+        }
+
+        div {
+            height: 150px;
+        }
+
+        .shoppingCart, .profile {
+            display: initial;
+        }        
+    }    
+
+}
