@@ -17,5 +17,7 @@ export class HeaderComponent {
 
   @Output() shoppingCartClick: EventEmitter<any> = new EventEmitter();
 
+  @Output() logoClick: EventEmitter<any> = new EventEmitter();
+
   @Input() logoUrl: string;
 }

@@ -11,6 +11,10 @@ $height-min-md: 150px;
     grid-template-columns: 33% 33% 33%;
     overflow: hidden;
 
+    .logo-container {
+        cursor: pointer;
+    }
+    
     img {
         height: 170px;
         margin: 0 auto;
