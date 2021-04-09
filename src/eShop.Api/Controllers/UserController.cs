@@ -32,5 +32,13 @@ namespace eShop.Api.Controllers
             return response;
         }
 
+        [HttpPost("token", Name = "AuthenticateRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Authenticate.Response), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<Authenticate.Response>> Authenticate([FromBody] Authenticate.Request request)
+            => await _mediator.Send(request);
+
     }
 }

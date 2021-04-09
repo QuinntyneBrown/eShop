@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   public tryToLogin(options: { username: string; password: string }) {
-    return this._httpClient.post<any>(`${this._baseUrl}api/users/token`, options).pipe(
+    return this._httpClient.post<any>(`${this._baseUrl}api/user/token`, options).pipe(
       map(response => {
         this._localStorageService.put({ name: accessTokenKey, value: response.accessToken });
         this._localStorageService.put({ name: usernameKey, value: options.username});

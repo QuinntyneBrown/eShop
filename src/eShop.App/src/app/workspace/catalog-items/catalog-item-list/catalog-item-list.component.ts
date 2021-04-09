@@ -12,7 +12,10 @@ import { EntityDataSource } from '@shared/entity-data-source';
   selector: 'app-catalog-item-list',
   templateUrl: './catalog-item-list.component.html',
   styleUrls: ['./catalog-item-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    'class':'g-layout__container g-layout__list-container'
+  }
 })
 export class CatalogItemListComponent implements OnDestroy {
 

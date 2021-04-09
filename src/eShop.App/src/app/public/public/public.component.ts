@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-public',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly _router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
+  public handleProfileClick() {    
+    this._router.navigate(['workspace']);
+  }
 }

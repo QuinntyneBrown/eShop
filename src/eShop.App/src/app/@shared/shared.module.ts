@@ -12,8 +12,6 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
-import {HeaderComponent} from './header/header.component';
-import {AdminHeaderComponent } from './admin-header/admin-header.component';
 import {EntityActionsComponent} from './entity-actions/entity-actions.component';
 
 
@@ -47,10 +45,8 @@ import {EntityActionsComponent} from './entity-actions/entity-actions.component'
     MatTableModule,
     MatSnackBarModule,
     MatPaginatorModule,
-    HeaderComponent,
-    AdminHeaderComponent,
     EntityActionsComponent
   ],
-  declarations: [HeaderComponent, AdminHeaderComponent, EntityActionsComponent]
+  declarations: [EntityActionsComponent]
 })
 export class SharedModule { }

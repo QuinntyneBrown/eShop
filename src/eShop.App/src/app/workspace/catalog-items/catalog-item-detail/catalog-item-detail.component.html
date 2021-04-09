@@ -1,7 +1,7 @@
 <mat-card *ngIf="vm$ | async as vm">
 
-    <h1 *ngIf="(catalogItem$ | async)">Edit CatalogItem</h1>
-    <h1 *ngIf="!(catalogItem$ | async)">Create CatalogItem</h1>
+    <h1 *ngIf="(catalogItem$ | async)">Edit Catalog Item</h1>
+    <h1 *ngIf="!(catalogItem$ | async)">Create Catalog Item</h1>
     <form [formGroup]="vm.form">
         <app-catalog-item-editor formControlName="catalogItem">
         </app-catalog-item-editor>

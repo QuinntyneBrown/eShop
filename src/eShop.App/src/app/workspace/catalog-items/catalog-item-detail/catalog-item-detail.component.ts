@@ -9,7 +9,10 @@ import { CatalogItemService } from '../catalog-item.service';
 @Component({
   selector: 'app-catalog-item-detail',
   templateUrl: './catalog-item-detail.component.html',
-  styleUrls: ['./catalog-item-detail.component.scss']
+  styleUrls: ['./catalog-item-detail.component.scss'],
+  host: {
+    'class':'g-layout__overlay-container'
+  }
 })
 export class CatalogItemDetailComponent implements OnDestroy {
 

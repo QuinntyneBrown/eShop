@@ -3,6 +3,27 @@
 
 .g-layout__container {
     padding: 0 17px;
+    display: block;
+}
+
+.g-layout__list-container {
+    display: block;
+
+    button {
+        margin: 0 0 20px 0;
+    }
+}
+
+.g-layout__overlay-container {
+    min-width: 60vw;
+
+    .mat-form-field {
+        display: block;
+    }
+    button {
+        margin: 0 10px 20px 10px;
+        
+    }
 }
 
 @media screen and (min-width: $screen-md) {

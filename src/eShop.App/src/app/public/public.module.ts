@@ -7,8 +7,6 @@ import { HeaderModule } from '@shell/header/header.module';
 import { FooterModule } from '@shell/footer/footer.module';
 
 
-
-
 @NgModule({
   declarations: [LandingComponent, PublicComponent],
   imports: [
