@@ -1,0 +1,15 @@
+<mat-card *ngIf="vm$ | async as vm">
+
+    <h1 *ngIf="(customer$ | async)">Edit Customer</h1>
+    <h1 *ngIf="!(customer$ | async)">Create Customer</h1>
+    <form [formGroup]="vm.form">
+        <app-customer-editor formControlName="customer">
+        </app-customer-editor>
+    </form>
+
+    <div class="actions">
+        <button mat-raised-button (click)="save(vm)" color="primary" [disabled]="!vm.form.dirty && vm.form.valid">Save</button>
+
+        <button mat-raised-button (click)="cancel()">Cancel</button>
+    </div>
+</mat-card>

@@ -9,14 +9,24 @@ import { FooterModule } from '@shell/footer/footer.module';
 import { HeaderModule } from '@shell/header/header.module';
 import { NavModule } from '@shell/nav/nav.module';
 import { DigitalAssetsModule } from './digital-assets/digital-assets.module';
+import { OrdersModule } from './orders/orders.module';
+import { BasketModule } from './baskets/basket.module';
+import { CustomerModule } from './customers/customer.module';
+import { UserModule } from './users/user.module';
 
 
 @NgModule({
   declarations: [WorkspaceComponent],
   imports: [
     CommonModule,
+    
+    BasketModule,
     CatalogItemsModule,
+    CustomerModule,
     DigitalAssetsModule,
+    OrdersModule,
+    UserModule,
+
     WorkspaceHeaderModule,
     WorkspaceRoutingModule,
     SharedModule,
