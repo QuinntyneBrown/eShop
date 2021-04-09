@@ -1,8 +1,8 @@
-using System.Net;
-using System.Threading.Tasks;
 using eShop.Api.Features;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace eShop.Api.Controllers
 {

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace eShop.Api.Data
 {
-    public class BasketConfiguration : IEntityTypeConfiguration<Basket>
+    public class UserRoleConfiguration : IEntityTypeConfiguration<UserRole>
     {
-        public void Configure(EntityTypeBuilder<Basket> builder)
+        public void Configure(EntityTypeBuilder<UserRole> builder)
         {
 
         }

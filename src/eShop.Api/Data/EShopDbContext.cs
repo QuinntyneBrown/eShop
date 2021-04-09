@@ -13,6 +13,7 @@ namespace eShop.Api.Data
         public DbSet<CatalogItem> CatalogItems { get; private set; }
         public DbSet<Customer> Customers { get; private set; }
         public DbSet<Basket> Baskets { get; private set; }
+        public DbSet<Role> Roles { get; private set; }
         public EShopDbContext(DbContextOptions options)
             : base(options) { }
 
