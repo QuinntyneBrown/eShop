@@ -7,6 +7,8 @@ import { WorkspaceComponent } from './workspace/workspace.component';
 import { WorkspaceRoutingModule } from './workspace-routing.module';
 import { FooterModule } from '@shell/footer/footer.module';
 import { HeaderModule } from '@shell/header/header.module';
+import { NavModule } from '@shell/nav/nav.module';
+import { DigitalAssetsModule } from './digital-assets/digital-assets.module';
 
 
 @NgModule({
@@ -14,11 +16,13 @@ import { HeaderModule } from '@shell/header/header.module';
   imports: [
     CommonModule,
     CatalogItemsModule,
+    DigitalAssetsModule,
     WorkspaceHeaderModule,
     WorkspaceRoutingModule,
     SharedModule,
     HeaderModule,
-    FooterModule
+    FooterModule,
+    NavModule
   ]
 })
 export class WorkspaceModule { }

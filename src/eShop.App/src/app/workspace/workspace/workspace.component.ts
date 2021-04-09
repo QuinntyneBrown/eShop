@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavItem } from '@shell/nav/nav.component';
 
 @Component({
   selector: 'app-workspace',
@@ -15,7 +16,23 @@ export class WorkspaceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public navItems: NavItem[] = [
+    { icon:"inventory", label: "Catalog Items" },
+    { icon:"description", label: "Digital Assets" }
+  ];
+
   handleLogoClick() {
     this._router.navigate(['']);
+  }
+
+  handleItemClick($event: NavItem) {        
+    switch($event.label) {
+      case "Digital Assets":
+        this._router.navigate(['workspace','digital-assets']);
+        break;
+      case "Catalog Items":
+        this._router.navigate(['workspace']);
+        break;        
+    }
   }
 }

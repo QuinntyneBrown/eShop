@@ -20,10 +20,16 @@ $height-min-md: 150px;
         margin: 0 auto;
     }
 
-    mat-icon {
-        padding: 0 12px;
+
+    mat-icon {        
         color: rgba(0,0,0,.55);
         cursor: pointer;
+    }
+
+    .actions {
+        mat-icon {
+            padding: 0 12px;    
+        }
     }
 
     div {

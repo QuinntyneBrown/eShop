@@ -6,9 +6,12 @@
     display: block;
 }
 
-.g-layout__list-container {
+.g-layout__nav-container, .g-layout__list-container {
     display: block;
+    padding: 50px 17px;
+}
 
+.g-layout__list-container {
     button {
         margin: 0 0 20px 0;
     }
@@ -24,14 +27,31 @@
     .mat-form-field {
         display: block;
     }
-    button {
-        margin: 0 10px 20px 10px;
-        
-    }
+
+    mat-card {
+        min-width: 65vw;
+        h1 {
+            margin: 30px 0 20px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            margin: 0 0 30px 0;
+
+            button {
+                margin: 0 10px;
+            }
+        }
+    }    
 }
 
 @media screen and (min-width: $screen-md) {
     .g-layout__container {
         padding: 0 40px;
+    }
+
+    .g-layout__list-container, .g-layout__nav-container {
+        padding: 50px 40px;
     }
 }

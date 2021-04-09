@@ -2,9 +2,9 @@
 
 </app-header>
 
-<div class="nav">
-
-</div>
+<app-nav [items]="navItems" (itemClick)="handleItemClick($event)">
+    
+</app-nav>
 
 <div class="router-outlet">
     <router-outlet></router-outlet>
