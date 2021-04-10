@@ -17,6 +17,8 @@ export class WorkspaceComponent  {
     { icon:"inventory", label: "Catalog Items" },
     { icon:"shopping_cart", label: "Baskets" },
     { icon:"contacts", label: "Contacts" },
+    { icon:"content_copy", label: "Contents" },
+    { icon:"dashboard_customize", label: "Customizations" },
     { icon:"description", label: "Customers" },
     { icon:"folder", label: "Digital Assets" },
     { icon:"credit_card", label: "Orders" },
@@ -36,6 +38,8 @@ export class WorkspaceComponent  {
     "Catalog Items": ['workspace'],
     "Baskets": ['workspace','baskets'],
     "Contacts": ['workspace','contacts'],
+    "Contents": ['workspace','contents'],
+    "Customizations": ['workspace','customizations'],
     "Customers": ['workspace','customers'],
     "Orders": ['workspace','orders'],
     "Users": ['workspace','users']

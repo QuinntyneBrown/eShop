@@ -17,7 +17,19 @@ const routes: Routes = [
       { 
         path: "customers",  
         loadChildren: () => import("src/app/workspace/customers/customers.module").then(x => x.CustomersModule)
-      },            
+      },  
+      { 
+        path: "contacts",  
+        loadChildren: () => import("src/app/workspace/contacts/contacts.module").then(x => x.ContactsModule)
+      }, 
+      { 
+        path: "contents",  
+        loadChildren: () => import("src/app/workspace/contents/contents.module").then(x => x.ContentsModule)
+      },             
+      { 
+        path: "customizations",  
+        loadChildren: () => import("src/app/workspace/customizations/customizations.module").then(x => x.CustomizationsModule)
+      },                
       { 
         path: "digital-assets",  
         loadChildren: () => import("src/app/workspace/digital-assets/digital-assets.module").then(x => x.DigitalAssetsModule)

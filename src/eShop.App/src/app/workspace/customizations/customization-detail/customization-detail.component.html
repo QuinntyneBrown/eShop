@@ -1,0 +1,15 @@
+<mat-card *ngIf="vm$ | async as vm">
+
+    <h1 *ngIf="(customization$ | async)">Edit Customization</h1>
+    <h1 *ngIf="!(customization$ | async)">Create Customization</h1>
+    <form [formGroup]="vm.form">
+        <app-customization-editor formControlName="customization">
+        </app-customization-editor>
+    </form>
+
+    <div class="actions">
+        <button mat-raised-button (click)="save(vm)" color="primary" [disabled]="!vm.form.dirty && vm.form.valid">Save</button>
+
+        <button mat-raised-button (click)="cancel()">Cancel</button>
+    </div>
+</mat-card>

@@ -15,6 +15,8 @@ namespace eShop.Api.Data
         public DbSet<Basket> Baskets { get; private set; }
         public DbSet<Role> Roles { get; private set; }
         public DbSet<Contact> Contacts { get; private set; }
+        public DbSet<Customization> Customizations { get; private set; }
+        public DbSet<Content> Contents { get; private set; }
         public EShopDbContext(DbContextOptions options)
             :base(options) { }
 
