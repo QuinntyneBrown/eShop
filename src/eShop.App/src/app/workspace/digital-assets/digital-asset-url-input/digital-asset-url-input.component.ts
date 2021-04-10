@@ -13,7 +13,7 @@ import { DigitalAssetService } from '../digital-asset.service';
       useExisting: forwardRef(() => DigitalAssetUrlInputComponent),
       multi: true
     }
-  ],
+  ]
 })
 export class DigitalAssetUrlInputComponent implements ControlValueAccessor {
 

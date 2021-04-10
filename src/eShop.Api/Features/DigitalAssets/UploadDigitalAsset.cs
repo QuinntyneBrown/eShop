@@ -68,14 +68,22 @@ namespace eShop.Api.Features
                             using (var targetStream = new MemoryStream())
                             {
                                 await section.Body.CopyToAsync(targetStream);
-                                digitalAsset.Name = $"{contentDisposition.FileName}".Trim(new char[] { '"' }).Replace("&", "and");
+                                var name = $"{contentDisposition.FileName}".Trim(new char[] { '"' }).Replace("&", "and");
+
+                                digitalAsset = _context.DigitalAssets.SingleOrDefault(x => x.Name == name);
+
+                                if(digitalAsset == null)
+                                {
+                                    digitalAsset = new DigitalAsset();
+                                    digitalAsset.Name = name;
+                                    _context.DigitalAssets.Add(digitalAsset);
+                                }
+
                                 digitalAsset.Bytes = StreamHelper.ReadToEnd(targetStream);
                                 digitalAsset.ContentType = section.ContentType;
                             }
                         }
                     }
-
-                    _context.DigitalAssets.Add(digitalAsset);
 
                     digitalAssets.Add(digitalAsset);
 

@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DigitalAssetsRoutingModule } from './digital-assets.routing-module';
 import { DigitalAssetUrlInputComponent } from './digital-asset-url-input/digital-asset-url-input.component';
+import { DigitalAssetUploadModule } from './digital-asset-upload/digital-asset-upload.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { DigitalAssetUrlInputComponent } from './digital-asset-url-input/digital
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DigitalAssetsRoutingModule
+    DigitalAssetsRoutingModule,
+    DigitalAssetUploadModule
   ]
 })
 export class DigitalAssetsModule { }

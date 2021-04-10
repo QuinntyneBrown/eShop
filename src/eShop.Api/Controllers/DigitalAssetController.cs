@@ -64,5 +64,11 @@ namespace eShop.Api.Controllers
             return new FileContentResult(response.DigitalAsset.Bytes, response.DigitalAsset.ContentType);
         }
 
+        [HttpDelete("{digitalAssetId}", Name = "RemoveDigitalAssetRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(RemoveDigitalAsset.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<RemoveDigitalAsset.Response>> Remove([FromRoute] RemoveDigitalAsset.Request request)
+            => await _mediator.Send(request);
     }
 }
