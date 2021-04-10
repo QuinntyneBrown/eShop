@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eShop.Api.Data
 {
-    public class EShopDbContext: DbContext, IEShopDbContext
+    public class EShopDbContext : DbContext, IEShopDbContext
     {
         public DbSet<User> Users { get; private set; }
         public DbSet<DigitalAsset> DigitalAssets { get; private set; }
@@ -18,14 +18,14 @@ namespace eShop.Api.Data
         public DbSet<Customization> Customizations { get; private set; }
         public DbSet<Content> Contents { get; private set; }
         public EShopDbContext(DbContextOptions options)
-            :base(options) { }
+            : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(EShopDbContext).Assembly);
         }
-        
+
     }
 }

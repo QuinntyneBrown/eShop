@@ -7,7 +7,7 @@ namespace eShop.Api.Features
     {
         public static CatalogItemDto ToDto(this CatalogItem catalogItem)
         {
-            return new ()
+            return new()
             {
                 CatalogItemId = catalogItem.CatalogItemId,
                 Name = catalogItem.Name,
@@ -18,6 +18,6 @@ namespace eShop.Api.Features
                 InventoryCount = catalogItem.InventoryCount,
                 CatalogItemImages = catalogItem.CatalogItemImages.Select(x => x.ToDto()).ToList()
             };
-        }        
+        }
     }
 }

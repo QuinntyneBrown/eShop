@@ -15,7 +15,8 @@ namespace eShop.Api.Models
         public List<CatalogItemImage> CatalogItemImages { get; set; } = new List<CatalogItemImage>();
         public int InventoryCount { get; set; } = 0;
 
-        public CatalogItem(string name) {
+        public CatalogItem(string name)
+        {
             Name = name;
         }
 

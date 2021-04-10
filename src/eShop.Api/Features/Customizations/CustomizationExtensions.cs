@@ -7,11 +7,11 @@ namespace eShop.Api.Features
     {
         public static CustomizationDto ToDto(this Customization customization)
         {
-            return new ()
+            return new()
             {
                 CustomizationId = customization.CustomizationId
             };
         }
-        
+
     }
 }

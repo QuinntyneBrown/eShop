@@ -7,11 +7,11 @@ namespace eShop.Api.Features
     {
         public static ContactDto ToDto(this Contact contact)
         {
-            return new ()
+            return new()
             {
                 ContactId = contact.ContactId
             };
         }
-        
+
     }
 }

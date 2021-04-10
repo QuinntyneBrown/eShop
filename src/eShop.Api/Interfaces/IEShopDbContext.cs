@@ -19,6 +19,6 @@ namespace eShop.Api.Interfaces
         DbSet<Customization> Customizations { get; }
         DbSet<Content> Contents { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }
