@@ -16,6 +16,13 @@ namespace eShop.Api.Controllers
         public DigitalAssetController(IMediator mediator)
             => _mediator = mediator;
 
+        [HttpGet("page/{pageSize}/{index}", Name = "GetDigitalAssetsPageRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(GetDigitalAssetsPage.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<GetDigitalAssetsPage.Response>> Page([FromRoute] GetDigitalAssetsPage.Request request)
+            => await _mediator.Send(request);
+
         [HttpGet("{digitalAssetId}", Name = "GetDigitalAssetByIdRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]

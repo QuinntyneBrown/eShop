@@ -10,7 +10,8 @@ namespace eShop.Api.Features
             {
                 DigitalAssetId = digitalAsset.DigitalAssetId,
                 Bytes = digitalAsset.Bytes,
-                ContentType = digitalAsset.ContentType
+                ContentType = digitalAsset.ContentType,
+                Name = digitalAsset.Name
             };
         }
 
