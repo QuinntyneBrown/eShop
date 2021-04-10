@@ -31,23 +31,22 @@ namespace eShop.Testing
 
                 services.AddDbContext<EShopDbContext>(options =>
                 {
-                    options.UseInMemoryDatabase("InMemoryDbForTesting");
+                    options.UseInMemoryDatabase($"InMemoryDbForTesting-{Guid.NewGuid()}");
                     options.UseInternalServiceProvider(provider);
 
                 });
 
                 var serviceProvider = services.BuildServiceProvider();
 
-                using (var scope = serviceProvider.CreateScope())
-                {
-                    var scopedServices = scope.ServiceProvider;
-                    
-                    Context = scopedServices.GetRequiredService<EShopDbContext>();
+                var scope = serviceProvider.CreateScope();
+                
+                var scopedServices = scope.ServiceProvider;
 
-                    Context.Database.EnsureCreated();
+                Context = scopedServices.GetRequiredService<EShopDbContext>();
 
-                    SeedData.Seed(Context);
-                }
+                Context.Database.EnsureCreated();
+
+                SeedData.Seed(Context);
             });
         }
 

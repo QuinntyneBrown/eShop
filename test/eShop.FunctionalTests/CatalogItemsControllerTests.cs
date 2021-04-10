@@ -35,8 +35,10 @@ namespace eShop.FunctionalTests
             var httpResponseMessage = await client.PostAsync(Post.CreateCatalogItem, stringContent);
 
             var response = JsonConvert.DeserializeObject<CreateCatalogItem.Response>(await httpResponseMessage.Content.ReadAsStringAsync());
-            
-            Assert.NotEqual(default, response.CatalogItem.CatalogItemId);
+
+            var actual = await _fixture.Context.CatalogItems.FindAsync(response.CatalogItem.CatalogItemId);
+
+            Assert.NotEqual(default, actual);
         }
 
         [Fact]
@@ -44,21 +46,22 @@ namespace eShop.FunctionalTests
         {
             var catalogItem = CatalogItemBuilder.WithDefaults();
 
-            var context = _fixture.Context;
-
             var client = _fixture.CreateAuthenticatedClient();
 
-            context.Add(catalogItem);
+            _fixture.Context.Add(catalogItem);
 
-            await context.SaveChangesAsync(default);
+            await _fixture.Context.SaveChangesAsync(default);
 
             var httpResponseMessage = await client.DeleteAsync(Delete.By(catalogItem.CatalogItemId));
 
             httpResponseMessage.EnsureSuccessStatusCode();
 
-            var removedCatalogItem = await context.FindAsync<CatalogItem>(catalogItem.CatalogItemId);
+            _fixture.Context.ChangeTracker.Clear();
 
-            //Assert.NotEqual(default, removedCatalogItem.Deleted);
+            var actual = await _fixture.Context.CatalogItems.FindAsync(catalogItem.CatalogItemId);
+
+            Assert.Null(actual);
+
         }
 
         [Fact]
@@ -78,7 +81,7 @@ namespace eShop.FunctionalTests
 
             httpResponseMessage.EnsureSuccessStatusCode();
 
-            var sut = await context.FindAsync<CatalogItem>(catalogItem.CatalogItemId);
+            var actual = await context.FindAsync<CatalogItem>(catalogItem.CatalogItemId);
 
         }
 
@@ -149,6 +152,11 @@ namespace eShop.FunctionalTests
                 public static string By(Guid catalogItemId)
                 {
                     return $"api/CatalogItem/{catalogItemId}";
+                }
+
+                public static string Page(int index, int pageSize)
+                {
+                    return $"api/CatalogItem/page/{index}/{pageSize}";
                 }
             }
         }
