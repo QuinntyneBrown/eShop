@@ -5,11 +5,11 @@ import { LoginComponent } from './login/login/login.component';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 
 const routes: Routes = [
-  { 
-    path:"", 
-    pathMatch:"full", 
-    redirectTo: "public" 
-  },
+  // { 
+  //   path:"", 
+  //   pathMatch:"full", 
+  //   redirectTo: "public" 
+  // },
   { path: "login", component: LoginComponent },  
   { 
     path: "workspace", 
@@ -17,7 +17,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]    
   },
   { 
-    path: "public", 
+    path: "", 
     loadChildren: () => import("src/app/public/public.module").then(x => x.PublicModule)   
   },
   { path: '**', component: NotFoundComponent }

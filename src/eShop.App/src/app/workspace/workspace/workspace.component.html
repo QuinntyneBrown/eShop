@@ -1,11 +1,14 @@
-<app-header (logoClick)="handleLogoClick()">
+<ng-container *ngIf="vm$ | async as vm">
+    <app-header (logoClick)="handleLogoClick()">
 
-</app-header>
-
-<app-nav [items]="navItems" (itemClick)="handleItemClick($event)">
+    </app-header>
     
-</app-nav>
-
-<main>
-    <router-outlet></router-outlet>
-</main>
+    <app-nav [items]="navItems" (itemClick)="handleItemClick($event)">
+        
+    </app-nav>
+    
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+    
+</ng-container>

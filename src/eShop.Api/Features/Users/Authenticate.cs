@@ -42,7 +42,9 @@ namespace eShop.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == request.Username);
+                var user = await _context.Users
+                    .Include(x => x.Roles)
+                    .SingleOrDefaultAsync(x => x.Username == request.Username);
 
                 if (user == null)
                     throw new Exception();
@@ -51,8 +53,14 @@ namespace eShop.Api.Features
                     throw new Exception();
 
                 _tokenBuilder
-                    .AddUsername(user.Username);
+                    .AddUsername(user.Username)
+                    .AddOrUpdateClaim(new System.Security.Claims.Claim(Constants.ClaimTypes.UserId, $"{user.UserId}"));
 
+                foreach(var role in user.Roles)
+                {
+                    _tokenBuilder.AddOrUpdateClaim(new System.Security.Claims.Claim(Constants.ClaimTypes.Role, role.Name));
+                }
+                
                 return new(_tokenBuilder.Build(), user.UserId);
 
             }

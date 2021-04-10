@@ -1,10 +1,10 @@
+using eShop.Api.Core;
+using eShop.Api.Interfaces;
+using eShop.Api.Models;
 using FluentValidation;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using eShop.Api.Models;
-using eShop.Api.Core;
-using eShop.Api.Interfaces;
 
 namespace eShop.Api.Features
 {

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 
 namespace eShop.Api.Models
@@ -19,7 +20,7 @@ namespace eShop.Api.Models
         public string Password { get; set; }
         public byte[] Salt { get; private set; }
         public string RefreshToken { get; private set; }
-
+        public List<Role> Roles { get; private set; } = new List<Role>();
         public User AddRefreshToken(string token)
         {
             RefreshToken = token;

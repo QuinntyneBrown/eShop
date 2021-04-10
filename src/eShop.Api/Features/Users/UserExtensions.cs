@@ -1,4 +1,5 @@
 using eShop.Api.Models;
+using System.Linq;
 
 namespace eShop.Api.Features
 {
@@ -9,7 +10,8 @@ namespace eShop.Api.Features
             return new()
             {
                 UserId = user.UserId,
-                Username = user.Username
+                Username = user.Username,
+                Roles = user.Roles.Select(x => x.ToDto()).ToList()
             };
         }
     }

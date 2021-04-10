@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavItem } from '@shared/nav/nav.component';
+import { of } from 'rxjs';
+import { UserService } from '../users/user.service';
 
 @Component({
   selector: 'app-workspace',
@@ -10,21 +12,24 @@ import { NavItem } from '@shared/nav/nav.component';
 export class WorkspaceComponent  {
 
   constructor(
-    private readonly _router: Router
+    private readonly _router: Router,
+    private readonly _userService: UserService 
   ) { }
 
   public readonly navItems: NavItem[] = [
     { icon:"inventory", label: "Catalog Items" },
     { icon:"shopping_cart", label: "Baskets" },
     { icon:"contacts", label: "Contacts" },
-    { icon:"content_copy", label: "Contents" },
-    { icon:"dashboard_customize", label: "Customizations" },
+    { icon:"content_copy", label: "Content" },
+    { icon:"dashboard_customize", label: "Customization" },
     { icon:"description", label: "Customers" },
     { icon:"folder", label: "Digital Assets" },
     { icon:"credit_card", label: "Orders" },
     { icon:"fingerprint", label: "Users" },
   ];
 
+  public vm$ = this._userService.getCurrent();
+  
   handleLogoClick() {
     this._router.navigate(['']);
   }
@@ -38,8 +43,8 @@ export class WorkspaceComponent  {
     "Catalog Items": ['workspace'],
     "Baskets": ['workspace','baskets'],
     "Contacts": ['workspace','contacts'],
-    "Contents": ['workspace','contents'],
-    "Customizations": ['workspace','customizations'],
+    "Content": ['workspace','contents'],
+    "Customization": ['workspace','customizations'],
     "Customers": ['workspace','customers'],
     "Orders": ['workspace','orders'],
     "Users": ['workspace','users']
