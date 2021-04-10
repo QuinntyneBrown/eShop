@@ -13,6 +13,7 @@ using static eShop.FunctionalTests.CatalogItemsControllerTests.Endpoints;
 namespace eShop.FunctionalTests
 {
     using Task = System.Threading.Tasks.Task;
+    using Post = CatalogItemsControllerTests.Endpoints.Post;
 
     public class CatalogItemsControllerTests : IClassFixture<ApiTestFixture>
     {
@@ -31,7 +32,7 @@ namespace eShop.FunctionalTests
 
             using var client = _fixture.CreateAuthenticatedClient();
 
-            var httpResponseMessage = await client.PostAsync(Endpoints.Post.CreateCatalogItem, stringContent);
+            var httpResponseMessage = await client.PostAsync(Post.CreateCatalogItem, stringContent);
 
             var response = JsonConvert.DeserializeObject<CreateCatalogItem.Response>(await httpResponseMessage.Content.ReadAsStringAsync());
             
@@ -138,7 +139,7 @@ namespace eShop.FunctionalTests
             {
                 public static string By(Guid catalogItemId)
                 {
-                    return $"api/catalog-item/{catalogItemId}";
+                    return $"api/CatalogItem/{catalogItemId}";
                 }
             }
 
@@ -147,7 +148,7 @@ namespace eShop.FunctionalTests
                 public static string CatalogItems = "api/CatalogItem";
                 public static string By(Guid catalogItemId)
                 {
-                    return $"api/catalog-item/{catalogItemId}";
+                    return $"api/CatalogItem/{catalogItemId}";
                 }
             }
         }

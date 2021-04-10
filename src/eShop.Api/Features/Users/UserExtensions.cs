@@ -12,6 +12,5 @@ namespace eShop.Api.Features
                 Username = user.Username
             };
         }
-
     }
 }

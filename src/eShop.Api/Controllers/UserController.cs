@@ -15,6 +15,13 @@ namespace eShop.Api.Controllers
         public UserController(IMediator mediator)
             => _mediator = mediator;
 
+        [HttpGet("page/{pageSize}/{index}", Name = "GetGetUsersPageRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(GetUsersPage.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<GetUsersPage.Response>> Page([FromRoute] GetUsersPage.Request request)
+            => await _mediator.Send(request);
+
         [HttpGet("{userId}", Name = "GetUserByIdRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
