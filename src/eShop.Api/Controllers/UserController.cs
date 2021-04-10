@@ -2,6 +2,7 @@ using System.Net;
 using System.Threading.Tasks;
 using eShop.Api.Features;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eShop.Api.Controllers
@@ -15,6 +16,7 @@ namespace eShop.Api.Controllers
         public UserController(IMediator mediator)
             => _mediator = mediator;
 
+        [Authorize]
         [HttpGet("page/{pageSize}/{index}", Name = "GetGetUsersPageRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]

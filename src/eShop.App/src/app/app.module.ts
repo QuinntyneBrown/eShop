@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './login/login.module';
 import { NotFoundModule } from './not-found/not-found.module';
-import { baseUrl } from '@core';
+import { baseUrl, HeadersInterceptor, JwtInterceptor } from '@core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,17 @@ import { baseUrl } from '@core';
     NotFoundModule
   ],
   providers: [
-    { provide: baseUrl, useValue: 'https://localhost:5001/' }
+    { provide: baseUrl, useValue: 'https://localhost:5001/' },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeadersInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }    
   ],
   bootstrap: [AppComponent]
 })
