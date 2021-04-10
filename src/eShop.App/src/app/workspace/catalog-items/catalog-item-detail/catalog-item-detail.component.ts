@@ -42,6 +42,7 @@ export class CatalogItemDetailComponent implements OnDestroy {
   public save(vm: { form: FormGroup}) {
     const catalogItem = vm.form.value.catalogItem;
     let obs$: Observable<{ catalogItem: CatalogItem }>;
+    
     if(catalogItem.catalogItemId) {
       obs$ = this._catalogItemService.update({ catalogItem })
     }   

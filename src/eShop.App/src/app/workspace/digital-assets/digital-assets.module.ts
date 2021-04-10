@@ -5,14 +5,20 @@ import { DigitalAssetEditorComponent } from './digital-asset-editor/digital-asse
 import { DigitalAssetDetailComponent } from './digital-asset-detail/digital-asset-detail.component';
 import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { DigitalAssetsRoutingModule } from './digital-assets.routing-module';
+import { DigitalAssetUrlInputComponent } from './digital-asset-url-input/digital-asset-url-input.component';
+
 
 @NgModule({
-  declarations: [DigitalAssetListComponent, DigitalAssetEditorComponent, DigitalAssetDetailComponent],
+  declarations: [DigitalAssetListComponent, DigitalAssetEditorComponent, DigitalAssetDetailComponent, DigitalAssetUrlInputComponent],
   imports: [
     CommonModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    DigitalAssetsRoutingModule
   ]
 })
 export class DigitalAssetsModule { }

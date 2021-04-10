@@ -7,11 +7,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements AfterContentInit {
-
-
-
   public form = new FormGroup({
-    username: new FormControl("quinn", [Validators.required]),
+    username: new FormControl("admin", [Validators.required]),
     password: new FormControl("admin", [Validators.required])
   });
   

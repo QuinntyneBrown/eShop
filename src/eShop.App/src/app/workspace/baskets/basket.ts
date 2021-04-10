@@ -1,3 +1,7 @@
+import { BasketItem } from "./basket-item";
+
 export type Basket = {
-    basketId: string
+    basketId?: string,
+    customerId: string,    
+    items: BasketItem[]
 };

@@ -1,3 +1,6 @@
+using eShop.Api.Helpers;
+using eShop.Api.Interfaces;
+using eShop.Api.Models;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
@@ -6,12 +9,9 @@ using Microsoft.Net.Http.Headers;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
-using System.Threading;
 using System.Linq;
-using eShop.Api.Interfaces;
-using eShop.Api.Models;
-using eShop.Api.Helpers;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace eShop.Api.Features
 {

@@ -5,6 +5,8 @@ import { CustomerEditorComponent } from './customer-editor/customer-editor.compo
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomersRoutingModule } from './customers.routing-module';
 
 
 
@@ -14,7 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    CustomersRoutingModule
   ]
 })
-export class CustomerModule { }
+export class CustomersModule { }

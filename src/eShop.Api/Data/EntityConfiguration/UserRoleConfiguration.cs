@@ -8,7 +8,7 @@ namespace eShop.Api.Data
     {
         public void Configure(EntityTypeBuilder<UserRole> builder)
         {
-
+            builder.HasKey(x => new { x.UserId, x.RoleId });
         }
 
     }

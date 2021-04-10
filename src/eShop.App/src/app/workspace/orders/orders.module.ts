@@ -5,6 +5,8 @@ import { OrderEditorComponent } from './order-editor/order-editor.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { OrdersRoutingModule } from './orders.routing-module';
 
 
 
@@ -14,7 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    OrdersRoutingModule
   ]
 })
 export class OrdersModule { }

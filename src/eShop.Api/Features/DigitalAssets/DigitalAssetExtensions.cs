@@ -1,4 +1,3 @@
-using System;
 using eShop.Api.Models;
 
 namespace eShop.Api.Features
@@ -9,7 +8,9 @@ namespace eShop.Api.Features
         {
             return new()
             {
-                DigitalAssetId = digitalAsset.DigitalAssetId
+                DigitalAssetId = digitalAsset.DigitalAssetId,
+                Bytes = digitalAsset.Bytes,
+                ContentType = digitalAsset.ContentType
             };
         }
 

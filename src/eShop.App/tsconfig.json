@@ -27,13 +27,7 @@
       ],
       "@shared/*": [
         "src/app/@shared/*"
-      ],
-      "@shell": [
-        "src/app/@shell"
-      ],
-      "@shell/*": [
-        "src/app/@shell/*"
-      ]      
+      ]    
     }
   }
 }

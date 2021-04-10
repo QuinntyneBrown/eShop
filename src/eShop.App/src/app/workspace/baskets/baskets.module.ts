@@ -5,6 +5,8 @@ import { BasketDetailComponent } from './basket-detail/basket-detail.component';
 import { BasketEditorComponent } from './basket-editor/basket-editor.component';
 import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BasketsRoutingModule } from './baskets.routing-module';
 
 
 
@@ -14,7 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    BasketsRoutingModule
   ]
 })
-export class BasketModule { }
+export class BasketsModule { }

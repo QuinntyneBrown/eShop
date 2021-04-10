@@ -22,14 +22,16 @@
 }
 
 .g-layout__overlay-container {
-    min-width: 60vw;
+    min-width: 70vw;
+    min-height: 70vh;
 
     .mat-form-field {
         display: block;
     }
 
     mat-card {
-        min-width: 65vw;
+        min-width: 100%;
+        min-height: 100%;
         h1 {
             margin: 30px 0 20px;
         }

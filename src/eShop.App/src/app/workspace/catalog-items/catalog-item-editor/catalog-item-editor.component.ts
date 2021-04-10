@@ -34,7 +34,22 @@ export class CatalogItemEditorComponent implements ControlValueAccessor,  Valida
   ) { }
 
   validate(control: AbstractControl): ValidationErrors | any {
+    return this.form.valid
+      ? null
+      : Object.keys(this.form.controls).reduce(
+          (accumulatedErrors, formControlName) => {
+            const errors = { ...accumulatedErrors };
 
+            const controlErrors = this.form.controls[formControlName].errors;
+
+            if (controlErrors) {
+              errors[formControlName] = controlErrors;
+            }
+
+            return errors;
+          },
+          {}
+        );
   }
   
   writeValue(catalogItem: CatalogItem): void {   

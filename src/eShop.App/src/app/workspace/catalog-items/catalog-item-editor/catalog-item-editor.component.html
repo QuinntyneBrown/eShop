@@ -1,7 +1,16 @@
 <form novalidate autocomplete='off' spellcheck='false' [formGroup]='form'>
-    <mat-form-field appearance="outline" class="catalog-item-editor-name-field">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder='Name'
-        formControlName='name' required>
-    </mat-form-field>
+    <mat-tab-group [class.mat-tab-header-hidden]="!form.value.catalogItemId" [animationDuration]="0">
+        <mat-tab label="Catalog Item">
+            <mat-form-field appearance="outline" class="catalog-item-editor-name-field">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder='Name'
+                formControlName='name' required>
+            </mat-form-field>
+        </mat-tab>
+
+        <mat-tab label="Catalog Item Images">
+
+        </mat-tab>
+
+    </mat-tab-group>
 </form>

@@ -45,7 +45,7 @@ export class CatalogItemService implements IPagableService<CatalogItem> {
     return this._client.post<{ catalogItem: CatalogItem }>(`${this._baseUrl}api/catalogItem`, { catalogItem: options.catalogItem });
   }
   
-  public update(options: { catalogItem: CatalogItem }): Observable<{ catalogItem: CatalogItem }> {
+  public update(options: { catalogItem: CatalogItem }): Observable<{ catalogItem: CatalogItem }> {    
     return this._client.put<{ catalogItem: CatalogItem }>(`${this._baseUrl}api/catalogItem`, { catalogItem: options.catalogItem });
   }
 }

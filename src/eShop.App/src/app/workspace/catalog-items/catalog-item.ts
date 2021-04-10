@@ -1,3 +1,5 @@
+import { CatalogItemImage } from "./catalog-item-image";
+
 export type CatalogItem = {
     catalogItemId?: string,
     name: string,
@@ -5,6 +7,6 @@ export type CatalogItem = {
     price: number,
     quantityInStock: number,
     onReOrder: boolean,
-    catalogItemImages: any[],
+    catalogItemImages: CatalogItemImage[],
     inventoryCount: number
 };

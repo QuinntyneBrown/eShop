@@ -15,6 +15,8 @@ namespace eShop.Api.Interfaces
         DbSet<Customer> Customers { get; }
         DbSet<Basket> Baskets { get; }
         DbSet<Role> Roles { get; }
+        DbSet<Contact> Contacts { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        
     }
 }
