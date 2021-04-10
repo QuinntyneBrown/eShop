@@ -27,9 +27,10 @@ namespace eShop.Api.Features
         {
             return new()
             {
-                CatalogItemImageId = catalogItemImage.CatalogItemImageId,
+                CatalogItemImageId = catalogItemImage.CatalogItemImageId,                
+                DigitalAssetId = catalogItemImage.DigitalAssetId,
                 Name = catalogItemImage.Name,
-                DigitalAssetId = catalogItemImage.DigitalAssetId
+                Description = catalogItemImage.Description
             };
         }
 
