@@ -156,7 +156,7 @@ namespace eShop.FunctionalTests
 
                 public static string Page(int index, int pageSize)
                 {
-                    return $"api/CatalogItem/page/{index}/{pageSize}";
+                    return $"api/CatalogItem/page/{pageSize}/{index}";
                 }
             }
         }

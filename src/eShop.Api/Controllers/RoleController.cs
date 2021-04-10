@@ -57,7 +57,7 @@ namespace eShop.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(UpdateRole.Response), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<UpdateRole.Response>> Update([FromRoute] UpdateRole.Request request)
+        public async Task<ActionResult<UpdateRole.Response>> Update([FromBody] UpdateRole.Request request)
             => await _mediator.Send(request);
 
         [HttpDelete("{roleId}", Name = "RemoveRoleRoute")]
