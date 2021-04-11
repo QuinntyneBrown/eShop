@@ -12,8 +12,8 @@
         </app-digital-asset-editor>
     </form>
 
-    <div class="actions">
-        <button mat-raised-button (click)="save(vm)" color="primary" [disabled]="!vm.form.dirty && vm.form.valid">Save</button>
+    <div class="actions" >
+        <button *ngIf="(digitalAsset$ | async)" mat-raised-button (click)="save(vm)" color="primary" [disabled]="!vm.form.dirty && vm.form.valid">Save</button>
 
         <button mat-raised-button (click)="cancel()">Cancel</button>
     </div>

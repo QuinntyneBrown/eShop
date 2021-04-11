@@ -48,7 +48,6 @@ namespace eShop.Api.Controllers
         public async Task<ActionResult<GetCurrentUser.Response>> GetCurrent()
             => await _mediator.Send(new GetCurrentUser.Request());
 
-
         [HttpPost(Name = "CreateUserRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]

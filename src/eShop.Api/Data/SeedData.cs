@@ -1,5 +1,6 @@
 using eShop.Api.Core;
 using eShop.Api.Models;
+using System;
 using System.Linq;
 
 namespace eShop.Api.Data
@@ -18,6 +19,7 @@ namespace eShop.Api.Data
             {
                 AddOrCreateRole("admin");
                 AddOrCreateRole("system");
+
                 context.SaveChanges();
 
                 void AddOrCreateRole(string name)
@@ -44,6 +46,7 @@ namespace eShop.Api.Data
                 {
                     user = new User
                     {
+                        UserId  = new Guid("4d757c4c-8a05-4db3-a872-0fdea0ddd421"),
                         Username = "admin"
                     };
 
@@ -61,8 +64,10 @@ namespace eShop.Api.Data
                 {
                     system = new User
                     {
-                        Username = "admin"
+                        Username = "system",
+                        UserId = new Guid("bbecac26-bd9a-41ca-805e-b00c6af48559")
                     };
+
                     system.Roles.Add(context.Roles.Single(x => x.Name == "system"));
 
                     system.Password = new PasswordHasher().HashPassword(user.Salt, "admin");

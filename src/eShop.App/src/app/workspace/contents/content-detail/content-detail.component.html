@@ -1,4 +1,4 @@
-<mat-card *ngIf="vm$ | async as vm">
+<mat-card *ngIf="vm$ | async as vm" class="mat-card--no-shadow">
 
     <h1 *ngIf="(content$ | async)">Edit Content</h1>
     <h1 *ngIf="!(content$ | async)">Create Content</h1>
