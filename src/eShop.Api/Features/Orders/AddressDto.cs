@@ -1,4 +1,4 @@
-﻿namespace eShop.Api.Features.Orders
+﻿namespace eShop.Api.Features
 {
     public class AddressDto
     {
