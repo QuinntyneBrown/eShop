@@ -1,0 +1,13 @@
+:host {
+    background-color: #fff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    .image {
+        max-height: 880px;
+        overflow: hidden;
+        img {
+            max-width: calc(100vw - 80px);
+            margin-top: -250px;
+        }
+    }
+}
