@@ -14,16 +14,16 @@ export class LoginComponent implements OnDestroy, OnInit {
   private readonly _destroyed: Subject<void> = new Subject();
 
   constructor(
-    private authService: AuthService,
-    private redirectService: RedirectService
+    private readonly _authService: AuthService,
+    private readonly _redirectService: RedirectService
   ) { }
 
   ngOnInit() {
-    this.authService.logout();
+    this._authService.logout();
   }
   
   public handleTryToLogin($event: { username: string, password: string }) {
-    this.authService
+    this._authService
     .tryToLogin({
       username: $event.username,
       password: $event.password
@@ -33,7 +33,7 @@ export class LoginComponent implements OnDestroy, OnInit {
     )
     .subscribe(
       () => {
-        this.redirectService.redirectPreLogin();
+        this._redirectService.redirectPreLogin();
       },
       errorResponse => {
         // handle error response

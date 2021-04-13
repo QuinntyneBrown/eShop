@@ -6,7 +6,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { UsersRoutingModule } from './users.routing-module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [UserListComponent, UserEditorComponent, UserDetailComponent],
@@ -16,7 +16,11 @@ import { UsersRoutingModule } from './users.routing-module';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    UsersRoutingModule
+    RouterModule.forChild([
+      { 
+        path: "", pathMatch: 'full', component: UserListComponent,
+      }
+    ])
   ]
 })
 export class UsersModule { }

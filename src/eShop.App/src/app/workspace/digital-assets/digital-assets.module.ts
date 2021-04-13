@@ -6,9 +6,9 @@ import { DigitalAssetDetailComponent } from './digital-asset-detail/digital-asse
 import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DigitalAssetsRoutingModule } from './digital-assets.routing-module';
 import { DigitalAssetUrlInputComponent } from './digital-asset-url-input/digital-asset-url-input.component';
 import { DigitalAssetUploadModule } from './digital-asset-upload/digital-asset-upload.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -19,7 +19,11 @@ import { DigitalAssetUploadModule } from './digital-asset-upload/digital-asset-u
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DigitalAssetsRoutingModule,
+    RouterModule.forChild([
+      { 
+        path: "", pathMatch: 'full', component: DigitalAssetListComponent,
+      }
+    ]),
     DigitalAssetUploadModule
   ]
 })

@@ -6,7 +6,7 @@ import { CatalogItemDetailComponent } from './catalog-item-detail/catalog-item-d
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '@shared/shared.module';
-import { CatalogItemsRoutingModule } from './catalog-items.routing-module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [CatalogItemEditorComponent, CatalogItemListComponent, CatalogItemDetailComponent],
@@ -16,7 +16,11 @@ import { CatalogItemsRoutingModule } from './catalog-items.routing-module';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-    CatalogItemsRoutingModule
+    RouterModule.forChild([
+      { 
+        path: "", pathMatch: 'full', component: CatalogItemListComponent,
+      }
+    ])
   ]
 })
 export class CatalogItemsModule { }

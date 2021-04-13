@@ -14,7 +14,9 @@ export class LoginFormComponent implements AfterContentInit {
   
   @Output() public tryToLogin: EventEmitter<{ username: string, password: string }> = new EventEmitter();
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private readonly _renderer: Renderer2) { }
 
-  ngAfterContentInit(): void { this.renderer.selectRootElement('#username').focus(); }
+  ngAfterContentInit(): void { 
+    this._renderer.selectRootElement('.username').focus(); 
+  }
 }

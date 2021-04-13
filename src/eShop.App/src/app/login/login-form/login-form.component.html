@@ -6,13 +6,13 @@
     
     <form novalidate autocomplete='off' spellcheck='false' [formGroup]='form'>
         <mat-form-field>
-          <input matInput placeholder='Username'
-                 id='username'
+          <input  matInput placeholder='Username'
+                 class='username'
                  formControlName='username' required>
         </mat-form-field>
     
         <mat-form-field>
-          <input matInput
+          <input cdkFocusInitial matInput
                  placeholder='Password'
                  id='password'
                  formControlName='password'

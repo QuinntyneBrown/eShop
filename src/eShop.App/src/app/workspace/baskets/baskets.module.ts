@@ -6,7 +6,7 @@ import { BasketEditorComponent } from './basket-editor/basket-editor.component';
 import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { BasketsRoutingModule } from './baskets.routing-module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -18,7 +18,11 @@ import { BasketsRoutingModule } from './baskets.routing-module';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    BasketsRoutingModule
+    RouterModule.forChild([
+      { 
+        path: "", pathMatch: 'full', component: BasketListComponent,
+      }
+    ])
   ]
 })
 export class BasketsModule { }

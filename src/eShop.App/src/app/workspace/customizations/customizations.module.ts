@@ -5,14 +5,17 @@ import { CustomizationDetailComponent } from './customization-detail/customizati
 import { CustomizationEditorComponent } from './customization-editor/customization-editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared/shared.module';
-import { CustomizationsRoutingModule } from './customizations.routing-module';
-
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [CustomizationListComponent, CustomizationDetailComponent, CustomizationEditorComponent],
   imports: [
-    CustomizationsRoutingModule,
+    RouterModule.forChild([
+      { 
+        path: "", pathMatch: 'full', component: CustomizationListComponent,
+      }
+    ]),
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

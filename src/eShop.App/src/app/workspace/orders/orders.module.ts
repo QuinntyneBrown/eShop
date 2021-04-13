@@ -6,9 +6,7 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { OrdersRoutingModule } from './orders.routing-module';
-
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [OrderDetailComponent, OrderEditorComponent, OrderListComponent],
@@ -18,7 +16,11 @@ import { OrdersRoutingModule } from './orders.routing-module';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    OrdersRoutingModule
+    RouterModule.forChild([
+      { 
+        path: "", pathMatch: 'full', component: OrderListComponent,
+      }
+    ])
   ]
 })
 export class OrdersModule { }

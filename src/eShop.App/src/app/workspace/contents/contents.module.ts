@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ContentListComponent } from './content-list/content-list.component';
 import { ContentDetailComponent } from './content-detail/content-detail.component';
 import { ContentEditorComponent } from './content-editor/content-editor.component';
-import { ContentsRoutingModule } from './contents.routing-module';
 import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +13,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [ContentListComponent, ContentDetailComponent, ContentEditorComponent],
   imports: [
     CommonModule,
-    ContentsRoutingModule,
+    RouterModule.forChild([
+      { 
+        path: "", pathMatch: 'full', component: ContentListComponent,
+      }
+    ]),
     SharedModule,
     ReactiveFormsModule,
     FormsModule
