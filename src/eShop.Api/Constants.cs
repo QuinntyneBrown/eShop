@@ -9,5 +9,10 @@
             public static readonly string AccountId = nameof(AccountId);
             public static readonly string Role = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
         }
+
+        public static class Currency
+        {
+            public static readonly string CDN = "CAD";
+        }
     }
 }

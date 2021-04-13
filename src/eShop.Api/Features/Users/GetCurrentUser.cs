@@ -11,10 +11,7 @@ namespace eShop.Api.Features
 {
     public class GetCurrentUser
     {
-        public class Request: IRequest<Response>
-        {
-
-        }
+        public class Request: IRequest<Response> { }
 
         public class Response: ResponseBase
         {
@@ -33,15 +30,22 @@ namespace eShop.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
+                if (!_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+                {
+                    return new() {
+                        User = UserDto.Anonymous
+                    };
+                }
+
                 var userId = new Guid(_httpContextAccessor.HttpContext.User.FindFirst(Constants.ClaimTypes.UserId).Value);
 
                 var user = await _context.Users
                     .Include(x => x.Roles)
-                    .SingleOrDefaultAsync(x => x.UserId == userId);
+                    .SingleOrDefaultAsync(x => x.UserId == userId, cancellationToken);
 
                 return new()
                 {
-                    User = user.ToDto()
+                    User = user == null ? UserDto.Anonymous : user.ToDto()
                 };
             }
         }

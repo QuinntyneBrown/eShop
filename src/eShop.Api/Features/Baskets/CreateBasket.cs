@@ -37,7 +37,7 @@ namespace eShop.Api.Features
                 => _context = context;
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var basket = new Basket();
+                var basket = new Basket(request.Basket.CustomerId);
 
                 _context.Baskets.Add(basket);
 

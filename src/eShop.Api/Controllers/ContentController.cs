@@ -2,10 +2,12 @@ using System.Net;
 using System.Threading.Tasks;
 using eShop.Api.Features;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eShop.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ContentController

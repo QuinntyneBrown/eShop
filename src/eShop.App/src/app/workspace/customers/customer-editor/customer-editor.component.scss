@@ -1,0 +1,47 @@
+.dialog__title {
+    margin: 0;
+  }
+  
+  .dialog__content {
+    text-align: center;
+  }
+  
+  .dialog__actions {
+    margin-bottom: 10px;
+  }
+  
+  .dialog__img {
+    margin-bottom: 15px;
+    width: 53px;
+  }
+
+  :host {
+      .content {
+        text-align: center;
+      }
+
+      .actions {
+        margin-bottom: 10px;
+      }
+
+      .img {
+        margin-bottom: 15px;
+        width: 53px;
+      }
+  }
+
+  .dialog {
+      
+    &__content {
+        text-align: center;
+    }
+    
+    &__actions {
+        margin-bottom: 10px;
+    }
+
+    &__img {
+        margin-bottom: 15px;
+        width: 53px;
+    }
+  }

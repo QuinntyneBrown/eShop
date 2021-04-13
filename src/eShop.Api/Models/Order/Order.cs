@@ -1,3 +1,4 @@
+using eShop.Api.Exceptions;
 using System;
 using System.Collections.Generic;
 
@@ -23,7 +24,7 @@ namespace eShop.Api.Models
         {
             if (Status == OrderStatus.ProcessingPayment || Status == OrderStatus.Paid)
             {
-                throw new Exception();
+                throw new DomainException($"Unable to change to Processing Payment Status $({OrderStatus.ProcessingPayment}) due to current status of {Status}");
             }
 
             Status = OrderStatus.ProcessingPayment;

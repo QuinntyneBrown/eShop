@@ -1,5 +1,6 @@
 using System.Net;
 using System.Threading.Tasks;
+using eShop.Api.Core;
 using eShop.Api.Features;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -41,6 +42,7 @@ namespace eShop.Api.Controllers
         public async Task<ActionResult<GetUsers.Response>> Get()
             => await _mediator.Send(new GetUsers.Request());
 
+        [AllowAnonymous]
         [HttpGet("current", Name = "GetCurrentUserRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
@@ -62,19 +64,19 @@ namespace eShop.Api.Controllers
         public async Task<ActionResult<GetUsersPage.Response>> Page([FromRoute] GetUsersPage.Request request)
             => await _mediator.Send(request);
 
-        /*        [HttpPut(Name = "UpdateUserRoute")]
-                [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-                [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
-                [ProducesResponseType(typeof(UpdateUser.Response), (int)HttpStatusCode.OK)]
-                public async Task<ActionResult<UpdateUser.Response>> Update([FromBody]UpdateUser.Request request)
-                    => await _mediator.Send(request);
+        [HttpPut(Name = "UpdateUserRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(UpdateUser.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UpdateUser.Response>> Update([FromBody] UpdateUser.Request request)
+            => await _mediator.Send(request);
 
-                [HttpDelete("{userId}", Name = "RemoveUserRoute")]
-                [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-                [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
-                [ProducesResponseType(typeof(RemoveUser.Response), (int)HttpStatusCode.OK)]
-                public async Task<ActionResult<RemoveUser.Response>> Remove([FromRoute]RemoveUser.Request request)
-                    => await _mediator.Send(request);*/
+        [HttpDelete("{userId}", Name = "RemoveUserRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ResponseBase), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<ResponseBase>> Remove([FromRoute] RemoveUser.Request request)
+            => await _mediator.Send(request);
 
         [AllowAnonymous]
         [HttpPost("token", Name = "AuthenticateRoute")]

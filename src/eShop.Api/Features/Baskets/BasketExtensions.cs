@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using eShop.Api.Models;
 
 namespace eShop.Api.Features
@@ -9,9 +10,21 @@ namespace eShop.Api.Features
         {
             return new()
             {
-                BasketId = basket.BasketId
+                BasketId = basket.BasketId,
+                CustomerId = basket.CustomerId,
+                BasketItems = basket.BasketItems.Select(x => x.ToDto()).ToList()
             };
         }
 
+        public static BasketItemDto ToDto(this BasketItem basketItem)
+        {
+            return new()
+            {
+                BasketId = basketItem.BasketId,
+                CatalogItemId = basketItem.CatalogItemId,
+                Quantity = basketItem.Quantity,
+                Price = basketItem.Price
+            };
+        }
     }
 }

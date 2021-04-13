@@ -1,4 +1,5 @@
 using eShop.Api.Core;
+using eShop.Api.Exceptions;
 using eShop.Api.Interfaces;
 using FluentValidation;
 using MediatR;
@@ -16,7 +17,11 @@ namespace eShop.Api.Features
         {
             public Validator()
             {
-
+                RuleFor(x => x.OrderId).NotEqual(default(Guid));
+                RuleFor(x => x.Number).NotNull().NotEmpty();
+                RuleFor(x => x.ExpMonth).NotEqual(default(long));
+                RuleFor(x => x.ExpYear).NotEqual(default(long));
+                RuleFor(x => x.Cvc).NotNull().NotEmpty();
             }
         }
 
@@ -69,9 +74,9 @@ namespace eShop.Api.Features
 
                 var options = new ChargeCreateOptions
                 {
-                    Amount = 0,
-                    Currency = "CAD",
-                    Description = "",
+                    Amount = Convert.ToInt64(order.Cost),
+                    Currency = Constants.Currency.CDN,
+                    Description = "Order",
                     Source = stripeToken.Id
                 };
 
@@ -86,7 +91,7 @@ namespace eShop.Api.Features
                     return new();
                 }
 
-                throw new Exception("Payment Failed");
+                throw new PaymentFailedException();
 
             }
         }

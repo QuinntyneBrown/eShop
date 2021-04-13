@@ -1,11 +1,13 @@
-using System.Net;
-using System.Threading.Tasks;
 using eShop.Api.Features;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace eShop.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class OrderController
@@ -52,20 +54,20 @@ namespace eShop.Api.Controllers
         [ProducesResponseType(typeof(GetOrdersPage.Response), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<GetOrdersPage.Response>> Page([FromRoute] GetOrdersPage.Request request)
             => await _mediator.Send(request);
-        /*        
-                [HttpPut(Name = "UpdateOrderRoute")]
-                [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-                [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
-                [ProducesResponseType(typeof(UpdateOrder.Response), (int)HttpStatusCode.OK)]
-                public async Task<ActionResult<UpdateOrder.Response>> Update([FromBody]UpdateOrder.Request request)
-                    => await _mediator.Send(request);
 
-                [HttpDelete("{orderId}", Name = "RemoveOrderRoute")]
-                [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-                [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
-                [ProducesResponseType(typeof(RemoveOrder.Response), (int)HttpStatusCode.OK)]
-                public async Task<ActionResult<RemoveOrder.Response>> Remove([FromRoute]RemoveOrder.Request request)
-                    => await _mediator.Send(request);*/
+        [HttpPut(Name = "UpdateOrderRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(UpdateOrder.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UpdateOrder.Response>> Update([FromBody] UpdateOrder.Request request)
+            => await _mediator.Send(request);
+
+        [HttpDelete("{orderId}", Name = "RemoveOrderRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(RemoveOrder.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<RemoveOrder.Response>> Remove([FromRoute] RemoveOrder.Request request)
+            => await _mediator.Send(request);
 
     }
 }
