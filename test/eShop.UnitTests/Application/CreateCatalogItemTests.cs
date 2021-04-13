@@ -38,7 +38,7 @@ namespace eShop.UnitTests.Application
         }
 
         [Fact]
-        public void Create_SingleValidationErrors()
+        public void Create_ValidationErrors()
         {
             var expected = 2;
 
