@@ -4,6 +4,6 @@ namespace eShop.Api.Features
 {
     public class ContactDto
     {
-        public Guid ContactId { get; set; }
+        public System.Guid ContactId { get; set; }
     }
 }

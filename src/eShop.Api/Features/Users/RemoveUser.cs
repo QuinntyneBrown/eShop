@@ -19,7 +19,7 @@ namespace eShop.Api.Features
         }
 
         public class Request : IRequest<ResponseBase> { 
-            public Guid UserId { get; set; }        
+            public System.Guid UserId { get; set; }        
         }
 
 

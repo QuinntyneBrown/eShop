@@ -2,24 +2,25 @@ using eShop.Api.Core;
 using eShop.Api.Interfaces;
 using FluentValidation;
 using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace eShop.Api.Features
 {
-    public class UpdateUser
+    public class UpdateUserAvatar
     {
         public class Validator : AbstractValidator<Request>
         {
             public Validator()
             {
-                RuleFor(request => request.User).NotNull();
-                RuleFor(request => request.User).SetValidator(new UserDtoValidator());
+                RuleFor(request => request.AvatarDigitalAssetId).NotNull();
             }
         }
 
-        public class Request : IRequest<Response> { 
-            public UserDto User { get; set; }        
+        public class Request : IRequest<Response> {
+            public Guid UserId { get; set; }
+            public Guid AvatarDigitalAssetId { get; set; }        
         }
 
         public class Response: ResponseBase
@@ -37,9 +38,9 @@ namespace eShop.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken) {
             
-                var user = await _context.Users.FindAsync(request.User.UserId);
+                var user = await _context.Users.FindAsync(request.UserId);
 
-                user.Username = request.User.Username;
+                user.UpdateAvatar(request.AvatarDigitalAssetId);
 
                 await _context.SaveChangesAsync(cancellationToken);
 			    

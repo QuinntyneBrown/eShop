@@ -4,7 +4,7 @@ namespace eShop.Api.Features
 {
     public class ContentDto
     {
-        public Guid ContentId { get; set; }
+        public System.Guid ContentId { get; set; }
         public string Title { get; set; }
         public string FacebookUrl { get; set; }
         public string InstagramUrl { get; set; }

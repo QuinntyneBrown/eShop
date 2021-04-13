@@ -23,7 +23,7 @@ namespace eShop.Api.Features
 
         public record Request(string Username, string Password) : IRequest<Response>;
 
-        public record Response(string AccessToken, Guid UserId);
+        public record Response(string AccessToken, System.Guid UserId);
 
         public class Handler : IRequestHandler<Request, Response>
         {

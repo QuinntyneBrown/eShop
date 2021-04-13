@@ -21,7 +21,7 @@ namespace eShop.Api.Features
 
         public class Response
         {
-            public List<Guid> DigitalAssetIds { get; set; }
+            public List<System.Guid> DigitalAssetIds { get; set; }
         }
 
         public class Handler : IRequestHandler<Request, Response>

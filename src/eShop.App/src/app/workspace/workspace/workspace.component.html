@@ -3,12 +3,14 @@
 
     </app-header>
     
-    <app-nav [items]="navItems" (itemClick)="handleItemClick($event)">
-        
-    </app-nav>
-    
     <main>
-        <router-outlet></router-outlet>
+        <app-nav [items]="navItems" (itemClick)="handleItemClick($event)">
+        
+        </app-nav>
+
+        <div>
+            <router-outlet></router-outlet>
+        </div>
     </main>
     
 </ng-container>

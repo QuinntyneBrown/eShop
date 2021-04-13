@@ -1,5 +1,4 @@
 using eShop.Api.Features;
-using eShop.Api.Models;
 
 namespace eShop.Testing.Builders
 {
@@ -9,7 +8,7 @@ namespace eShop.Testing.Builders
 
         public static UserDto WithDefaults()
         {
-            return new UserDto();
+            return new ();
         }
 
         public UserDtoBuilder()

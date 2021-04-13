@@ -20,7 +20,15 @@ namespace eShop.Api.Models
         public string Password { get; set; }
         public byte[] Salt { get; private set; }
         public string RefreshToken { get; private set; }
+        public Guid AvatarDigitalAssetId { get; private set; }
         public List<Role> Roles { get; private set; } = new List<Role>();
+
+        public User UpdateAvatar(Guid avatarDigitalAssetId)
+        {
+            AvatarDigitalAssetId = avatarDigitalAssetId;
+            return this;
+        }
+
         public User AddRefreshToken(string token)
         {
             RefreshToken = token;

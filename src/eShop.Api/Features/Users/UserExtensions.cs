@@ -11,6 +11,7 @@ namespace eShop.Api.Features
             {
                 UserId = user.UserId,
                 Username = user.Username,
+                AvatarDigitalAssetId = user.AvatarDigitalAssetId,
                 Roles = user.Roles.Select(x => x.ToDto()).ToList()
             };
         }

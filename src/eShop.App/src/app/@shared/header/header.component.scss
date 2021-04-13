@@ -4,13 +4,13 @@
 $height-xs: 95px;
 $height-min-md: 150px;
 
-:host {
-    display: block;
+.header-layout {
     height: $height-xs;
     display: grid;
     grid-template-columns: 33% 33% 33%;
     overflow: hidden;
-
+    max-width: 1420px;
+    margin: 0 auto;
     .logo-container {
         cursor: pointer;
     }
@@ -29,6 +29,10 @@ $height-min-md: 150px;
     .actions {
         mat-icon {
             padding: 0 12px;    
+        }
+
+        mat-icon:last-child {
+            padding: 0 0 0 12px;
         }
     }
 
@@ -50,7 +54,7 @@ $height-min-md: 150px;
 }
 
 @media screen and (min-width: $screen-md) {
-    :host {
+    .header-layout {
         height: $height-min-md;
         img {
             height: 250px;

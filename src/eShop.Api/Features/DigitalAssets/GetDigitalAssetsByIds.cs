@@ -13,7 +13,7 @@ namespace eShop.Api.Features
     {
         public class Request : IRequest<Response>
         {
-            public Guid[] DigitalAssetIds { get; init; }
+            public System.Guid[] DigitalAssetIds { get; init; }
         }
 
         public class Response

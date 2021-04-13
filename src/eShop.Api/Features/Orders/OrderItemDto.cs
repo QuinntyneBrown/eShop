@@ -4,9 +4,9 @@ namespace eShop.Api.Features
 {
     public class OrderItemDto
     {
-        public Guid? OrderItemId { get; set; }
-        public Guid OrderId { get; set; }
-        public Guid CatalogItemId { get; set; }
+        public System.Guid? OrderItemId { get; set; }
+        public System.Guid OrderId { get; set; }
+        public System.Guid CatalogItemId { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
     }

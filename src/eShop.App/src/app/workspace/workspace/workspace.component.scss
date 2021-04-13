@@ -3,28 +3,39 @@
 @import 'src/scss/variables.scss';
 
 :host {
-    display: grid;
+    display: block;    
     height: 100%;
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: 150px 1fr;
-
+    background-color: #fff;
     app-header {
-        grid-row: 1;
-        grid-column: 1 / 3;
+        background-color: #f2f2f2;
     }
 
     app-nav {
-        grid-row: 2;
+        grid-row: 1;
         grid-column: 1;
         background-color: #fff;
+        height: calc(100vh - 250px);
+        overflow-x: auto;
     }
 
     main {
-        display: block;
+        display: grid;
+        grid-template-columns: 300px 1fr;        
         position: relative;
         background-color: #fff;
         height: 100%;        
         grid-row: 2;
-        grid-column: 2;        
+        grid-column: 2;  
+        height: 100%; 
+        max-width: 1420px;
+        margin: 0 auto;
     }
+}
+
+@media screen and (min-width: 1420px) {
+    :host {
+        app-nav {
+            padding-left: 0px;
+        }
+    }  
 }

@@ -12,7 +12,7 @@ namespace eShop.Api.Features
     {
         public class Request : IRequest<Response>
         {
-            public Guid DigitalAssetId { get; set; }
+            public System.Guid DigitalAssetId { get; set; }
         }
 
         public class Response : ResponseBase

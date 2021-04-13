@@ -58,3 +58,13 @@
         padding: $gutter-desktop-x $gutter-desktop-y;
     }
 }
+
+@media screen and (min-width: 1420px) {
+    .g-layout__container {
+        padding: 0 0  0 0;
+    }
+
+    .g-layout__list-container, .g-layout__nav-container {
+        padding: $gutter-desktop-x 0 $gutter-desktop-x $gutter-desktop-y;
+    }
+}

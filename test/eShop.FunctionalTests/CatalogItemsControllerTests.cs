@@ -140,7 +140,7 @@ namespace eShop.FunctionalTests
 
             public static class Delete
             {
-                public static string By(Guid catalogItemId)
+                public static string By(System.Guid catalogItemId)
                 {
                     return $"api/CatalogItem/{catalogItemId}";
                 }
@@ -149,7 +149,7 @@ namespace eShop.FunctionalTests
             public static class Get
             {
                 public static string CatalogItems = "api/CatalogItem";
-                public static string By(Guid catalogItemId)
+                public static string By(System.Guid catalogItemId)
                 {
                     return $"api/CatalogItem/{catalogItemId}";
                 }

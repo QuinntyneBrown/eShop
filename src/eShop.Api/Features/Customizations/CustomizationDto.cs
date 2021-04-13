@@ -4,6 +4,6 @@ namespace eShop.Api.Features
 {
     public class CustomizationDto
     {
-        public Guid CustomizationId { get; set; }
+        public System.Guid CustomizationId { get; set; }
     }
 }

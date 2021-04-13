@@ -37,7 +37,7 @@ namespace eShop.Api.Features
                     };
                 }
 
-                var userId = new Guid(_httpContextAccessor.HttpContext.User.FindFirst(Constants.ClaimTypes.UserId).Value);
+                var userId = new System.Guid(_httpContextAccessor.HttpContext.User.FindFirst(Constants.ClaimTypes.UserId).Value);
 
                 var user = await _context.Users
                     .Include(x => x.Roles)

@@ -17,7 +17,7 @@ namespace eShop.Api.Features
         {
             public Validator()
             {
-                RuleFor(x => x.OrderId).NotEqual(default(Guid));
+                RuleFor(x => x.OrderId).NotEqual(default(System.Guid));
                 RuleFor(x => x.Number).NotNull().NotEmpty();
                 RuleFor(x => x.ExpMonth).NotEqual(default(long));
                 RuleFor(x => x.ExpYear).NotEqual(default(long));
@@ -27,7 +27,7 @@ namespace eShop.Api.Features
 
         public class Request : IRequest<Response>
         {
-            public Guid OrderId { get; set; }
+            public System.Guid OrderId { get; set; }
             public string Number { get; set; }
             public long ExpMonth { get; set; }
             public long ExpYear { get; set; }

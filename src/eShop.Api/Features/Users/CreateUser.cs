@@ -15,7 +15,7 @@ namespace eShop.Api.Features
             public Validator()
             {
                 RuleFor(request => request.User).NotNull();
-                RuleFor(request => request.User).SetValidator(new UserValidator());
+                RuleFor(request => request.User).SetValidator(new UserDtoValidator());
             }
         }
 

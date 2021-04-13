@@ -5,7 +5,7 @@ namespace eShop.Api.Features
 {
     public class CatalogItemDto
     {
-        public Guid? CatalogItemId { get; set; }
+        public System.Guid? CatalogItemId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; } = 0;
