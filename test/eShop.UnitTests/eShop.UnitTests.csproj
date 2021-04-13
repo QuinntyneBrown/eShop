@@ -24,4 +24,8 @@
     <ProjectReference Include="..\eShop.Testing\eShop.Testing.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Application\" />
+  </ItemGroup>
+
 </Project>
