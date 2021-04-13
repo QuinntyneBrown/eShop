@@ -1,14 +1,15 @@
 @import 'src/scss/breakpoints.scss';
 @import 'src/scss/variables.scss';
+@import 'src/scss/gutters.scss';
 
 .g-layout__container {
-    padding: 0 17px;
+    padding: 0 $gutter-y;
     display: block;
 }
 
 .g-layout__nav-container, .g-layout__list-container {
     display: block;
-    padding: 50px 17px;
+    padding: $gutter-x $gutter-y;
 }
 
 .g-layout__list-container {
@@ -50,10 +51,10 @@
 
 @media screen and (min-width: $screen-md) {
     .g-layout__container {
-        padding: 0 40px;
+        padding: 0 $gutter-desktop-y;
     }
 
     .g-layout__list-container, .g-layout__nav-container {
-        padding: 50px 40px;
+        padding: $gutter-desktop-x $gutter-desktop-y;
     }
 }

@@ -12,11 +12,11 @@ import { EntityPage } from '@core/entity-page';
 })
 export class BasketService implements IPagableService<Basket> {
 
-  uniqueIdentifierName: string = "basketId";
+  readonly uniqueIdentifierName: string = "basketId";
 
   constructor(
-    @Inject(baseUrl) private _baseUrl: string,
-    private _client: HttpClient
+    @Inject(baseUrl) private readonly _baseUrl: string,
+    private readonly _client: HttpClient
   ) { }
 
   getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<Basket>> {

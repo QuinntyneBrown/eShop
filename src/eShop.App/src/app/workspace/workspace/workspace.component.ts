@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavItem } from '@shared/nav/nav.component';
-import { of } from 'rxjs';
 import { UserService } from '../users/user.service';
 
 @Component({

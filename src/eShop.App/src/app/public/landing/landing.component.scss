@@ -1,7 +1,9 @@
+@import 'src/scss/gutters.scss';
+
 :host {
     background-color: #fff;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: $gutter-x;
+    padding-bottom: $gutter-x;
     .image {
         max-height: 880px;
         overflow: hidden;
