@@ -2,6 +2,7 @@ using eShop.Api.Core;
 using eShop.Api.Data;
 using eShop.Api.Extensions;
 using eShop.Api.Interfaces;
+using eShop.Api.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
@@ -67,6 +68,8 @@ namespace eShop.Api
             services.AddMediatR(typeof(IEShopDbContext));
 
             services.AddTransient<IEShopDbContext, EShopDbContext>();
+
+            services.AddTransient<IStripeClient, StripeClient>();
 
             services.AddDbContext<EShopDbContext>(options =>
             {

@@ -55,19 +55,19 @@ namespace eShop.Api.Controllers
         public async Task<ActionResult<GetBasketsPage.Response>> Page([FromRoute] GetBasketsPage.Request request)
             => await _mediator.Send(request);
 
-        /*        [HttpPut(Name = "UpdateBasketRoute")]
-                [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-                [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
-                [ProducesResponseType(typeof(UpdateBasket.Response), (int)HttpStatusCode.OK)]
-                public async Task<ActionResult<UpdateBasket.Response>> Update([FromBody]UpdateBasket.Request request)
-                    => await _mediator.Send(request);
+        [HttpPut(Name = "UpdateBasketRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(UpdateBasket.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UpdateBasket.Response>> Update([FromBody] UpdateBasket.Request request)
+            => await _mediator.Send(request);
 
-                [HttpDelete("{basketId}", Name = "RemoveBasketRoute")]
-                [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-                [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
-                [ProducesResponseType(typeof(RemoveBasket.Response), (int)HttpStatusCode.OK)]
-                public async Task<ActionResult<RemoveBasket.Response>> Remove([FromRoute]RemoveBasket.Request request)
-                    => await _mediator.Send(request);*/
+        [HttpDelete("{basketId}", Name = "RemoveBasketRoute")]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(RemoveBasket.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<RemoveBasket.Response>> Remove([FromRoute] RemoveBasket.Request request)
+            => await _mediator.Send(request);
 
     }
 }

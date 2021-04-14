@@ -18,7 +18,7 @@ namespace eShop.UnitTests.Application
         {
             Setup(nameof(Constructor));
 
-            var sut = CreateSut();
+            var sut = CreateHandler();
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace eShop.UnitTests.Application
 
             Setup(nameof(Create));
 
-            var sut = CreateSut();
+            var sut = CreateHandler();
 
             var actual = await sut.Handle(request, default);
 
@@ -59,7 +59,7 @@ namespace eShop.UnitTests.Application
                 .Options);
         }
 
-        private Handler CreateSut()
+        private Handler CreateHandler()
             => new(_context);
     }
 }

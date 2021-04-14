@@ -8,6 +8,7 @@ using Stripe;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using IStripeClient = eShop.Api.Services.IStripeClient;
 
 namespace eShop.Api.Features
 {
@@ -42,47 +43,29 @@ namespace eShop.Api.Features
         public class Handler : IRequestHandler<Request, Response>
         {
             private readonly IEShopDbContext _context;
-
-            public Handler(IEShopDbContext context)
+            private readonly IStripeClient _stripeClient;
+            public Handler(IEShopDbContext context, IStripeClient stripeClient)
             {
                 _context = context;
+                _stripeClient = stripeClient;
             }
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-
                 var order = await _context.Orders.Include(x => x.OrderItems).SingleAsync(x => x.OrderId == request.OrderId);
 
                 order.SetProcessingPaymentStatus();
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                var optionsToken = new TokenCreateOptions()
-                {
-                    Card = new AnyOf<string, TokenCardOptions>(new TokenCardOptions
-                    {
-                        Number = request.Number,
-                        ExpYear = request.ExpYear,
-                        ExpMonth = request.ExpMonth,
-                        Cvc = request.Cvc
-                    })
-                };
-
-                var serviceToken = new TokenService();
-
-                var stripeToken = await serviceToken.CreateAsync(optionsToken, cancellationToken: cancellationToken);
-
-                var options = new ChargeCreateOptions
-                {
-                    Amount = Convert.ToInt64(order.Cost),
-                    Currency = Constants.Currency.CDN,
-                    Description = "Order",
-                    Source = stripeToken.Id
-                };
-
-                var service = new ChargeService();
-
-                var charge = await service.CreateAsync(options, cancellationToken: cancellationToken);
+                var charge = await _stripeClient.Charge(
+                    Convert.ToInt64(order.Cost),
+                    request.Number,
+                    request.ExpYear,
+                    request.ExpMonth,
+                    request.Cvc,
+                    "Order",
+                    cancellationToken);
 
                 if (charge.Paid)
                 {
