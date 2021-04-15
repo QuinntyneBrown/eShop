@@ -37,7 +37,14 @@ namespace eShop.Api.Features
                 => _context = context;
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var order = new Order();
+                var order = new Order(
+                    request.Order.CustomerId,
+                    request.Order.Cost,
+                    request.Order.Status,
+                    request.Order.OrderDate,
+                    request.Order.ShippingAddress,
+                    request.Order.BillingAddress
+                    );
 
                 _context.Orders.Add(order);
 

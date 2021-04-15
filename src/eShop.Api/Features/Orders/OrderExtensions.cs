@@ -10,8 +10,8 @@ namespace eShop.Api.Features
             return new()
             {
                 OrderId = order.OrderId,
-                ShippingAddress = order.ShippingAddress.ToDto(),
-                BillingAddress = order.BillingAddress.ToDto(),
+                ShippingAddress = order.ShippingAddress,
+                BillingAddress = order.BillingAddress,
                 CustomerId = order.CustomerId,
                 Status = order.Status,
                 OrderDate = order.OrderDate,

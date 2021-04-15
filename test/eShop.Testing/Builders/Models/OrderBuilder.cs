@@ -6,17 +6,13 @@ namespace eShop.Testing.Builders
     {
         private Order _order;
 
-        public static Order WithDefaults()
+
+        public static OrderBuilder Create()
         {
-            return new Order();
+            return new OrderBuilder();
         }
 
-        public OrderBuilder()
-        {
-            _order = WithDefaults();
-        }
-
-        public Order Build()
+        public Order ToObject()
         {
             return _order;
         }

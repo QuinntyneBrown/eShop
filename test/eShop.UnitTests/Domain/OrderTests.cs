@@ -8,7 +8,7 @@ namespace eShop.UnitTests.Domain
         [Fact]
         public void Constructor()
         {
-            var sut = new Order();
+
         }
     }
 }

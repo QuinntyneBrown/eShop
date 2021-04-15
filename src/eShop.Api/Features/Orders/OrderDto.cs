@@ -7,8 +7,8 @@ namespace eShop.Api.Features
     public class OrderDto
     {
         public System.Guid OrderId { get; set; }
-        public AddressDto ShippingAddress { get; set; }
-        public AddressDto BillingAddress { get; set; }
+        public Address ShippingAddress { get; set; }
+        public Address BillingAddress { get; set; }
         public System.Guid CustomerId { get; set; }
         public List<OrderItemDto> OrderItems { get; set; }
         public decimal Cost { get; set; }

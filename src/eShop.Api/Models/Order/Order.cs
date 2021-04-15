@@ -16,6 +16,23 @@ namespace eShop.Api.Models
         public Address ShippingAddress { get; set; }
         public Address BillingAddress { get; set; }
 
+        public Order(
+            Guid customerId,
+            decimal cost,
+            OrderStatus status,
+            DateTime orderDate,
+            Address shippingAddress,
+            Address billingAddress
+            )
+        {
+            CustomerId = customerId;
+            Cost = cost;
+            Status = status;
+            OrderDate = orderDate;
+            ShippingAddress = shippingAddress;
+            BillingAddress = billingAddress;
+        }
+
         private Order()
         {
 
