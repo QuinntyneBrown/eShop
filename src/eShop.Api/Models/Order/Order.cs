@@ -11,11 +11,12 @@ namespace eShop.Api.Models
         public decimal Cost { get; set; }
         public OrderStatus Status { get; set; } = OrderStatus.Draft;
         public List<OrderItem> OrderItems { get; set; }
+            = new List<OrderItem>();
         public DateTime OrderDate { get; set; }
         public Address ShippingAddress { get; set; }
         public Address BillingAddress { get; set; }
 
-        public Order()
+        private Order()
         {
 
         }
