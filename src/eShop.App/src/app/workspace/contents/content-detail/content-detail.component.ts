@@ -1,4 +1,3 @@
-import { OverlayRef } from '@angular/cdk/overlay';
 import { Component, EventEmitter, OnDestroy, Optional, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
@@ -11,7 +10,7 @@ import { ContentService } from '../content.service';
   templateUrl: './content-detail.component.html',
   styleUrls: ['./content-detail.component.scss'],
   host: {
-    'class':'g-layout__container'
+    'class':'g-layout__container g-layout__view-container'
   }
 })
 export class ContentDetailComponent implements OnDestroy {
@@ -35,7 +34,6 @@ export class ContentDetailComponent implements OnDestroy {
   )
 
   constructor(
-    @Optional() private readonly _overlayRef: OverlayRef,
     private readonly _contentService: ContentService) {     
   }
 
@@ -53,13 +51,12 @@ export class ContentDetailComponent implements OnDestroy {
       takeUntil(this._destroyed),      
       tap(x => {
         this.saved.next(x.content);
-        this._overlayRef.dispose();
       })
     ).subscribe();
   }
 
   public cancel() {
-    this._overlayRef.dispose();
+
   }
 
   ngOnDestroy() {

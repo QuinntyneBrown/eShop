@@ -1,4 +1,4 @@
-<mat-card *ngIf="vm$ | async as vm" class="mat-card--no-shadow">
+<ng-container *ngIf="vm$ | async as vm">
 
     <h1 *ngIf="(content$ | async)">Edit Content</h1>
     <h1 *ngIf="!(content$ | async)">Create Content</h1>
@@ -7,9 +7,9 @@
         </app-content-editor>
     </form>
 
-    <div class="actions">
+    <div class="g-actions">
         <button mat-raised-button (click)="save(vm)" color="primary" [disabled]="!vm.form.dirty && vm.form.valid">Save</button>
 
         <button mat-raised-button (click)="cancel()">Cancel</button>
     </div>
-</mat-card>
+</ng-container>

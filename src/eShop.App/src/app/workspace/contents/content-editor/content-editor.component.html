@@ -1,11 +1,8 @@
 <form novalidate autocomplete='off' spellcheck='false' [formGroup]='form'>
     <mat-tab-group [class.mat-tab-header-hidden]="!form.value.contentId" [animationDuration]="0">
         <mat-tab label="Content">
-            <mat-form-field appearance="outline" class="content-editor-name-field">
-                <mat-label>Name</mat-label>
-                <input matInput placeholder='Name'
-                formControlName='name' required>
-            </mat-form-field>
+            <app-html-editor placeholder='Name'
+            formControlName='name' required></app-html-editor>
         </mat-tab>
     </mat-tab-group>
 </form>

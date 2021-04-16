@@ -13,6 +13,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
 import {EntityActionsComponent} from './entity-actions/entity-actions.component';
+import { HtmlEditorModule } from './html-editor/html-editor.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {EntityActionsComponent} from './entity-actions/entity-actions.component'
     MatListModule,
     MatTableModule,
     MatSnackBarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HtmlEditorModule
   ],
   exports: [
     MatTabsModule,
@@ -45,6 +47,7 @@ import {EntityActionsComponent} from './entity-actions/entity-actions.component'
     MatTableModule,
     MatSnackBarModule,
     MatPaginatorModule,
+    HtmlEditorModule,
     EntityActionsComponent
   ],
   declarations: [EntityActionsComponent]

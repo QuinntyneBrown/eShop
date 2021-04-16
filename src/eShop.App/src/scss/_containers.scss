@@ -2,16 +2,23 @@
 @import 'src/scss/variables.scss';
 @import 'src/scss/gutters.scss';
 
-.g-layout__container {
+.g-layout__container, .g-layout__view-container {
     padding: 0 $gutter-y;
     display: block;
 }
 
-.g-layout__nav-container, .g-layout__list-container {
+.g-layout__nav-container, .g-layout__list-container, .g-layout__view-container {
     display: block;
     padding: $gutter-x $gutter-y;
 }
 
+.g-layout__view-container {
+    button {
+        display: inline-block;
+        margin:0 20px;
+        padding: 0 20px;
+    }
+}
 .g-layout__list-container {
     button {
         margin: 0 0 20px 0;
@@ -54,7 +61,7 @@
         padding: 0 $gutter-desktop-y;
     }
 
-    .g-layout__list-container, .g-layout__nav-container {
+    .g-layout__list-container, .g-layout__nav-container, .g-layout__view-container {
         padding: $gutter-desktop-x $gutter-desktop-y;
     }
 }
@@ -64,7 +71,7 @@
         padding: 0 0  0 0;
     }
 
-    .g-layout__list-container, .g-layout__nav-container {
+    .g-layout__list-container, .g-layout__nav-container, .g-layout__view-container {
         padding: $gutter-desktop-x 0 $gutter-desktop-x $gutter-desktop-y;
     }
 }

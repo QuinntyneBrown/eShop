@@ -6,6 +6,7 @@ import { ContentEditorComponent } from './content-editor/content-editor.componen
 import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ContactDetailComponent } from '../contacts/contact-detail/contact-detail.component';
 
 
 
@@ -15,8 +16,14 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     RouterModule.forChild([
       { 
-        path: "", pathMatch: 'full', component: ContentListComponent,
-      }
+        path: "", pathMatch: 'full', component: ContentDetailComponent,
+      },
+      { 
+        path: ":id", pathMatch: 'full', component: ContentDetailComponent,
+      },
+      { 
+        path: "list", pathMatch: 'full', component: ContentListComponent,
+      }            
     ]),
     SharedModule,
     ReactiveFormsModule,
