@@ -6,15 +6,14 @@ namespace eShop.Testing.Builders
     {
         private Order _order;
 
-
-        public static OrderBuilder Create()
+        public OrderBuilder()
         {
-            return new OrderBuilder();
+
         }
 
         public Order ToObject()
         {
-            return _order;
+            throw new System.NotImplementedException();
         }
     }
 }
