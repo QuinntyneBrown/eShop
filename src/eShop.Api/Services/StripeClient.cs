@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using IStripeClient = eShop.Api.Services.IStripeClient;
 
 namespace eShop.Api.Services
-{    
-    public class StripeClient: IStripeClient
+{
+    public class StripeClient : IStripeClient
     {
         public async Task<Charge> Charge(long cost, string number, long expYear, long expMonth, string cvc, string description, CancellationToken cancellationToken)
-        {            
+        {
             var optionsToken = new TokenCreateOptions()
             {
                 Card = new AnyOf<string, TokenCardOptions>(new TokenCardOptions

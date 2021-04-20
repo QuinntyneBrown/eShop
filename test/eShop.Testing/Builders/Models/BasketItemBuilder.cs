@@ -8,7 +8,7 @@ namespace eShop.Testing.Builders
 
         public static BasketItem WithDefaults()
         {
-            return new BasketItem(default,default,default);
+            return new BasketItem(default, default, default);
         }
 
         public BasketItemBuilder()

@@ -56,11 +56,11 @@ namespace eShop.Api.Features
                     .AddUsername(user.Username)
                     .AddOrUpdateClaim(new System.Security.Claims.Claim(Constants.ClaimTypes.UserId, $"{user.UserId}"));
 
-                foreach(var role in user.Roles)
+                foreach (var role in user.Roles)
                 {
                     _tokenBuilder.AddOrUpdateClaim(new System.Security.Claims.Claim(Constants.ClaimTypes.Role, role.Name));
                 }
-                
+
                 return new(_tokenBuilder.Build(), user.UserId);
 
             }

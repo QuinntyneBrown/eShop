@@ -18,8 +18,9 @@ namespace eShop.Api.Features
             }
         }
 
-        public class Request : IRequest<ResponseBase> { 
-            public System.Guid UserId { get; set; }        
+        public class Request : IRequest<ResponseBase>
+        {
+            public System.Guid UserId { get; set; }
         }
 
 
@@ -27,19 +28,22 @@ namespace eShop.Api.Features
         {
             private readonly IEShopDbContext _context;
 
-            public Handler(IEShopDbContext context){
+            public Handler(IEShopDbContext context)
+            {
                 _context = context;
             }
 
-            public async Task<ResponseBase> Handle(Request request, CancellationToken cancellationToken) {
-            
+            public async Task<ResponseBase> Handle(Request request, CancellationToken cancellationToken)
+            {
+
                 var user = await _context.Users.FindAsync(request.UserId);
 
                 _context.Users.Remove(user);
 
                 await _context.SaveChangesAsync(cancellationToken);
-			    
-                return new () { 
+
+                return new()
+                {
 
                 };
             }

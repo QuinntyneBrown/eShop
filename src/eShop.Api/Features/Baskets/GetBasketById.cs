@@ -30,7 +30,7 @@ namespace eShop.Api.Features
             {
                 return new()
                 {
-                    Basket = (await _context.Baskets.SingleOrDefaultAsync()).ToDto()
+                    Basket = (await _context.Baskets.SingleOrDefaultAsync(x => x.BasketId == request.BasketId)).ToDto()
                 };
             }
 

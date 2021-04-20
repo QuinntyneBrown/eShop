@@ -6,6 +6,7 @@ import { WorkspaceHeaderComponent } from './workspace-header.component';
 
 @NgModule({
   declarations: [WorkspaceHeaderComponent],
+  exports: [WorkspaceHeaderComponent],
   imports: [
     CommonModule
   ]

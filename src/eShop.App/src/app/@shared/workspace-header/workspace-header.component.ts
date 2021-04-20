@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './workspace-header.component.html',
   styleUrls: ['./workspace-header.component.scss']
 })
-export class WorkspaceHeaderComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class WorkspaceHeaderComponent {
 
 }

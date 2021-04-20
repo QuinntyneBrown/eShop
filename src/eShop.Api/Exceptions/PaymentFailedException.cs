@@ -1,9 +1,9 @@
 ﻿namespace eShop.Api.Exceptions
 {
-    public class PaymentFailedException: DomainException
+    public class PaymentFailedException : DomainException
     {
         public PaymentFailedException()
-            :base("Payment Failed")
+            : base("Payment Failed")
         {
 
         }

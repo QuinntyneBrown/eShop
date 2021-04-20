@@ -18,11 +18,12 @@ namespace eShop.Api.Features
             }
         }
 
-        public class Request : IRequest<Response> { 
-            public BasketDto Basket { get; set; }        
+        public class Request : IRequest<Response>
+        {
+            public BasketDto Basket { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public BasketDto Basket { get; set; }
         }
@@ -31,19 +32,22 @@ namespace eShop.Api.Features
         {
             private readonly IEShopDbContext _context;
 
-            public Handler(IEShopDbContext context){
+            public Handler(IEShopDbContext context)
+            {
                 _context = context;
             }
 
-            public async Task<Response> Handle(Request request, CancellationToken cancellationToken) {
-            
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            {
+
                 var basket = await _context.Baskets.FindAsync(request.Basket.BasketId);
 
                 await _context.SaveChangesAsync(cancellationToken);
 
                 _context.Baskets.Remove(basket);
 
-                return new () { 
+                return new()
+                {
                     Basket = basket.ToDto()
                 };
             }

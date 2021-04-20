@@ -11,9 +11,9 @@ namespace eShop.Api.Features
 {
     public class GetCurrentUser
     {
-        public class Request: IRequest<Response> { }
+        public class Request : IRequest<Response> { }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public UserDto User { get; init; }
         }
@@ -32,7 +32,8 @@ namespace eShop.Api.Features
             {
                 if (!_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
                 {
-                    return new() {
+                    return new()
+                    {
                         User = UserDto.Anonymous
                     };
                 }

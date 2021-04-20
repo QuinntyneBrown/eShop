@@ -12,7 +12,7 @@ namespace eShop.Api.Features
     {
         public class Request : IRequest<Response>
         {
-            public System.Guid RoleId { get; set; }
+            public Guid RoleId { get; set; }
         }
 
         public class Response : ResponseBase
@@ -31,7 +31,7 @@ namespace eShop.Api.Features
             {
                 return new()
                 {
-                    Role = (await _context.Roles.SingleOrDefaultAsync()).ToDto()
+                    Role = (await _context.Roles.SingleOrDefaultAsync(x => x.RoleId == request.RoleId)).ToDto()
                 };
             }
 

@@ -39,7 +39,7 @@ namespace eShop.Testing
                 var serviceProvider = services.BuildServiceProvider();
 
                 var scope = serviceProvider.CreateScope();
-                
+
                 var scopedServices = scope.ServiceProvider;
 
                 Context = scopedServices.GetRequiredService<EShopDbContext>();
@@ -52,7 +52,7 @@ namespace eShop.Testing
 
         public HttpClient CreateAuthenticatedClient(string token = null, string scheme = "Test")
         {
-            if(string.IsNullOrEmpty(token))
+            if (string.IsNullOrEmpty(token))
                 token = TokenFactory.CreateToken("Test User", Array.Empty<string>());
 
             var client = WithWebHostBuilder(builder =>

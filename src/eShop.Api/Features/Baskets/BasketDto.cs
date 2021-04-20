@@ -7,7 +7,7 @@ namespace eShop.Api.Features
     {
         public System.Guid BasketId { get; set; }
         public System.Guid CustomerId { get; set; }
-        public List<BasketItemDto> BasketItems { get; set; } 
+        public List<BasketItemDto> BasketItems { get; set; }
             = new List<BasketItemDto>();
     }
 

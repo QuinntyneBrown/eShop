@@ -18,16 +18,16 @@ namespace eShop.Api.Models
         public string Subscribe { get; set; }
 
         public Content(
-            string title, 
-            string facebookUrl = null, 
-            string instagramUrl = null, 
-            string twitterUrl = null, 
-            string logoUrl = null, 
-            string heroImageUrl = null, 
-            string about = null, 
+            string title,
+            string facebookUrl = null,
+            string instagramUrl = null,
+            string twitterUrl = null,
+            string logoUrl = null,
+            string heroImageUrl = null,
+            string about = null,
             string termsOfService = null,
             string contactInfo = null,
-            string returnPolicy  = null,
+            string returnPolicy = null,
             string subscribe = null)
         {
             Title = title;

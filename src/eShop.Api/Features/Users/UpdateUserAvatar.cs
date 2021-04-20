@@ -18,12 +18,13 @@ namespace eShop.Api.Features
             }
         }
 
-        public class Request : IRequest<Response> {
+        public class Request : IRequest<Response>
+        {
             public Guid UserId { get; set; }
-            public Guid AvatarDigitalAssetId { get; set; }        
+            public Guid AvatarDigitalAssetId { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public UserDto User { get; set; }
         }
@@ -32,19 +33,22 @@ namespace eShop.Api.Features
         {
             private readonly IEShopDbContext _context;
 
-            public Handler(IEShopDbContext context){
+            public Handler(IEShopDbContext context)
+            {
                 _context = context;
             }
 
-            public async Task<Response> Handle(Request request, CancellationToken cancellationToken) {
-            
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            {
+
                 var user = await _context.Users.FindAsync(request.UserId);
 
                 user.UpdateAvatar(request.AvatarDigitalAssetId);
 
                 await _context.SaveChangesAsync(cancellationToken);
-			    
-                return new () { 
+
+                return new()
+                {
                     User = user.ToDto()
                 };
             }

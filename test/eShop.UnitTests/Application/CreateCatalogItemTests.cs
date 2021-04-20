@@ -10,7 +10,7 @@ using static eShop.Testing.Builders.CreateCatalogItemBuilder;
 namespace eShop.UnitTests.Application
 {
     public class CreateCatalogItemTests
-    {        
+    {
         private IEShopDbContext _context;
 
         [Fact]

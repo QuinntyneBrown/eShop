@@ -16,7 +16,8 @@ namespace eShop.Api.Features
             }
         }
 
-        public class Request : IRequest<Response> {  
+        public class Request : IRequest<Response>
+        {
 
         }
 
@@ -29,11 +30,13 @@ namespace eShop.Api.Features
         {
             private readonly IEShopDbContext _context;
 
-            public Handler(IEShopDbContext context) {            
+            public Handler(IEShopDbContext context)
+            {
                 _context = context;
             }
 
-            public async Task<Response> Handle(Request request, CancellationToken cancellationToken) {
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            {
 
                 return new Response()
                 {

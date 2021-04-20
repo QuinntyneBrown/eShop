@@ -5,7 +5,6 @@ import { SharedModule } from '@shared/shared.module';
 import { WorkspaceComponent } from './workspace/workspace.component';
 import { WorkspaceRoutingModule } from './workspace-routing.module';
 import { FooterModule } from '@shared/footer/footer.module';
-import { HeaderModule } from '@shared/header/header.module';
 import { NavModule } from '@shared/nav/nav.module';
 
 @NgModule({
@@ -15,7 +14,7 @@ import { NavModule } from '@shared/nav/nav.module';
     WorkspaceHeaderModule,
     WorkspaceRoutingModule,
     SharedModule,
-    HeaderModule,
+    WorkspaceHeaderModule,
     FooterModule,
     NavModule
   ]

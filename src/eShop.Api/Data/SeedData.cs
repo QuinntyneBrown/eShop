@@ -26,7 +26,7 @@ namespace eShop.Api.Data
                 {
                     var role = context.Roles.SingleOrDefault(x => x.Name == name);
 
-                    if(role == null)
+                    if (role == null)
                     {
                         context.Roles.Add(new Role
                         {
@@ -46,7 +46,7 @@ namespace eShop.Api.Data
                 {
                     user = new User
                     {
-                        UserId  = new Guid("4d757c4c-8a05-4db3-a872-0fdea0ddd421"),
+                        UserId = new Guid("4d757c4c-8a05-4db3-a872-0fdea0ddd421"),
                         Username = "admin"
                     };
 

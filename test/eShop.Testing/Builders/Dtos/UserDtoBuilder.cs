@@ -8,7 +8,7 @@ namespace eShop.Testing.Builders
 
         public static UserDto WithDefaults()
         {
-            return new ();
+            return new();
         }
 
         public UserDtoBuilder()
