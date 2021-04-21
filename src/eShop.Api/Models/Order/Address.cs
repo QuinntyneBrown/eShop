@@ -1,6 +1,5 @@
 using CSharpFunctionalExtensions;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace eShop.Api.Models
@@ -8,13 +7,13 @@ namespace eShop.Api.Models
     [Owned]
     public class Address : ValueObject
     {
-        [JsonProperty]
+
         public string Street { get; private set; }
-        [JsonProperty]
+
         public string City { get; private set; }
-        [JsonProperty]
+
         public string Province { get; private set; }
-        [JsonProperty]
+
         public string PostalCode { get; private set; }
 
         protected Address() { }

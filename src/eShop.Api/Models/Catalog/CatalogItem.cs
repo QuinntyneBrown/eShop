@@ -13,7 +13,6 @@ namespace eShop.Api.Models
         public int QuantityInStock { get; set; }
         public bool OnReOrder { get; set; }
         public List<CatalogItemImage> CatalogItemImages { get; set; } = new List<CatalogItemImage>();
-
         public List<Note> Notes { get; set; } = new List<Note>();
         public int InventoryCount { get; set; } = 0;
 

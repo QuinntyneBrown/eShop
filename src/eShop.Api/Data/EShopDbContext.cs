@@ -21,6 +21,7 @@ namespace eShop.Api.Data
         public DbSet<ImageContent> ImageContents { get; private set; }
         public DbSet<TextContent> TextContents { get; private set; }
         public DbSet<Note> Notes { get; private set; }
+        public DbSet<Privilege> Privileges { get; private set; }
         public EShopDbContext(DbContextOptions options)
             :base(options) { }
 

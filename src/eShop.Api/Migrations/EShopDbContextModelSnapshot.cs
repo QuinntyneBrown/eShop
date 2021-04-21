@@ -19,6 +19,21 @@ namespace eShop.Api.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.Property<Guid>("RolesRoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UsersUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("RolesRoleId", "UsersUserId");
+
+                    b.HasIndex("UsersUserId");
+
+                    b.ToTable("RoleUser");
+                });
+
             modelBuilder.Entity("eShop.Api.Models.Basket", b =>
                 {
                     b.Property<Guid>("BasketId")
@@ -289,9 +304,6 @@ namespace eShop.Api.Migrations
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("CatalogItemId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
@@ -299,8 +311,6 @@ namespace eShop.Api.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("NoteId");
-
-                    b.HasIndex("CatalogItemId");
 
                     b.ToTable("Notes");
                 });
@@ -353,6 +363,23 @@ namespace eShop.Api.Migrations
                     b.ToTable("OrderItems");
                 });
 
+            modelBuilder.Entity("eShop.Api.Models.Privilege", b =>
+                {
+                    b.Property<Guid>("PrivilegeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AccessRight")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Aggregate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PrivilegeId");
+
+                    b.ToTable("Privileges");
+                });
+
             modelBuilder.Entity("eShop.Api.Models.Role", b =>
                 {
                     b.Property<Guid>("RoleId")
@@ -362,14 +389,24 @@ namespace eShop.Api.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("RoleId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("eShop.Api.Models.RolePrivilege", b =>
+                {
+                    b.Property<Guid>("PrivilegeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("PrivilegeId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("RolePrivilege");
                 });
 
             modelBuilder.Entity("eShop.Api.Models.TextContent", b =>
@@ -433,6 +470,21 @@ namespace eShop.Api.Migrations
                     b.ToTable("UserRole");
                 });
 
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.HasOne("eShop.Api.Models.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RolesRoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eShop.Api.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("eShop.Api.Models.BasketItem", b =>
                 {
                     b.HasOne("eShop.Api.Models.Basket", null)
@@ -480,13 +532,6 @@ namespace eShop.Api.Migrations
                     b.HasOne("eShop.Api.Models.Content", null)
                         .WithMany("ImageContents")
                         .HasForeignKey("ContentId");
-                });
-
-            modelBuilder.Entity("eShop.Api.Models.Note", b =>
-                {
-                    b.HasOne("eShop.Api.Models.CatalogItem", null)
-                        .WithMany("Notes")
-                        .HasForeignKey("CatalogItemId");
                 });
 
             modelBuilder.Entity("eShop.Api.Models.Order", b =>
@@ -555,37 +600,23 @@ namespace eShop.Api.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("eShop.Api.Models.Role", b =>
+            modelBuilder.Entity("eShop.Api.Models.RolePrivilege", b =>
                 {
-                    b.HasOne("eShop.Api.Models.User", null)
-                        .WithMany("Roles")
-                        .HasForeignKey("UserId");
+                    b.HasOne("eShop.Api.Models.Privilege", "Privilege")
+                        .WithMany()
+                        .HasForeignKey("PrivilegeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.OwnsMany("eShop.Api.Models.Privilege", "Privileges", b1 =>
-                        {
-                            b1.Property<Guid>("RoleId")
-                                .HasColumnType("uniqueidentifier");
+                    b.HasOne("eShop.Api.Models.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Navigation("Privilege");
 
-                            b1.Property<int>("AccessRight")
-                                .HasColumnType("int");
-
-                            b1.Property<string>("Aggregate")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("RoleId", "Id");
-
-                            b1.ToTable("Privilege");
-
-                            b1.WithOwner()
-                                .HasForeignKey("RoleId");
-                        });
-
-                    b.Navigation("Privileges");
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("eShop.Api.Models.TextContent", b =>
@@ -603,8 +634,6 @@ namespace eShop.Api.Migrations
             modelBuilder.Entity("eShop.Api.Models.CatalogItem", b =>
                 {
                     b.Navigation("CatalogItemImages");
-
-                    b.Navigation("Notes");
                 });
 
             modelBuilder.Entity("eShop.Api.Models.Content", b =>
@@ -619,11 +648,6 @@ namespace eShop.Api.Migrations
             modelBuilder.Entity("eShop.Api.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
-                });
-
-            modelBuilder.Entity("eShop.Api.Models.User", b =>
-                {
-                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }

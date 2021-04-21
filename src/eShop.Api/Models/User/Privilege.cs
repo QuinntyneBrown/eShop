@@ -1,22 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 
 namespace eShop.Api.Models
 {
-    [Owned]
     public class Privilege
     {
-        public AccessRight AccessRight { get; init; }
-        public string Aggregate { get; init; }
-
+        public Guid PrivilegeId { get; set; }
+        public AccessRight AccessRight { get; private set; }
+        public string Aggregate { get; private set; }
+        public List<Role> Roles { get; private set; } = new();
         public Privilege(AccessRight accessRight, string aggregate)
         {
             AccessRight = accessRight;
             Aggregate = aggregate;
         }
 
-        public Privilege()
-        {
-
-        }
+        private Privilege() { }
     }
 }

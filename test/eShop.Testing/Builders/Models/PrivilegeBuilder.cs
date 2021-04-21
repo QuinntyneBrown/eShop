@@ -1,4 +1,5 @@
 using eShop.Api.Models;
+using System;
 
 namespace eShop.Testing.Builders
 {
@@ -8,7 +9,7 @@ namespace eShop.Testing.Builders
 
         public static Privilege WithDefaults()
         {
-            return new Privilege();
+            throw new NotImplementedException();
         }
 
         public PrivilegeBuilder()
