@@ -73,7 +73,9 @@ namespace eShop.Api
 
             services.AddDbContext<EShopDbContext>(options =>
             {
-                options.UseInMemoryDatabase(nameof(eShop.Api))
+                options.UseSqlServer(configuration["Data:DefaultConnection:ConnectionString"],
+                    builder => builder.MigrationsAssembly("eShop.Api")
+                        .EnableRetryOnFailure())
                 .LogTo(Console.WriteLine)
                 .EnableSensitiveDataLogging();
             });

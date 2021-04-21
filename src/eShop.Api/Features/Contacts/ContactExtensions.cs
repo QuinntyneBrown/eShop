@@ -1,4 +1,3 @@
-using System;
 using eShop.Api.Models;
 
 namespace eShop.Api.Features
@@ -9,7 +8,8 @@ namespace eShop.Api.Features
         {
             return new()
             {
-                ContactId = contact.ContactId
+                ContactId = contact.ContactId,
+                Email = contact.Email
             };
         }
 

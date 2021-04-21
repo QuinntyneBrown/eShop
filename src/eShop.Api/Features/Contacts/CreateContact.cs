@@ -1,10 +1,10 @@
+using eShop.Api.Core;
+using eShop.Api.Interfaces;
+using eShop.Api.Models;
 using FluentValidation;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using eShop.Api.Models;
-using eShop.Api.Core;
-using eShop.Api.Interfaces;
 
 namespace eShop.Api.Features
 {
@@ -39,13 +39,13 @@ namespace eShop.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var contact = new Contact();
+                var contact = new Contact(request.Contact.Email);
 
                 _context.Contacts.Add(contact);
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new Response()
+                return new ()
                 {
                     Contact = contact.ToDto()
                 };
