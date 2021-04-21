@@ -18,7 +18,11 @@ namespace eShop.Api.Interfaces
         DbSet<Contact> Contacts { get; }
         DbSet<Customization> Customizations { get; }
         DbSet<Content> Contents { get; }
+        DbSet<HtmlContent> HtmlContents { get; }
+        DbSet<ImageContent> ImageContents { get; }
+        DbSet<TextContent> TextContents { get; }
+        DbSet<Note> Notes { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-
+        
     }
 }

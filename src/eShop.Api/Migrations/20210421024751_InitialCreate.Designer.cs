@@ -10,7 +10,7 @@ using eShop.Api.Data;
 namespace eShop.Api.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    [Migration("20210421003425_InitialCreate")]
+    [Migration("20210421024751_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,6 +112,21 @@ namespace eShop.Api.Migrations
                     b.HasIndex("CatalogItemId");
 
                     b.ToTable("CatalogItemImage");
+                });
+
+            modelBuilder.Entity("eShop.Api.Models.CatalogItemNote", b =>
+                {
+                    b.Property<Guid>("CatalogItemId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("NoteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CatalogItemId", "NoteId");
+
+                    b.HasIndex("NoteId");
+
+                    b.ToTable("CatalogItemNote");
                 });
 
             modelBuilder.Entity("eShop.Api.Models.Contact", b =>
@@ -226,6 +241,72 @@ namespace eShop.Api.Migrations
                     b.ToTable("DigitalAssets");
                 });
 
+            modelBuilder.Entity("eShop.Api.Models.HtmlContent", b =>
+                {
+                    b.Property<Guid>("HtmlContentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Body")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("ContentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HtmlContentId");
+
+                    b.HasIndex("ContentId");
+
+                    b.ToTable("HtmlContents");
+                });
+
+            modelBuilder.Entity("eShop.Api.Models.ImageContent", b =>
+                {
+                    b.Property<Guid>("ImageContentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ContentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DigitalAssetId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ImageContentId");
+
+                    b.HasIndex("ContentId");
+
+                    b.ToTable("ImageContents");
+                });
+
+            modelBuilder.Entity("eShop.Api.Models.Note", b =>
+                {
+                    b.Property<Guid>("NoteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Body")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("CatalogItemId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("NoteId");
+
+                    b.HasIndex("CatalogItemId");
+
+                    b.ToTable("Notes");
+                });
+
             modelBuilder.Entity("eShop.Api.Models.Order", b =>
                 {
                     b.Property<Guid>("OrderId")
@@ -293,6 +374,28 @@ namespace eShop.Api.Migrations
                     b.ToTable("Roles");
                 });
 
+            modelBuilder.Entity("eShop.Api.Models.TextContent", b =>
+                {
+                    b.Property<Guid>("TextContentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ContentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TextContentId");
+
+                    b.HasIndex("ContentId");
+
+                    b.ToTable("TextContents");
+                });
+
             modelBuilder.Entity("eShop.Api.Models.User", b =>
                 {
                     b.Property<Guid>("UserId")
@@ -345,6 +448,46 @@ namespace eShop.Api.Migrations
                 {
                     b.HasOne("eShop.Api.Models.CatalogItem", null)
                         .WithMany("CatalogItemImages")
+                        .HasForeignKey("CatalogItemId");
+                });
+
+            modelBuilder.Entity("eShop.Api.Models.CatalogItemNote", b =>
+                {
+                    b.HasOne("eShop.Api.Models.CatalogItem", "CatalogItem")
+                        .WithMany()
+                        .HasForeignKey("CatalogItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eShop.Api.Models.Note", "Note")
+                        .WithMany()
+                        .HasForeignKey("NoteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CatalogItem");
+
+                    b.Navigation("Note");
+                });
+
+            modelBuilder.Entity("eShop.Api.Models.HtmlContent", b =>
+                {
+                    b.HasOne("eShop.Api.Models.Content", null)
+                        .WithMany("HtmlContents")
+                        .HasForeignKey("ContentId");
+                });
+
+            modelBuilder.Entity("eShop.Api.Models.ImageContent", b =>
+                {
+                    b.HasOne("eShop.Api.Models.Content", null)
+                        .WithMany("ImageContents")
+                        .HasForeignKey("ContentId");
+                });
+
+            modelBuilder.Entity("eShop.Api.Models.Note", b =>
+                {
+                    b.HasOne("eShop.Api.Models.CatalogItem", null)
+                        .WithMany("Notes")
                         .HasForeignKey("CatalogItemId");
                 });
 
@@ -447,6 +590,13 @@ namespace eShop.Api.Migrations
                     b.Navigation("Privileges");
                 });
 
+            modelBuilder.Entity("eShop.Api.Models.TextContent", b =>
+                {
+                    b.HasOne("eShop.Api.Models.Content", null)
+                        .WithMany("TextContents")
+                        .HasForeignKey("ContentId");
+                });
+
             modelBuilder.Entity("eShop.Api.Models.Basket", b =>
                 {
                     b.Navigation("BasketItems");
@@ -455,6 +605,17 @@ namespace eShop.Api.Migrations
             modelBuilder.Entity("eShop.Api.Models.CatalogItem", b =>
                 {
                     b.Navigation("CatalogItemImages");
+
+                    b.Navigation("Notes");
+                });
+
+            modelBuilder.Entity("eShop.Api.Models.Content", b =>
+                {
+                    b.Navigation("HtmlContents");
+
+                    b.Navigation("ImageContents");
+
+                    b.Navigation("TextContents");
                 });
 
             modelBuilder.Entity("eShop.Api.Models.Order", b =>

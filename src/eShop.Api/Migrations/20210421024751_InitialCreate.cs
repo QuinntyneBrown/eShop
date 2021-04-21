@@ -204,6 +204,86 @@ namespace eShop.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Notes",
+                columns: table => new
+                {
+                    NoteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Body = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deleted = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CatalogItemId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notes", x => x.NoteId);
+                    table.ForeignKey(
+                        name: "FK_Notes_CatalogItems_CatalogItemId",
+                        column: x => x.CatalogItemId,
+                        principalTable: "CatalogItems",
+                        principalColumn: "CatalogItemId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HtmlContents",
+                columns: table => new
+                {
+                    HtmlContentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Body = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HtmlContents", x => x.HtmlContentId);
+                    table.ForeignKey(
+                        name: "FK_HtmlContents_Contents_ContentId",
+                        column: x => x.ContentId,
+                        principalTable: "Contents",
+                        principalColumn: "ContentId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ImageContents",
+                columns: table => new
+                {
+                    ImageContentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DigitalAssetId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ContentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ImageContents", x => x.ImageContentId);
+                    table.ForeignKey(
+                        name: "FK_ImageContents_Contents_ContentId",
+                        column: x => x.ContentId,
+                        principalTable: "Contents",
+                        principalColumn: "ContentId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TextContents",
+                columns: table => new
+                {
+                    TextContentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TextContents", x => x.TextContentId);
+                    table.ForeignKey(
+                        name: "FK_TextContents_Contents_ContentId",
+                        column: x => x.ContentId,
+                        principalTable: "Contents",
+                        principalColumn: "ContentId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrderItems",
                 columns: table => new
                 {
@@ -244,6 +324,30 @@ namespace eShop.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CatalogItemNote",
+                columns: table => new
+                {
+                    CatalogItemId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NoteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CatalogItemNote", x => new { x.CatalogItemId, x.NoteId });
+                    table.ForeignKey(
+                        name: "FK_CatalogItemNote_CatalogItems_CatalogItemId",
+                        column: x => x.CatalogItemId,
+                        principalTable: "CatalogItems",
+                        principalColumn: "CatalogItemId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CatalogItemNote_Notes_NoteId",
+                        column: x => x.NoteId,
+                        principalTable: "Notes",
+                        principalColumn: "NoteId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Privilege",
                 columns: table => new
                 {
@@ -275,6 +379,26 @@ namespace eShop.Api.Migrations
                 column: "CatalogItemId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CatalogItemNote_NoteId",
+                table: "CatalogItemNote",
+                column: "NoteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HtmlContents_ContentId",
+                table: "HtmlContents",
+                column: "ContentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ImageContents_ContentId",
+                table: "ImageContents",
+                column: "ContentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Notes_CatalogItemId",
+                table: "Notes",
+                column: "CatalogItemId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_OrderId",
                 table: "OrderItems",
                 column: "OrderId");
@@ -283,6 +407,11 @@ namespace eShop.Api.Migrations
                 name: "IX_Roles_UserId",
                 table: "Roles",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TextContents_ContentId",
+                table: "TextContents",
+                column: "ContentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -294,10 +423,10 @@ namespace eShop.Api.Migrations
                 name: "CatalogItemImage");
 
             migrationBuilder.DropTable(
-                name: "Contacts");
+                name: "CatalogItemNote");
 
             migrationBuilder.DropTable(
-                name: "Contents");
+                name: "Contacts");
 
             migrationBuilder.DropTable(
                 name: "Customers");
@@ -309,10 +438,19 @@ namespace eShop.Api.Migrations
                 name: "DigitalAssets");
 
             migrationBuilder.DropTable(
+                name: "HtmlContents");
+
+            migrationBuilder.DropTable(
+                name: "ImageContents");
+
+            migrationBuilder.DropTable(
                 name: "OrderItems");
 
             migrationBuilder.DropTable(
                 name: "Privilege");
+
+            migrationBuilder.DropTable(
+                name: "TextContents");
 
             migrationBuilder.DropTable(
                 name: "UserRole");
@@ -321,13 +459,19 @@ namespace eShop.Api.Migrations
                 name: "Baskets");
 
             migrationBuilder.DropTable(
-                name: "CatalogItems");
+                name: "Notes");
 
             migrationBuilder.DropTable(
                 name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "Contents");
+
+            migrationBuilder.DropTable(
+                name: "CatalogItems");
 
             migrationBuilder.DropTable(
                 name: "Users");
