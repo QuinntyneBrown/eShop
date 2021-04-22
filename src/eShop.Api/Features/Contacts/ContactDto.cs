@@ -6,5 +6,6 @@ namespace eShop.Api.Features
     {
         public Guid ContactId { get; set; }
         public string Email { get; set; }
+        public string Instagram { get; set; }
     }
 }

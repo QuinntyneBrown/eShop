@@ -8,7 +8,7 @@ namespace eShop.Testing.Builders
 
         public static Contact WithDefaults()
         {
-            return new Contact("DefaultName");
+            return new Contact("DefaultName", "default@email.com");
         }
 
         public ContactBuilder()

@@ -39,7 +39,7 @@ namespace eShop.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var contact = new Contact(request.Contact.Email);
+                var contact = new Contact(request.Contact.Email, request.Contact.Instagram);
 
                 _context.Contacts.Add(contact);
 
