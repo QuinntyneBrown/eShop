@@ -7,7 +7,7 @@ namespace eShop.Api.Models
     {
         public Guid RoleId { get; set; }
         public string Name { get; set; }
-        public List<Privilege> Privileges { get; set; } = new ();
-        public List<User> Users { get; private set; } = new ();
+        public List<Privilege> Privileges { get; set; } = new();
+        public List<User> Users { get; private set; } = new();
     }
 }

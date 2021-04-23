@@ -24,6 +24,6 @@ namespace eShop.Api.Interfaces
         DbSet<Note> Notes { get; }
         DbSet<Privilege> Privileges { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }

@@ -7,11 +7,11 @@ namespace eShop.Api.Features
     {
         public static TextContentDto ToDto(this TextContent textContent)
         {
-            return new ()
+            return new()
             {
                 TextContentId = textContent.TextContentId
             };
         }
-        
+
     }
 }

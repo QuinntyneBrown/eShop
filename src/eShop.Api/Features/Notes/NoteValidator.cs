@@ -2,5 +2,5 @@ using FluentValidation;
 
 namespace eShop.Api.Features
 {
-    public class NoteValidator: AbstractValidator<NoteDto> { }
+    public class NoteValidator : AbstractValidator<NoteDto> { }
 }

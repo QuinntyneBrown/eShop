@@ -7,11 +7,11 @@ namespace eShop.Api.Features
     {
         public static PrivilegeDto ToDto(this Privilege privilege)
         {
-            return new ()
+            return new()
             {
                 PrivilegeId = privilege.PrivilegeId
             };
         }
-        
+
     }
 }

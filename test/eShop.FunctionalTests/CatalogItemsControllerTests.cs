@@ -1,19 +1,18 @@
 using eShop.Api.Features;
 using eShop.Api.Models;
 using eShop.Testing;
+using eShop.Testing.Builders;
 using Newtonsoft.Json;
-using System;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using Xunit;
-using eShop.Testing.Builders;
 using static eShop.FunctionalTests.CatalogItemsControllerTests.Endpoints;
 
 namespace eShop.FunctionalTests
 {
-    using Task = System.Threading.Tasks.Task;
     using Post = CatalogItemsControllerTests.Endpoints.Post;
+    using Task = System.Threading.Tasks.Task;
 
     public class CatalogItemsControllerTests : IClassFixture<ApiTestFixture>
     {

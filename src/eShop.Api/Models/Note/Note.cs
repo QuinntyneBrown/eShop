@@ -9,6 +9,6 @@ namespace eShop.Api.Models
         public string Body { get; private set; }
         public DateTime Created { get; private set; } = DateTime.UtcNow;
         public DateTime? Deleted { get; private set; }
-        public List<CatalogItem> CatalogItems { get; set; } = new ();
+        public List<CatalogItem> CatalogItems { get; set; } = new();
     }
 }
