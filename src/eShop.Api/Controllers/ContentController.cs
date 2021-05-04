@@ -17,6 +17,24 @@ namespace eShop.Api.Controllers
         public ContentController(IMediator mediator)
             => _mediator = mediator;
 
+        [AllowAnonymous]
+        [HttpGet("landingpage", Name = "GetLandingPageContentRoute")]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(GetContentById.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<GetLandingPageContent.Response>> GetLandingPage([FromRoute] GetLandingPageContent.Request request)
+        {
+            var response = await _mediator.Send(request);
+
+            if (response.LandingPageContent == null)
+            {
+                return new NotFoundObjectResult("Landing Page");
+            }
+
+            return response;
+        }
+
         [HttpGet("{contentId}", Name = "GetContentByIdRoute")]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]

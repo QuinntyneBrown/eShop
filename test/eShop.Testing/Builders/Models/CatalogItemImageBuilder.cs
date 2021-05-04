@@ -8,7 +8,7 @@ namespace eShop.Testing.Builders
 
         public static CatalogItemImage WithDefaults()
         {
-            return new CatalogItemImage();
+            return new CatalogItemImage(default, default, default);
         }
 
         public CatalogItemImageBuilder()

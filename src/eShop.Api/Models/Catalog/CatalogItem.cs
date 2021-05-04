@@ -50,7 +50,6 @@ namespace eShop.Api.Models
 
             QuantityInStock -= quantity;
 
-
             return this;
         }
     }
