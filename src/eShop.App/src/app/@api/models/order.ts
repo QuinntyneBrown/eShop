@@ -1,3 +1,4 @@
 export type Order = {
-    orderId: string;
+    orderId: string,
+    customerId: string,
 };

@@ -3,8 +3,7 @@ import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
-import { Basket } from '../basket';
-import { BasketService } from '../basket.service';
+import { Basket, BasketService } from '@api';
 
 @Component({
   selector: 'app-basket-detail',

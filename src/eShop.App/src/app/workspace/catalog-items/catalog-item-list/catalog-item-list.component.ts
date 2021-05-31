@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from
 import { DialogService } from '@shared/dialog.service';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { CatalogItem } from '../catalog-item';
+import { CatalogItem } from '@api';
 import { CatalogItemDetailComponent } from '../catalog-item-detail/catalog-item-detail.component';
-import { CatalogItemService } from '../catalog-item.service';
+import { CatalogItemService } from '@api';
 import { MatPaginator } from '@angular/material/paginator';
 import { EntityDataSource } from '@shared/entity-data-source';
 

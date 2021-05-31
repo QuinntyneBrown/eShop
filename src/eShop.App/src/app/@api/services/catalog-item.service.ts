@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { baseUrl } from '@core/constants';
 import { HttpClient } from '@angular/common/http';
-import { CatalogItem } from './catalog-item';
+import { CatalogItem } from '@api';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IPagableService } from '@core/ipagable-service';
@@ -15,8 +15,8 @@ export class CatalogItemService implements IPagableService<CatalogItem> {
   uniqueIdentifierName: string = "catalogItemId";
 
   constructor(
-    @Inject(baseUrl) private _baseUrl: string,
-    private _client: HttpClient
+    @Inject(baseUrl) private readonly _baseUrl: string,
+    private readonly _client: HttpClient
   ) { }
 
   getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<CatalogItem>> {
@@ -45,7 +45,7 @@ export class CatalogItemService implements IPagableService<CatalogItem> {
     return this._client.post<{ catalogItem: CatalogItem }>(`${this._baseUrl}api/catalogItem`, { catalogItem: options.catalogItem });
   }
   
-  public update(options: { catalogItem: CatalogItem }): Observable<{ catalogItem: CatalogItem }> {    
+  public update(options: { catalogItem: CatalogItem }): Observable<{ catalogItem: CatalogItem }> {
     return this._client.put<{ catalogItem: CatalogItem }>(`${this._baseUrl}api/catalogItem`, { catalogItem: options.catalogItem });
   }
 }

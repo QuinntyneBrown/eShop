@@ -2,7 +2,7 @@ import { Component, ElementRef, forwardRef, Input, OnDestroy, OnInit, ViewEncaps
 import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';;
-import { Basket } from '../basket';
+import { Basket } from '@api';
 
 @Component({
   selector: 'app-basket-editor',

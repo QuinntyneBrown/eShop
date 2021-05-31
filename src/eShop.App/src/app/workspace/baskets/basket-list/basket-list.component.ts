@@ -2,11 +2,10 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from
 import { DialogService } from '@shared/dialog.service';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { Basket } from '../basket';
 import { BasketDetailComponent } from '../basket-detail/basket-detail.component';
-import { BasketService } from '../basket.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { EntityDataSource } from '@shared/entity-data-source';
+import { Basket, BasketService } from '@api';
 
 @Component({
   selector: 'app-basket-list',

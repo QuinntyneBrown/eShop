@@ -1,3 +1,5 @@
 export type DigitalAsset = {
-    digitalAssetId: string
+    digitalAssetId: string,
+    name: string,
+    contentType: string,
 };

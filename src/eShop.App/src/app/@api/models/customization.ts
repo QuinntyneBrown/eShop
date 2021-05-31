@@ -1,3 +1,4 @@
 export type Customization = {
-    customizationId: string
+    customizationId: string,
+    backgroundColor: string,
 };

@@ -1,3 +1,7 @@
 export type User = {
-    userId: string
+    userId: string,
+    username: string,
+    password: string,
+    refreshToken: string,
+    avatarDigitalAssetId: string,
 };

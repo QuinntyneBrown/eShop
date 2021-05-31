@@ -3,8 +3,8 @@ import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
-import { CatalogItem } from '../catalog-item';
-import { CatalogItemService } from '../catalog-item.service';
+import { CatalogItem } from '@api';
+import { CatalogItemService } from '@api';
 
 @Component({
   selector: 'app-catalog-item-detail',

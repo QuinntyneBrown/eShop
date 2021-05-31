@@ -12,7 +12,7 @@ import { EntityPage } from '@core/entity-page';
 })
 export class BasketService implements IPagableService<Basket> {
 
-  readonly uniqueIdentifierName: string = "basketId";
+  uniqueIdentifierName: string = "basketId";
 
   constructor(
     @Inject(baseUrl) private readonly _baseUrl: string,

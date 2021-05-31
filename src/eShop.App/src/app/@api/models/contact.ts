@@ -1,3 +1,5 @@
 export type Contact = {
-    contactId: string
+    contactId: string,
+    email: string,
+    instagram: string,
 };

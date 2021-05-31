@@ -1,3 +1,6 @@
 export type Customer = {
-    customerId: string
+    customerId: string,
+    firstname: string,
+    lastname: string,
+    email: string,
 };
