@@ -34,6 +34,7 @@ namespace eShop.Api.Controllers
             return response;
         }
 
+        [AllowAnonymous]
         [HttpGet(Name = "GetCustomizationsRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]

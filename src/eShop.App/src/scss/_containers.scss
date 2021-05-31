@@ -3,8 +3,9 @@
 @import 'src/scss/gutters.scss';
 
 .g-layout__container, .g-layout__view-container {
-    padding: 0 $gutter-y;
+    padding: $gutter-x $gutter-y;
     display: block;
+    box-sizing: border-box;
 }
 
 .g-layout__nav-container, .g-layout__list-container, .g-layout__view-container {
@@ -58,7 +59,7 @@
 
 @media screen and (min-width: $screen-md) {
     .g-layout__container {
-        padding: 0 $gutter-desktop-y;
+        padding: $gutter-desktop-x $gutter-desktop-y;
     }
 
     .g-layout__list-container, .g-layout__nav-container, .g-layout__view-container {
@@ -67,9 +68,6 @@
 }
 
 @media screen and (min-width: 1420px) {
-    .g-layout__container {
-        padding: 0 0  0 0;
-    }
 
     .g-layout__list-container, .g-layout__nav-container, .g-layout__view-container {
         padding: $gutter-desktop-x 0 $gutter-desktop-x $gutter-desktop-y;

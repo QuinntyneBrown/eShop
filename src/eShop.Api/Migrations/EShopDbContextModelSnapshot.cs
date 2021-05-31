@@ -151,6 +151,9 @@ namespace eShop.Api.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Instagram")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ContactId");
 
                     b.ToTable("Contacts");

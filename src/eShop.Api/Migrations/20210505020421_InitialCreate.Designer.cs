@@ -10,7 +10,7 @@ using eShop.Api.Data;
 namespace eShop.Api.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    [Migration("20210421042806_InitialCreate")]
+    [Migration("20210505020421_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -151,6 +151,9 @@ namespace eShop.Api.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Instagram")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ContactId");

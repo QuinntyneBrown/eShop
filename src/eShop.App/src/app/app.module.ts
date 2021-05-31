@@ -20,7 +20,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     NotFoundModule
   ],
   providers: [
-    { provide: baseUrl, useValue: 'https://localhost:5001/' },
+    { provide: baseUrl, useValue: 'https://oliviarosehomedecor.azurewebsites.net/' },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HeadersInterceptor,

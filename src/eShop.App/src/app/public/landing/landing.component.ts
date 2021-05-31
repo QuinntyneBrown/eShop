@@ -8,11 +8,4 @@ import { Component, OnInit } from '@angular/core';
     "class":"g-layout__container"
   }
 })
-export class LandingComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class LandingComponent { }

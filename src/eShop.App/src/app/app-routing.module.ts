@@ -5,11 +5,6 @@ import { LoginComponent } from './login/login/login.component';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 
 const routes: Routes = [
-  // { 
-  //   path:"", 
-  //   pathMatch:"full", 
-  //   redirectTo: "public" 
-  // },
   { path: "login", component: LoginComponent },  
   { 
     path: "workspace", 

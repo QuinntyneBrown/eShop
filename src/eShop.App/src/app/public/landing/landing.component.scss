@@ -3,18 +3,16 @@
 :host {
     display: block;
     background-color: #fff;
-    padding-top: $gutter-x;
-    padding-bottom: $gutter-x;
     height: 100%;
 
-    .image {
-        max-height: 880px;
-        overflow: hidden;
-        display: block;
+    .image {        
+        display: block;        
 
         img {
             margin: 0 auto;
             display: block;
+            box-sizing: border-box;
+            max-width: 100%;
         }
     }
 }
