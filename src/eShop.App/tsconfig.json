@@ -16,12 +16,6 @@
       "dom"
     ],
     "paths": {
-      "@api": [
-        "src/app/@api"
-      ],
-      "@api/*": [
-        "src/app/@api/*"
-      ],      
       "@core": [
         "src/app/@core"
       ],
@@ -33,7 +27,13 @@
       ],
       "@shared/*": [
         "src/app/@shared/*"
-      ]    
+      ],
+      "@api": [
+        "src/app/@api"
+      ],
+      "@api/*": [
+        "src/app/@api/*"
+      ]
     }
   }
 }
