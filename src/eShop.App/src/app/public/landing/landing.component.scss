@@ -5,8 +5,8 @@
     background-color: #fff;
     height: 100%;
 
-    .image {        
-        display: block;        
+    .image {
+        display: block;
 
         img {
             margin: 0 auto;
@@ -14,5 +14,17 @@
             box-sizing: border-box;
             max-width: 100%;
         }
+    }
+
+    h1 {
+      font-family: HomemadeApple;
+      font-size: 48px;
+      text-align: center;
+      margin: 60px 0px;
+      user-select: none;
+    }
+
+    p {
+      text-align: center;
     }
 }

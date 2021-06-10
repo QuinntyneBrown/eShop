@@ -6,6 +6,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\DigitalAssets\basket-1.jpg" />
+    <None Remove="Resources\DigitalAssets\candle-holder-1.jpg" />
+    <None Remove="Resources\DigitalAssets\macrame-1.jpg" />
+    <None Remove="Resources\DigitalAssets\macrame-2.jpg" />
+    <None Remove="Resources\DigitalAssets\macrame-3.jpg" />
+    <None Remove="Resources\DigitalAssets\macrame-4.jpg" />
+    <None Remove="Resources\DigitalAssets\vase-1.jpg" />
+    <None Remove="Resources\DigitalAssets\vase-2.jpg" />
+    <None Remove="Resources\DigitalAssets\vase-3.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\DigitalAssets\vase-1.jpg" />
+    <EmbeddedResource Include="Resources\DigitalAssets\basket-1.jpg" />
+    <EmbeddedResource Include="Resources\DigitalAssets\macrame-1.jpg" />
+    <EmbeddedResource Include="Resources\DigitalAssets\macrame-2.jpg" />
+    <EmbeddedResource Include="Resources\DigitalAssets\candle-holder-1.jpg" />
+    <EmbeddedResource Include="Resources\DigitalAssets\vase-2.jpg" />
+    <EmbeddedResource Include="Resources\DigitalAssets\vase-3.jpg" />
+    <EmbeddedResource Include="Resources\DigitalAssets\macrame-3.jpg" />
+    <EmbeddedResource Include="Resources\DigitalAssets\macrame-4.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" Version="3.1.0" />
     <PackageReference Include="CSharpFunctionalExtensions" Version="2.15.1" />
     <PackageReference Include="FluentValidation" Version="9.5.3" />
