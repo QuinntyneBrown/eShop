@@ -1,5 +1,6 @@
 using eShop.Api.Core;
 using eShop.Api.Models;
+using Microsoft.AspNetCore.StaticFiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace eShop.Api.Data
             SocialShareConfiguration.Seed(context);
             DigitalAssetConfiguration.Seed(context);
             ImageContentConfiguration.Seed(context);
-            CataloConfiguration.Seed(context);
+            CatalogConfiguration.Seed(context);
             HtmlContentConfiguration.Seed(context);
         }
 
@@ -23,20 +24,34 @@ namespace eShop.Api.Data
         {
             internal static void Seed(EShopDbContext context)
             {
-                var imageContent = context.ImageContents.SingleOrDefault(x => x.ImageContentType == Models.ImageContentType.Hero);
+                var d = context.DigitalAssets.ToList();
 
-                if (imageContent == null)
+                var heroImageContent = context.ImageContents.SingleOrDefault(x => x.ImageContentType == Models.ImageContentType.Hero);
+
+                if (heroImageContent == null)
                 {
-                    var digitalAsset = context.DigitalAssets.Single(x => x.Name == "hero-1.jpg");
+                    var digitalAsset = context.DigitalAssets.SingleOrDefault(x => x.Name == "hero.png");
 
-                    imageContent = new ImageContent();
+                    heroImageContent = new (ImageContentType.Hero, $"api/DigitalAsset/serve/{digitalAsset.DigitalAssetId}");
 
-                    context.ImageContents.Add(imageContent);
+                    context.ImageContents.Add(heroImageContent);
 
                     context.SaveChanges();
                 }
 
-                context.ChangeTracker.Clear();
+                var logoImageContent = context.ImageContents.SingleOrDefault(x => x.ImageContentType == Models.ImageContentType.Logo);
+
+                if (logoImageContent == null)
+                {
+                    var digitalAsset = context.DigitalAssets.SingleOrDefault(x => x.Name == "logo.svg");
+
+                    logoImageContent = new(ImageContentType.Logo, $"api/DigitalAsset/serve/{digitalAsset.DigitalAssetId}");
+
+                    context.ImageContents.Add(logoImageContent);
+
+                    context.SaveChanges();
+                }
+
             }
         }
 
@@ -46,7 +61,10 @@ namespace eShop.Api.Data
             {
                 foreach (var htmlContent in new List<HtmlContent>()
                 {
-                    
+                    new (HtmlContentType.About,"","<h1>About</h1>"),
+                    new (HtmlContentType.FollowUs,"","<h1>Follow Us</h1>"),
+                    new (HtmlContentType.Contact,"","<h1>Contact</h1>"),
+                    new (HtmlContentType.ReturnPolicy,"","<h1>Return Policy</h1>")
                 })
                 {
                     AddIfDoesntExist(htmlContent);
@@ -68,21 +86,76 @@ namespace eShop.Api.Data
         {
             internal static void Seed(EShopDbContext context)
             {
+                for (var i = 1; i <= 4; i++)
+                {       
+                    Save($"macrame-{i}.jpg");
+                }
 
-            }
+                for (var i = 1; i <= 3; i++)
+                {
+                    Save($"vase-{i}.jpg");
+                }
 
-            internal static void SeedProductImages(EShopDbContext context)
-            {
+                for (var i = 1; i <= 1; i++)
+                {
+                    Save($"basket-{i}.jpg");
+                }
 
+                for (var i = 1; i <= 1; i++)
+                {
+                    Save($"candle-holder-{i}.jpg");
+                }
+
+                Save($"hero.png");
+
+                Save($"hero_v2.png");
+
+                Save($"logo.svg");
+
+                context.SaveChanges();
+
+                void Save(string filename)
+                {
+                    var provider = new FileExtensionContentTypeProvider();
+
+                    provider.TryGetContentType(filename, out string contentType);
+
+                    var digitalAsset = new DigitalAsset
+                    {
+                        Name = filename,
+                        Bytes = StaticFileLocator.Get(filename),
+                        ContentType = contentType
+                    };
+
+                    context.DigitalAssets.Add(digitalAsset);
+                }
             }
         }
-        internal static class CataloConfiguration
+        internal static class CatalogConfiguration
         {
             internal static void Seed(EShopDbContext context)
             {
-                DigitalAssetConfiguration.SeedProductImages(context);
+                for (var i = 1; i <= 4; i++)
+                {
+                    Save($"macrame-{i}.jpg");
+                }
 
-                for (var i = 1; i <= 5; i++)
+                for (var i = 1; i <= 3; i++)
+                {
+                    Save($"vase-{i}.jpg");
+                }
+
+                for (var i = 1; i <= 1; i++)
+                {
+                    Save($"basket-{i}.jpg");
+                }
+
+                for (var i = 1; i <= 1; i++)
+                {
+                    Save($"candle-holder-{i}.jpg");
+                }
+
+                void Save(string name)
                 {
                     var catalogItem = context.CatalogItems.SingleOrDefault(x => x.Name == $"");
 
@@ -90,9 +163,9 @@ namespace eShop.Api.Data
                     {
                         catalogItem = new(default);
 
-                        var digitalAsset = context.DigitalAssets.Single(x => x.Name == $"product-{i}.jpg");
+                        var digitalAsset = context.DigitalAssets.Single(x => x.Name == name);
 
-                        catalogItem.CatalogItemImages.Add(new CatalogItemImage(default, default, digitalAsset.DigitalAssetId));
+                        catalogItem.CatalogItemImages.Add(new CatalogItemImage(name, default, digitalAsset.DigitalAssetId));
 
                         context.CatalogItems.Add(catalogItem);
 

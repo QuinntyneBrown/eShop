@@ -14,4 +14,5 @@ export * from './privilege.service';
 export * from './role.service';
 export * from './social-share.service';
 export * from './text-content.service';
+export * from './theme-property.service';
 export * from './user.service';

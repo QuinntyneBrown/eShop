@@ -17,4 +17,5 @@ export * from './role';
 export * from './social-share-type';
 export * from './social-share';
 export * from './text-content';
+export * from './theme-property';
 export * from './user';

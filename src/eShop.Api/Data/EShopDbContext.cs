@@ -23,6 +23,7 @@ namespace eShop.Api.Data
         public DbSet<Note> Notes { get; private set; }
         public DbSet<Privilege> Privileges { get; private set; }
         public DbSet<SocialShare> SocialShares { get; private set; }
+        public DbSet<ThemeProperty> ThemeProperties { get; private set; }
         public EShopDbContext(DbContextOptions options)
             :base(options) { }
 

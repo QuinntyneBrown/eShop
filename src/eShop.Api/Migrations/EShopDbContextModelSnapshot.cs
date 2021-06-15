@@ -269,6 +269,9 @@ namespace eShop.Api.Migrations
                     b.Property<Guid?>("ContentId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("HtmlContentType")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -288,8 +291,11 @@ namespace eShop.Api.Migrations
                     b.Property<Guid?>("ContentId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("DigitalAssetId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ImageContentType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ImageContentId");
 
@@ -412,6 +418,23 @@ namespace eShop.Api.Migrations
                     b.ToTable("RolePrivilege");
                 });
 
+            modelBuilder.Entity("eShop.Api.Models.SocialShare", b =>
+                {
+                    b.Property<Guid>("SocialShareId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ShareType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SocialShareId");
+
+                    b.ToTable("SocialShares");
+                });
+
             modelBuilder.Entity("eShop.Api.Models.TextContent", b =>
                 {
                     b.Property<Guid>("TextContentId")
@@ -432,6 +455,23 @@ namespace eShop.Api.Migrations
                     b.HasIndex("ContentId");
 
                     b.ToTable("TextContents");
+                });
+
+            modelBuilder.Entity("eShop.Api.Models.ThemeProperty", b =>
+                {
+                    b.Property<Guid>("ThemePropertyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CssCustomPropertyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ThemePropertyId");
+
+                    b.ToTable("ThemeProperties");
                 });
 
             modelBuilder.Entity("eShop.Api.Models.User", b =>

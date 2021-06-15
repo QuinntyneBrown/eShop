@@ -1,10 +1,10 @@
+using eShop.Api.Core;
+using eShop.Api.Interfaces;
+using eShop.Api.Models;
 using FluentValidation;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using eShop.Api.Models;
-using eShop.Api.Core;
-using eShop.Api.Interfaces;
 
 namespace eShop.Api.Features
 {
@@ -39,7 +39,7 @@ namespace eShop.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var htmlContent = new HtmlContent();
+                var htmlContent = new HtmlContent(request.HtmlContent.HtmlContentType,request.HtmlContent.Name, request.HtmlContent.Body);
 
                 _context.HtmlContents.Add(htmlContent);
 

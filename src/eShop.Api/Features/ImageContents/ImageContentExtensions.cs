@@ -1,4 +1,3 @@
-using System;
 using eShop.Api.Models;
 
 namespace eShop.Api.Features
@@ -9,9 +8,10 @@ namespace eShop.Api.Features
         {
             return new()
             {
-                ImageContentId = imageContent.ImageContentId
+                ImageContentId = imageContent.ImageContentId,
+                ImageContentType = imageContent.ImageContentType,
+                Url = imageContent.Url
             };
         }
-
     }
 }

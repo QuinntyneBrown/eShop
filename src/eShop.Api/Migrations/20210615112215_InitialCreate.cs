@@ -174,6 +174,32 @@ namespace eShop.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SocialShares",
+                columns: table => new
+                {
+                    SocialShareId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ShareType = table.Column<int>(type: "int", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SocialShares", x => x.SocialShareId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ThemeProperties",
+                columns: table => new
+                {
+                    ThemePropertyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CssCustomPropertyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ThemeProperties", x => x.ThemePropertyId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserRole",
                 columns: table => new
                 {
@@ -248,6 +274,7 @@ namespace eShop.Api.Migrations
                 columns: table => new
                 {
                     HtmlContentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    HtmlContentType = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Body = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ContentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
@@ -268,7 +295,8 @@ namespace eShop.Api.Migrations
                 columns: table => new
                 {
                     ImageContentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DigitalAssetId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImageContentType = table.Column<int>(type: "int", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ContentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -480,7 +508,13 @@ namespace eShop.Api.Migrations
                 name: "RoleUser");
 
             migrationBuilder.DropTable(
+                name: "SocialShares");
+
+            migrationBuilder.DropTable(
                 name: "TextContents");
+
+            migrationBuilder.DropTable(
+                name: "ThemeProperties");
 
             migrationBuilder.DropTable(
                 name: "UserRole");

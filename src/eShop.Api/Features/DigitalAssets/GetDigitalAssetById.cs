@@ -1,10 +1,9 @@
-using MediatR;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using eShop.Api.Core;
 using eShop.Api.Interfaces;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace eShop.Api.Features
 {
@@ -30,7 +29,7 @@ namespace eShop.Api.Features
             {
                 return new()
                 {
-                    DigitalAsset = (await _context.DigitalAssets.SingleOrDefaultAsync()).ToDto()
+                    DigitalAsset = (await _context.DigitalAssets.SingleOrDefaultAsync(x => x.DigitalAssetId == request.DigitalAssetId)).ToDto()
                 };
             }
 
