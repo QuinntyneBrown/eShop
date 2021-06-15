@@ -40,11 +40,11 @@ export class CatalogItemListComponent implements OnDestroy {
         'edit'
       ]),
       of(index),
-      of(pageSize)  
+      of(pageSize)
     ])
     .pipe(
-      map(([columnsToDisplay, pageNumber, pageSize]) => { 
-        this._dataSource.getPage({ index, pageSize });
+      map(([columnsToDisplay, pageNumber, pageSize]) => {
+        this._dataSource.getPage({ pageIndex: index, pageSize });
         return {
           dataSource: this._dataSource,
           columnsToDisplay,
@@ -55,7 +55,7 @@ export class CatalogItemListComponent implements OnDestroy {
       })
     ))
   );
-  
+
   constructor(
     private readonly _catalogItemService: CatalogItemService,
     private readonly _dialogService: DialogService,
@@ -63,7 +63,7 @@ export class CatalogItemListComponent implements OnDestroy {
 
   public edit(catalogItem: CatalogItem) {
     const component = this._dialogService.open<CatalogItemDetailComponent>(CatalogItemDetailComponent);
-    component.catalogItem$.next(catalogItem);    
+    component.catalogItem$.next(catalogItem);
     component.saved
     .pipe(
       takeUntil(this._destroyed$),
@@ -80,13 +80,13 @@ export class CatalogItemListComponent implements OnDestroy {
     ).subscribe();
   }
 
-  public delete(catalogItem: CatalogItem) {    
+  public delete(catalogItem: CatalogItem) {
     this._catalogItemService.remove({ catalogItem }).pipe(
       takeUntil(this._destroyed$),
       tap(x => this.index$.next(this.index$.value))
     ).subscribe();
   }
-  
+
   ngOnDestroy() {
     this._destroyed$.next();
     this._destroyed$.complete();

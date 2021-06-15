@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { baseUrl } from '@core/constants';
 import { HttpClient } from '@angular/common/http';
 import { User } from '@api';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IPagableService } from '@core/ipagable-service';
 import { EntityPage } from '@core/entity-page';
@@ -19,8 +19,12 @@ export class UserService implements IPagableService<User> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<User>> {
-    return this._client.get<EntityPage<User>>(`${this._baseUrl}api/user/page/${options.pageSize}/${options.index}`)
+  getCurrent(): Observable<any> {
+    return of({});
+  }
+
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<User>> {
+    return this._client.get<EntityPage<User>>(`${this._baseUrl}api/user/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<User[]> {
@@ -44,7 +48,7 @@ export class UserService implements IPagableService<User> {
   public create(options: { user: User }): Observable<{ user: User }> {
     return this._client.post<{ user: User }>(`${this._baseUrl}api/user`, { user: options.user });
   }
-  
+
   public update(options: { user: User }): Observable<{ user: User }> {
     return this._client.put<{ user: User }>(`${this._baseUrl}api/user`, { user: options.user });
   }

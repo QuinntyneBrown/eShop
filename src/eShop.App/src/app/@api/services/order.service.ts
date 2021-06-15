@@ -19,8 +19,8 @@ export class OrderService implements IPagableService<Order> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<Order>> {
-    return this._client.get<EntityPage<Order>>(`${this._baseUrl}api/order/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<Order>> {
+    return this._client.get<EntityPage<Order>>(`${this._baseUrl}api/order/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<Order[]> {
@@ -44,7 +44,7 @@ export class OrderService implements IPagableService<Order> {
   public create(options: { order: Order }): Observable<{ order: Order }> {
     return this._client.post<{ order: Order }>(`${this._baseUrl}api/order`, { order: options.order });
   }
-  
+
   public update(options: { order: Order }): Observable<{ order: Order }> {
     return this._client.put<{ order: Order }>(`${this._baseUrl}api/order`, { order: options.order });
   }

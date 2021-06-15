@@ -2,7 +2,7 @@ import { Component, ElementRef, forwardRef, Input, OnDestroy, OnInit, ViewEncaps
 import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';;
-import { Contact } from '../contact';
+import { Contact } from '@api';
 
 @Component({
   selector: 'app-contact-editor',
@@ -18,7 +18,7 @@ import { Contact } from '../contact';
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => ContactEditorComponent),
       multi: true
-    }       
+    }
   ]
 })
 export class ContactEditorComponent implements ControlValueAccessor,  Validator  {
@@ -51,8 +51,8 @@ export class ContactEditorComponent implements ControlValueAccessor,  Validator 
           {}
         );
   }
-  
-  writeValue(contact: Contact): void {   
+
+  writeValue(contact: Contact): void {
     this.form.patchValue(contact || {}, { emitEvent: false });
   }
 

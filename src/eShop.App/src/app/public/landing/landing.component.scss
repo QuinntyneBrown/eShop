@@ -22,9 +22,23 @@
       text-align: center;
       margin: 60px 0px;
       user-select: none;
+      line-height: 1.4em;
     }
 
     p {
       text-align: center;
+      font-size: 18px;
+    }
+
+    .shop-now {
+      display: block;
+      margin: 60px 0 0 0;
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    app-product-grid {
+      margin: 100px 0;
+      display: block;
     }
 }

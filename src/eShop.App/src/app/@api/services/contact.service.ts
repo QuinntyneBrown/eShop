@@ -19,8 +19,8 @@ export class ContactService implements IPagableService<Contact> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<Contact>> {
-    return this._client.get<EntityPage<Contact>>(`${this._baseUrl}api/contact/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<Contact>> {
+    return this._client.get<EntityPage<Contact>>(`${this._baseUrl}api/contact/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<Contact[]> {
@@ -44,7 +44,7 @@ export class ContactService implements IPagableService<Contact> {
   public create(options: { contact: Contact }): Observable<{ contact: Contact }> {
     return this._client.post<{ contact: Contact }>(`${this._baseUrl}api/contact`, { contact: options.contact });
   }
-  
+
   public update(options: { contact: Contact }): Observable<{ contact: Contact }> {
     return this._client.put<{ contact: Contact }>(`${this._baseUrl}api/contact`, { contact: options.contact });
   }

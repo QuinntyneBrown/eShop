@@ -5,6 +5,7 @@ import { PublicComponent } from './public/public.component';
 import { PublicRoutingModule } from './public-routing.module';
 import { HeaderModule } from '@shared/header/header.module';
 import { FooterModule } from '@shared/footer/footer.module';
+import { ProductGridModule } from '@shared/product-grid/product-grid.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FooterModule } from '@shared/footer/footer.module';
     CommonModule,
     PublicRoutingModule,
     HeaderModule,
-    FooterModule
+    FooterModule,
+    ProductGridModule
   ]
 })
 export class PublicModule { }

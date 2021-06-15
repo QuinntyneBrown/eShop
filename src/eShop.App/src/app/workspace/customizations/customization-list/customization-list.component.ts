@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from
 import { DialogService } from '@shared/dialog.service';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { Customization } from '../customization';
+import { Customization } from '@api';
 import { CustomizationDetailComponent } from '../customization-detail/customization-detail.component';
-import { CustomizationService } from '../customization.service';
+import { CustomizationService } from '@api';
 import { MatPaginator } from '@angular/material/paginator';
 import { EntityDataSource } from '@shared/entity-data-source';
 
@@ -40,11 +40,11 @@ export class CustomizationListComponent implements OnDestroy {
         'edit'
       ]),
       of(index),
-      of(pageSize)  
+      of(pageSize)
     ])
     .pipe(
-      map(([columnsToDisplay, pageNumber, pageSize]) => { 
-        this._dataSource.getPage({ index, pageSize });
+      map(([columnsToDisplay, pageNumber, pageSize]) => {
+        this._dataSource.getPage({ pageIndex: index, pageSize });
         return {
           dataSource: this._dataSource,
           columnsToDisplay,
@@ -55,7 +55,7 @@ export class CustomizationListComponent implements OnDestroy {
       })
     ))
   );
-  
+
   constructor(
     private readonly _customizationService: CustomizationService,
     private readonly _dialogService: DialogService,
@@ -63,7 +63,7 @@ export class CustomizationListComponent implements OnDestroy {
 
   public edit(customization: Customization) {
     const component = this._dialogService.open<CustomizationDetailComponent>(CustomizationDetailComponent);
-    component.customization$.next(customization);    
+    component.customization$.next(customization);
     component.saved
     .pipe(
       takeUntil(this._destroyed$),
@@ -80,13 +80,13 @@ export class CustomizationListComponent implements OnDestroy {
     ).subscribe();
   }
 
-  public delete(customization: Customization) {    
+  public delete(customization: Customization) {
     this._customizationService.remove({ customization }).pipe(
       takeUntil(this._destroyed$),
       tap(x => this.index$.next(this.index$.value))
     ).subscribe();
   }
-  
+
   ngOnDestroy() {
     this._destroyed$.next();
     this._destroyed$.complete();

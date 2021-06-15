@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavItem } from '@shared/nav/nav.component';
-import { UserService } from '../users/user.service';
+import { UserService } from '@api';
 
 @Component({
   selector: 'app-workspace',
@@ -12,7 +12,7 @@ export class WorkspaceComponent  {
 
   constructor(
     private readonly _router: Router,
-    private readonly _userService: UserService 
+    private readonly _userService: UserService
   ) { }
 
   public readonly navItems: NavItem[] = [
@@ -28,12 +28,12 @@ export class WorkspaceComponent  {
   ];
 
   public vm$ = this._userService.getCurrent();
-  
+
   handleLogoClick() {
     this._router.navigate(['']);
   }
 
-  handleItemClick($event: NavItem) {       
+  handleItemClick($event: NavItem) {
     this._router.navigate(this._routeMap[$event.label]);
   }
 

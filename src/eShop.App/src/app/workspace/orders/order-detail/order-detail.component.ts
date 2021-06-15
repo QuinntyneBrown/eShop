@@ -1,10 +1,10 @@
 import { OverlayRef } from '@angular/cdk/overlay';
 import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { OrderService } from '@api';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
-import { Order } from '../order';
-import { OrderService } from '../order.service';
+import { Order } from '@api';
 
 @Component({
   selector: 'app-order-detail',
@@ -36,7 +36,7 @@ export class OrderDetailComponent implements OnDestroy {
 
   constructor(
     private readonly _overlayRef: OverlayRef,
-    private readonly _orderService: OrderService) {     
+    private readonly _orderService: OrderService) {
   }
 
   public save(vm: { form: FormGroup}) {
@@ -44,13 +44,13 @@ export class OrderDetailComponent implements OnDestroy {
     let obs$: Observable<{ order: Order }>;
     if(order.orderId) {
       obs$ = this._orderService.update({ order })
-    }   
+    }
     else {
       obs$ = this._orderService.create({ order })
-    } 
+    }
 
     obs$.pipe(
-      takeUntil(this._destroyed),      
+      takeUntil(this._destroyed),
       tap(x => {
         this.saved.next(x.order);
         this._overlayRef.dispose();

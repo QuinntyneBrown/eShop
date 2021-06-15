@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from
 import { DialogService } from '@shared/dialog.service';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { User } from '../user';
+import { User } from '@api';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
-import { UserService } from '../user.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { EntityDataSource } from '@shared/entity-data-source';
+import { UserService } from '@api';
 
 @Component({
   selector: 'app-user-list',
@@ -40,11 +40,11 @@ export class UserListComponent implements OnDestroy {
         'edit'
       ]),
       of(index),
-      of(pageSize)  
+      of(pageSize)
     ])
     .pipe(
-      map(([columnsToDisplay, pageNumber, pageSize]) => { 
-        this._dataSource.getPage({ index, pageSize });
+      map(([columnsToDisplay, pageNumber, pageSize]) => {
+        this._dataSource.getPage({ pageIndex: index, pageSize });
         return {
           dataSource: this._dataSource,
           columnsToDisplay,
@@ -55,7 +55,7 @@ export class UserListComponent implements OnDestroy {
       })
     ))
   );
-  
+
   constructor(
     private readonly _userService: UserService,
     private readonly _dialogService: DialogService,
@@ -63,7 +63,7 @@ export class UserListComponent implements OnDestroy {
 
   public edit(user: User) {
     const component = this._dialogService.open<UserDetailComponent>(UserDetailComponent);
-    component.user$.next(user);    
+    component.user$.next(user);
     component.saved
     .pipe(
       takeUntil(this._destroyed$),
@@ -80,13 +80,13 @@ export class UserListComponent implements OnDestroy {
     ).subscribe();
   }
 
-  public delete(user: User) {    
+  public delete(user: User) {
     this._userService.remove({ user }).pipe(
       takeUntil(this._destroyed$),
       tap(x => this.index$.next(this.index$.value))
     ).subscribe();
   }
-  
+
   ngOnDestroy() {
     this._destroyed$.next();
     this._destroyed$.complete();

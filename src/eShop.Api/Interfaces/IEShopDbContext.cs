@@ -23,7 +23,8 @@ namespace eShop.Api.Interfaces
         DbSet<TextContent> TextContents { get; }
         DbSet<Note> Notes { get; }
         DbSet<Privilege> Privileges { get; }
+        DbSet<SocialShare> SocialShares { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-
+        
     }
 }

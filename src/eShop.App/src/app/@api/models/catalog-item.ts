@@ -4,4 +4,5 @@ export type CatalogItem = {
     description: string,
     quantityInStock: number,
     inventoryCount: number,
+    catalogItemImages: any[]
 };

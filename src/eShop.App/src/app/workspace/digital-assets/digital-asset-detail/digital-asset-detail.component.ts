@@ -3,8 +3,8 @@ import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
-import { DigitalAsset } from '../digital-asset';
-import { DigitalAssetService } from '../digital-asset.service';
+import { DigitalAsset } from '@api';
+import { DigitalAssetService } from '@api';
 
 @Component({
   selector: 'app-digital-asset-detail',
@@ -49,7 +49,7 @@ export class DigitalAssetDetailComponent implements OnDestroy {
 
   constructor(
     private readonly _overlayRef: OverlayRef,
-    private readonly _digitalAssetService: DigitalAssetService) {     
+    private readonly _digitalAssetService: DigitalAssetService) {
   }
 
   public save(vm: { form: FormGroup}) {
@@ -57,13 +57,13 @@ export class DigitalAssetDetailComponent implements OnDestroy {
     let obs$: Observable<{ digitalAsset: DigitalAsset }>;
     if(digitalAsset.digitalAssetId) {
       obs$ = this._digitalAssetService.update({ digitalAsset })
-    }   
+    }
     else {
       obs$ = this._digitalAssetService.create({ digitalAsset })
-    } 
+    }
 
     obs$.pipe(
-      takeUntil(this._destroyed),      
+      takeUntil(this._destroyed),
       tap(x => {
         this.saved.next(x.digitalAsset);
         this._overlayRef.dispose();

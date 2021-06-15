@@ -19,8 +19,8 @@ export class CatalogItemService implements IPagableService<CatalogItem> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<CatalogItem>> {
-    return this._client.get<EntityPage<CatalogItem>>(`${this._baseUrl}api/catalogItem/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<CatalogItem>> {
+    return this._client.get<EntityPage<CatalogItem>>(`${this._baseUrl}api/catalogItem/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<CatalogItem[]> {
@@ -44,7 +44,7 @@ export class CatalogItemService implements IPagableService<CatalogItem> {
   public create(options: { catalogItem: CatalogItem }): Observable<{ catalogItem: CatalogItem }> {
     return this._client.post<{ catalogItem: CatalogItem }>(`${this._baseUrl}api/catalogItem`, { catalogItem: options.catalogItem });
   }
-  
+
   public update(options: { catalogItem: CatalogItem }): Observable<{ catalogItem: CatalogItem }> {
     return this._client.put<{ catalogItem: CatalogItem }>(`${this._baseUrl}api/catalogItem`, { catalogItem: options.catalogItem });
   }

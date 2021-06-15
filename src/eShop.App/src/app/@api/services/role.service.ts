@@ -19,8 +19,8 @@ export class RoleService implements IPagableService<Role> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<Role>> {
-    return this._client.get<EntityPage<Role>>(`${this._baseUrl}api/role/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<Role>> {
+    return this._client.get<EntityPage<Role>>(`${this._baseUrl}api/role/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<Role[]> {
@@ -44,7 +44,7 @@ export class RoleService implements IPagableService<Role> {
   public create(options: { role: Role }): Observable<{ role: Role }> {
     return this._client.post<{ role: Role }>(`${this._baseUrl}api/role`, { role: options.role });
   }
-  
+
   public update(options: { role: Role }): Observable<{ role: Role }> {
     return this._client.put<{ role: Role }>(`${this._baseUrl}api/role`, { role: options.role });
   }

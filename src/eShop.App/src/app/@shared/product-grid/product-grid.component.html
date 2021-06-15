@@ -1,0 +1,7 @@
+<ng-container *ngIf="vm$ | async as products">
+
+  <div>
+    <img [src]="imageUrl" *ngFor="let imageUrl of products" />
+  </div>
+
+</ng-container>

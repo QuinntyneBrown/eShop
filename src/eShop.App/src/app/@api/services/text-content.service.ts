@@ -19,8 +19,8 @@ export class TextContentService implements IPagableService<TextContent> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<TextContent>> {
-    return this._client.get<EntityPage<TextContent>>(`${this._baseUrl}api/textContent/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<TextContent>> {
+    return this._client.get<EntityPage<TextContent>>(`${this._baseUrl}api/textContent/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<TextContent[]> {
@@ -44,7 +44,7 @@ export class TextContentService implements IPagableService<TextContent> {
   public create(options: { textContent: TextContent }): Observable<{ textContent: TextContent }> {
     return this._client.post<{ textContent: TextContent }>(`${this._baseUrl}api/textContent`, { textContent: options.textContent });
   }
-  
+
   public update(options: { textContent: TextContent }): Observable<{ textContent: TextContent }> {
     return this._client.put<{ textContent: TextContent }>(`${this._baseUrl}api/textContent`, { textContent: options.textContent });
   }

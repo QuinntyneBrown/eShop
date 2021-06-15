@@ -1,0 +1,23 @@
+@import 'src/scss/breakpoints';
+
+:host {
+  div {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 60px;
+  }
+
+  img {
+    max-height: 400px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: $screen-md-min) {
+  :host {
+    div {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}

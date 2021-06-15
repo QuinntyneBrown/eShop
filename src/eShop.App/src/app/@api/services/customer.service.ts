@@ -19,8 +19,8 @@ export class CustomerService implements IPagableService<Customer> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<Customer>> {
-    return this._client.get<EntityPage<Customer>>(`${this._baseUrl}api/customer/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<Customer>> {
+    return this._client.get<EntityPage<Customer>>(`${this._baseUrl}api/customer/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<Customer[]> {
@@ -44,7 +44,7 @@ export class CustomerService implements IPagableService<Customer> {
   public create(options: { customer: Customer }): Observable<{ customer: Customer }> {
     return this._client.post<{ customer: Customer }>(`${this._baseUrl}api/customer`, { customer: options.customer });
   }
-  
+
   public update(options: { customer: Customer }): Observable<{ customer: Customer }> {
     return this._client.put<{ customer: Customer }>(`${this._baseUrl}api/customer`, { customer: options.customer });
   }

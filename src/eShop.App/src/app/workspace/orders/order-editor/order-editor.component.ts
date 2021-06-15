@@ -2,7 +2,7 @@ import { Component, ElementRef, forwardRef, Input, OnDestroy, OnInit, ViewEncaps
 import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';;
-import { Order } from '../order';
+import { Order } from '@api';
 
 @Component({
   selector: 'app-order-editor',
@@ -18,7 +18,7 @@ import { Order } from '../order';
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => OrderEditorComponent),
       multi: true
-    }       
+    }
   ]
 })
 export class OrderEditorComponent implements ControlValueAccessor,  Validator  {
@@ -51,8 +51,8 @@ export class OrderEditorComponent implements ControlValueAccessor,  Validator  {
           {}
         );
   }
-  
-  writeValue(order: Order): void {   
+
+  writeValue(order: Order): void {
     this.form.patchValue(order || {}, { emitEvent: false });
   }
 

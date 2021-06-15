@@ -19,8 +19,8 @@ export class NoteService implements IPagableService<Note> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<Note>> {
-    return this._client.get<EntityPage<Note>>(`${this._baseUrl}api/note/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<Note>> {
+    return this._client.get<EntityPage<Note>>(`${this._baseUrl}api/note/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<Note[]> {
@@ -44,7 +44,7 @@ export class NoteService implements IPagableService<Note> {
   public create(options: { note: Note }): Observable<{ note: Note }> {
     return this._client.post<{ note: Note }>(`${this._baseUrl}api/note`, { note: options.note });
   }
-  
+
   public update(options: { note: Note }): Observable<{ note: Note }> {
     return this._client.put<{ note: Note }>(`${this._baseUrl}api/note`, { note: options.note });
   }

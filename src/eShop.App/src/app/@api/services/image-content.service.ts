@@ -19,8 +19,8 @@ export class ImageContentService implements IPagableService<ImageContent> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<ImageContent>> {
-    return this._client.get<EntityPage<ImageContent>>(`${this._baseUrl}api/imageContent/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<ImageContent>> {
+    return this._client.get<EntityPage<ImageContent>>(`${this._baseUrl}api/imageContent/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<ImageContent[]> {
@@ -44,7 +44,7 @@ export class ImageContentService implements IPagableService<ImageContent> {
   public create(options: { imageContent: ImageContent }): Observable<{ imageContent: ImageContent }> {
     return this._client.post<{ imageContent: ImageContent }>(`${this._baseUrl}api/imageContent`, { imageContent: options.imageContent });
   }
-  
+
   public update(options: { imageContent: ImageContent }): Observable<{ imageContent: ImageContent }> {
     return this._client.put<{ imageContent: ImageContent }>(`${this._baseUrl}api/imageContent`, { imageContent: options.imageContent });
   }

@@ -19,8 +19,8 @@ export class CustomizationService implements IPagableService<Customization> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<Customization>> {
-    return this._client.get<EntityPage<Customization>>(`${this._baseUrl}api/customization/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<Customization>> {
+    return this._client.get<EntityPage<Customization>>(`${this._baseUrl}api/customization/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<Customization[]> {
@@ -44,7 +44,7 @@ export class CustomizationService implements IPagableService<Customization> {
   public create(options: { customization: Customization }): Observable<{ customization: Customization }> {
     return this._client.post<{ customization: Customization }>(`${this._baseUrl}api/customization`, { customization: options.customization });
   }
-  
+
   public update(options: { customization: Customization }): Observable<{ customization: Customization }> {
     return this._client.put<{ customization: Customization }>(`${this._baseUrl}api/customization`, { customization: options.customization });
   }

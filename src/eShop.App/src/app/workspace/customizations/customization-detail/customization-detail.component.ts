@@ -3,8 +3,8 @@ import { Component, EventEmitter, OnDestroy, Optional, Output } from '@angular/c
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
-import { Customization } from '../customization';
-import { CustomizationService } from '../customization.service';
+import { Customization } from '@api';
+import { CustomizationService } from '@api';
 
 @Component({
   selector: 'app-customization-detail',
@@ -36,7 +36,7 @@ export class CustomizationDetailComponent implements OnDestroy {
 
   constructor(
     @Optional() private readonly _overlayRef: OverlayRef,
-    private readonly _customizationService: CustomizationService) {     
+    private readonly _customizationService: CustomizationService) {
   }
 
   public save(vm: { form: FormGroup}) {
@@ -44,13 +44,13 @@ export class CustomizationDetailComponent implements OnDestroy {
     let obs$: Observable<{ customization: Customization }>;
     if(customization.customizationId) {
       obs$ = this._customizationService.update({ customization })
-    }   
+    }
     else {
       obs$ = this._customizationService.create({ customization })
-    } 
+    }
 
     obs$.pipe(
-      takeUntil(this._destroyed),      
+      takeUntil(this._destroyed),
       tap(x => {
         this.saved.next(x.customization);
         this._overlayRef.dispose();

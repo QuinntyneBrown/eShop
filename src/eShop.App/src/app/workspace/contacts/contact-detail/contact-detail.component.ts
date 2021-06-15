@@ -3,8 +3,8 @@ import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
-import { Contact } from '../contact';
-import { ContactService } from '../contact.service';
+import { Contact } from '@api';
+import { ContactService } from '@api';
 
 @Component({
   selector: 'app-contact-detail',
@@ -36,7 +36,7 @@ export class ContactDetailComponent implements OnDestroy {
 
   constructor(
     private readonly _overlayRef: OverlayRef,
-    private readonly _contactService: ContactService) {     
+    private readonly _contactService: ContactService) {
   }
 
   public save(vm: { form: FormGroup}) {
@@ -44,13 +44,13 @@ export class ContactDetailComponent implements OnDestroy {
     let obs$: Observable<{ contact: Contact }>;
     if(contact.contactId) {
       obs$ = this._contactService.update({ contact })
-    }   
+    }
     else {
       obs$ = this._contactService.create({ contact })
-    } 
+    }
 
     obs$.pipe(
-      takeUntil(this._destroyed),      
+      takeUntil(this._destroyed),
       tap(x => {
         this.saved.next(x.contact);
         this._overlayRef.dispose();

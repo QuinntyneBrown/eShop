@@ -10,9 +10,9 @@ namespace eShop.Api.Features
 {
     public class GetLandingPageContent
     {
-        public class Request : IRequest<Response> {  }
+        public class Request : IRequest<Response> { }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public LandingPageContentDto LandingPageContent { get; set; }
         }
@@ -21,11 +21,13 @@ namespace eShop.Api.Features
         {
             private readonly IEShopDbContext _context;
 
-            public Handler(IEShopDbContext context){
+            public Handler(IEShopDbContext context)
+            {
                 _context = context;
             }
 
-            public async Task<Response> Handle(Request request, CancellationToken cancellationToken) {
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            {
 
                 var caption = (await _context.TextContents.SingleOrDefaultAsync(x => x.Name == Constants.TextContents.LandingPageCaption)).ToDto();
 
@@ -33,8 +35,9 @@ namespace eShop.Api.Features
 
                 var catalogItems = _context.CatalogItems.Select(x => x.ToDto()).ToList();
 
-                return new () { 
-                    LandingPageContent = new ()
+                return new()
+                {
+                    LandingPageContent = new()
                     {
                         Caption = caption?.Value,
                         FeaturedCatalogItems = catalogItems,

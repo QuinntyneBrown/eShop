@@ -1,6 +1,7 @@
 using eShop.Api.Core;
 using eShop.Api.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace eShop.Api.Data
@@ -11,6 +12,94 @@ namespace eShop.Api.Data
         {
             RoleConfiguration.Seed(context);
             UserConfiguration.Seed(context);
+            SocialShareConfiguration.Seed(context);
+            DigitalAssetConfiguration.Seed(context);
+            ImageContentConfiguration.Seed(context);
+            CataloConfiguration.Seed(context);
+            HtmlContentConfiguration.Seed(context);
+        }
+
+        internal static class ImageContentConfiguration
+        {
+            internal static void Seed(EShopDbContext context)
+            {
+                var imageContent = context.ImageContents.SingleOrDefault(x => x.ImageContentType == Models.ImageContentType.Hero);
+
+                if (imageContent == null)
+                {
+                    var digitalAsset = context.DigitalAssets.Single(x => x.Name == "hero-1.jpg");
+
+                    imageContent = new ImageContent();
+
+                    context.ImageContents.Add(imageContent);
+
+                    context.SaveChanges();
+                }
+
+                context.ChangeTracker.Clear();
+            }
+        }
+
+        internal static class HtmlContentConfiguration
+        {
+            internal static void Seed(EShopDbContext context)
+            {
+                foreach (var htmlContent in new List<HtmlContent>()
+                {
+                    
+                })
+                {
+                    AddIfDoesntExist(htmlContent);
+                }
+
+                context.SaveChanges();
+
+                void AddIfDoesntExist(HtmlContent htmlContent)
+                {
+                    if (context.HtmlContents.FirstOrDefault(x => x.HtmlContentType == htmlContent.HtmlContentType) == null)
+                    {
+                        context.HtmlContents.Add(htmlContent);
+                    }
+                }
+            }
+        }
+
+        internal static class DigitalAssetConfiguration
+        {
+            internal static void Seed(EShopDbContext context)
+            {
+
+            }
+
+            internal static void SeedProductImages(EShopDbContext context)
+            {
+
+            }
+        }
+        internal static class CataloConfiguration
+        {
+            internal static void Seed(EShopDbContext context)
+            {
+                DigitalAssetConfiguration.SeedProductImages(context);
+
+                for (var i = 1; i <= 5; i++)
+                {
+                    var catalogItem = context.CatalogItems.SingleOrDefault(x => x.Name == $"");
+
+                    if (catalogItem == null)
+                    {
+                        catalogItem = new(default);
+
+                        var digitalAsset = context.DigitalAssets.Single(x => x.Name == $"product-{i}.jpg");
+
+                        catalogItem.CatalogItemImages.Add(new CatalogItemImage(default, default, digitalAsset.DigitalAssetId));
+
+                        context.CatalogItems.Add(catalogItem);
+
+                        context.SaveChanges();
+                    }
+                }
+            }
         }
 
         internal class RoleConfiguration
@@ -74,6 +163,31 @@ namespace eShop.Api.Data
 
                     context.Users.Add(system);
                     context.SaveChanges();
+                }
+            }
+        }
+
+        internal static class SocialShareConfiguration
+        {
+            internal static void Seed(EShopDbContext context)
+            {
+                foreach (var socialShare in new List<SocialShare> {
+                    new (SocialShareType.Facebook,"https//www.facebook.com"),
+                    new (SocialShareType.Twitter,"https//www.twitter.com"),
+                    new (SocialShareType.Instagram,"https//www.instagram.com")
+                })
+                {
+                    AddIfDoesntExist(socialShare);
+                }
+
+                context.SaveChanges();
+
+                void AddIfDoesntExist(SocialShare socialShare)
+                {
+                    if (context.SocialShares.FirstOrDefault(x => x.ShareType == socialShare.ShareType) == null)
+                    {
+                        context.SocialShares.Add(socialShare);
+                    }
                 }
             }
         }

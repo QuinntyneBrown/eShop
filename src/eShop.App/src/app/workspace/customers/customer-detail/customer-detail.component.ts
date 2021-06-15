@@ -3,8 +3,8 @@ import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
-import { Customer } from '../customer';
-import { CustomerService } from '../customer.service';
+import { Customer } from '@api';
+import { CustomerService } from '@api';
 
 @Component({
   selector: 'app-customer-detail',
@@ -36,7 +36,7 @@ export class CustomerDetailComponent implements OnDestroy {
 
   constructor(
     private readonly _overlayRef: OverlayRef,
-    private readonly _customerService: CustomerService) {     
+    private readonly _customerService: CustomerService) {
   }
 
   public save(vm: { form: FormGroup}) {
@@ -44,13 +44,13 @@ export class CustomerDetailComponent implements OnDestroy {
     let obs$: Observable<{ customer: Customer }>;
     if(customer.customerId) {
       obs$ = this._customerService.update({ customer })
-    }   
+    }
     else {
       obs$ = this._customerService.create({ customer })
-    } 
+    }
 
     obs$.pipe(
-      takeUntil(this._destroyed),      
+      takeUntil(this._destroyed),
       tap(x => {
         this.saved.next(x.customer);
         this._overlayRef.dispose();

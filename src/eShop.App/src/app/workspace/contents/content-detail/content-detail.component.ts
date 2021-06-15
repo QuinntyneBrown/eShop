@@ -2,8 +2,8 @@ import { Component, EventEmitter, OnDestroy, Optional, Output } from '@angular/c
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
-import { Content } from '../content';
-import { ContentService } from '../content.service';
+import { Content } from '@api';
+import { ContentService } from '@api';
 
 @Component({
   selector: 'app-content-detail',
@@ -34,7 +34,7 @@ export class ContentDetailComponent implements OnDestroy {
   )
 
   constructor(
-    private readonly _contentService: ContentService) {     
+    private readonly _contentService: ContentService) {
   }
 
   public save(vm: { form: FormGroup}) {
@@ -42,13 +42,13 @@ export class ContentDetailComponent implements OnDestroy {
     let obs$: Observable<{ content: Content }>;
     if(content.contentId) {
       obs$ = this._contentService.update({ content })
-    }   
+    }
     else {
       obs$ = this._contentService.create({ content })
-    } 
+    }
 
     obs$.pipe(
-      takeUntil(this._destroyed),      
+      takeUntil(this._destroyed),
       tap(x => {
         this.saved.next(x.content);
       })

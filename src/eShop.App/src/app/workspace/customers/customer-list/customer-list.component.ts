@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from
 import { DialogService } from '@shared/dialog.service';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { Customer } from '../customer';
+import { Customer } from '@api';
 import { CustomerDetailComponent } from '../customer-detail/customer-detail.component';
-import { CustomerService } from '../customer.service';
+import { CustomerService } from '@api';
 import { MatPaginator } from '@angular/material/paginator';
 import { EntityDataSource } from '@shared/entity-data-source';
 
@@ -40,11 +40,11 @@ export class CustomerListComponent implements OnDestroy {
         'edit'
       ]),
       of(index),
-      of(pageSize)  
+      of(pageSize)
     ])
     .pipe(
-      map(([columnsToDisplay, pageNumber, pageSize]) => { 
-        this._dataSource.getPage({ index, pageSize });
+      map(([columnsToDisplay, pageNumber, pageSize]) => {
+        this._dataSource.getPage({ pageIndex: index, pageSize });
         return {
           dataSource: this._dataSource,
           columnsToDisplay,
@@ -55,7 +55,7 @@ export class CustomerListComponent implements OnDestroy {
       })
     ))
   );
-  
+
   constructor(
     private readonly _customerService: CustomerService,
     private readonly _dialogService: DialogService,
@@ -63,7 +63,7 @@ export class CustomerListComponent implements OnDestroy {
 
   public edit(customer: Customer) {
     const component = this._dialogService.open<CustomerDetailComponent>(CustomerDetailComponent);
-    component.customer$.next(customer);    
+    component.customer$.next(customer);
     component.saved
     .pipe(
       takeUntil(this._destroyed$),
@@ -80,13 +80,13 @@ export class CustomerListComponent implements OnDestroy {
     ).subscribe();
   }
 
-  public delete(customer: Customer) {    
+  public delete(customer: Customer) {
     this._customerService.remove({ customer }).pipe(
       takeUntil(this._destroyed$),
       tap(x => this.index$.next(this.index$.value))
     ).subscribe();
   }
-  
+
   ngOnDestroy() {
     this._destroyed$.next();
     this._destroyed$.complete();

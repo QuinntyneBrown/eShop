@@ -12,5 +12,6 @@ export * from './order-item.service';
 export * from './order.service';
 export * from './privilege.service';
 export * from './role.service';
+export * from './social-share.service';
 export * from './text-content.service';
 export * from './user.service';

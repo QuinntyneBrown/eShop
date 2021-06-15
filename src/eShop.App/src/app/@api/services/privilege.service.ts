@@ -19,8 +19,8 @@ export class PrivilegeService implements IPagableService<Privilege> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<Privilege>> {
-    return this._client.get<EntityPage<Privilege>>(`${this._baseUrl}api/privilege/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<Privilege>> {
+    return this._client.get<EntityPage<Privilege>>(`${this._baseUrl}api/privilege/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<Privilege[]> {
@@ -44,7 +44,7 @@ export class PrivilegeService implements IPagableService<Privilege> {
   public create(options: { privilege: Privilege }): Observable<{ privilege: Privilege }> {
     return this._client.post<{ privilege: Privilege }>(`${this._baseUrl}api/privilege`, { privilege: options.privilege });
   }
-  
+
   public update(options: { privilege: Privilege }): Observable<{ privilege: Privilege }> {
     return this._client.put<{ privilege: Privilege }>(`${this._baseUrl}api/privilege`, { privilege: options.privilege });
   }

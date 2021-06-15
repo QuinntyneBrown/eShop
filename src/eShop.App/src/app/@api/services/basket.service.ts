@@ -19,8 +19,8 @@ export class BasketService implements IPagableService<Basket> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<Basket>> {
-    return this._client.get<EntityPage<Basket>>(`${this._baseUrl}api/basket/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<Basket>> {
+    return this._client.get<EntityPage<Basket>>(`${this._baseUrl}api/basket/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<Basket[]> {
@@ -44,7 +44,7 @@ export class BasketService implements IPagableService<Basket> {
   public create(options: { basket: Basket }): Observable<{ basket: Basket }> {
     return this._client.post<{ basket: Basket }>(`${this._baseUrl}api/basket`, { basket: options.basket });
   }
-  
+
   public update(options: { basket: Basket }): Observable<{ basket: Basket }> {
     return this._client.put<{ basket: Basket }>(`${this._baseUrl}api/basket`, { basket: options.basket });
   }

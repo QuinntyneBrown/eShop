@@ -6,6 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="EmbeddedResources\basket-1.jpg" />
+    <None Remove="EmbeddedResources\candle-holder-1.jpg" />
+    <None Remove="EmbeddedResources\hero.jpg" />
+    <None Remove="EmbeddedResources\hero.png" />
+    <None Remove="EmbeddedResources\hero_v2.jpg" />
+    <None Remove="EmbeddedResources\logo.svg" />
+    <None Remove="EmbeddedResources\macrame-1.jpg" />
+    <None Remove="EmbeddedResources\macrame-2.jpg" />
+    <None Remove="EmbeddedResources\macrame-3.jpg" />
+    <None Remove="EmbeddedResources\macrame-4.jpg" />
+    <None Remove="EmbeddedResources\vase-1.jpg" />
+    <None Remove="EmbeddedResources\vase-2.jpg" />
+    <None Remove="EmbeddedResources\vase-3.jpg" />
     <None Remove="Resources\DigitalAssets\basket-1.jpg" />
     <None Remove="Resources\DigitalAssets\candle-holder-1.jpg" />
     <None Remove="Resources\DigitalAssets\macrame-1.jpg" />
@@ -18,6 +31,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="EmbeddedResources\basket-1.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\candle-holder-1.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\hero.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\hero.png" />
+    <EmbeddedResource Include="EmbeddedResources\hero_v2.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\logo.svg" />
+    <EmbeddedResource Include="EmbeddedResources\macrame-1.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\macrame-2.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\macrame-3.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\macrame-4.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\vase-1.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\vase-2.jpg" />
+    <EmbeddedResource Include="EmbeddedResources\vase-3.jpg" />
     <EmbeddedResource Include="Resources\DigitalAssets\vase-1.jpg" />
     <EmbeddedResource Include="Resources\DigitalAssets\basket-1.jpg" />
     <EmbeddedResource Include="Resources\DigitalAssets\macrame-1.jpg" />

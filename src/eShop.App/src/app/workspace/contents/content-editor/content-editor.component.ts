@@ -2,7 +2,7 @@ import { Component, ElementRef, forwardRef, Input, OnDestroy, OnInit, ViewEncaps
 import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';;
-import { Content } from '../content';
+import { Content } from '@api';
 
 @Component({
   selector: 'app-content-editor',
@@ -18,7 +18,7 @@ import { Content } from '../content';
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => ContentEditorComponent),
       multi: true
-    }       
+    }
   ]
 })
 export class ContentEditorComponent implements ControlValueAccessor,  Validator  {
@@ -51,8 +51,8 @@ export class ContentEditorComponent implements ControlValueAccessor,  Validator 
           {}
         );
   }
-  
-  writeValue(content: Content): void {   
+
+  writeValue(content: Content): void {
     this.form.patchValue(content || {}, { emitEvent: false });
   }
 

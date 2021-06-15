@@ -39,11 +39,11 @@ export class BasketListComponent implements OnDestroy {
         'edit'
       ]),
       of(index),
-      of(pageSize)  
+      of(pageSize)
     ])
     .pipe(
-      map(([columnsToDisplay, pageNumber, pageSize]) => { 
-        this._dataSource.getPage({ index, pageSize });
+      map(([columnsToDisplay, pageNumber, pageSize]) => {
+        this._dataSource.getPage({ pageIndex: index, pageSize });
         return {
           dataSource: this._dataSource,
           columnsToDisplay,
@@ -54,7 +54,7 @@ export class BasketListComponent implements OnDestroy {
       })
     ))
   );
-  
+
   constructor(
     private readonly _basketService: BasketService,
     private readonly _dialogService: DialogService,
@@ -62,7 +62,7 @@ export class BasketListComponent implements OnDestroy {
 
   public edit(basket: Basket) {
     const component = this._dialogService.open<BasketDetailComponent>(BasketDetailComponent);
-    component.basket$.next(basket);    
+    component.basket$.next(basket);
     component.saved
     .pipe(
       takeUntil(this._destroyed$),
@@ -79,13 +79,13 @@ export class BasketListComponent implements OnDestroy {
     ).subscribe();
   }
 
-  public delete(basket: Basket) {    
+  public delete(basket: Basket) {
     this._basketService.remove({ basket }).pipe(
       takeUntil(this._destroyed$),
       tap(x => this.index$.next(this.index$.value))
     ).subscribe();
   }
-  
+
   ngOnDestroy() {
     this._destroyed$.next();
     this._destroyed$.complete();

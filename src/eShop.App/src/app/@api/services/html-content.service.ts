@@ -19,8 +19,8 @@ export class HtmlContentService implements IPagableService<HtmlContent> {
     private readonly _client: HttpClient
   ) { }
 
-  getPage(options: { index: number; pageSize: number; }): Observable<EntityPage<HtmlContent>> {
-    return this._client.get<EntityPage<HtmlContent>>(`${this._baseUrl}api/htmlContent/page/${options.pageSize}/${options.index}`)
+  getPage(options: { pageIndex: number; pageSize: number; }): Observable<EntityPage<HtmlContent>> {
+    return this._client.get<EntityPage<HtmlContent>>(`${this._baseUrl}api/htmlContent/page/${options.pageSize}/${options.pageIndex}`)
   }
 
   public get(): Observable<HtmlContent[]> {
@@ -44,7 +44,7 @@ export class HtmlContentService implements IPagableService<HtmlContent> {
   public create(options: { htmlContent: HtmlContent }): Observable<{ htmlContent: HtmlContent }> {
     return this._client.post<{ htmlContent: HtmlContent }>(`${this._baseUrl}api/htmlContent`, { htmlContent: options.htmlContent });
   }
-  
+
   public update(options: { htmlContent: HtmlContent }): Observable<{ htmlContent: HtmlContent }> {
     return this._client.put<{ htmlContent: HtmlContent }>(`${this._baseUrl}api/htmlContent`, { htmlContent: options.htmlContent });
   }

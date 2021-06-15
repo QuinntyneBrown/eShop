@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ContentService, CustomizationService, HtmlContentService, SocialShareService } from '@api';
 import { forkJoin } from 'rxjs';
-import { concatAll } from 'rxjs/operators';
-import { ContentService } from 'src/app/workspace/contents/content.service';
-import { CustomizationService } from 'src/app/workspace/customizations/customization.service';
+
 
 @Component({
   selector: 'app-public',
@@ -15,7 +14,9 @@ export class PublicComponent {
   constructor(
     private readonly _router: Router,
     private readonly _customizationService: CustomizationService,
-    private readonly _contentService: ContentService
+    private readonly _contentService: ContentService,
+    private readonly _htmlContentService: HtmlContentService,
+    private readonly _socialShareService: SocialShareService
   ) { }
 
 
@@ -23,8 +24,8 @@ export class PublicComponent {
     this._customizationService.get(),
     this._contentService.get()
   ])
-  
-  public handleProfileClick() {    
+
+  public handleProfileClick() {
     this._router.navigate(['workspace']);
   }
 }
