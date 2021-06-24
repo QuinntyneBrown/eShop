@@ -39,7 +39,7 @@ namespace eShop.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var imageContent = new ImageContent(request.ImageContent.ImageContentType,request.ImageContent.Url);
+                var imageContent = new ImageContent(request.ImageContent.ImageContentType, request.ImageContent.Url);
 
                 _context.ImageContents.Add(imageContent);
 

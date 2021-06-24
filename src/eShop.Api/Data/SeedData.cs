@@ -32,7 +32,7 @@ namespace eShop.Api.Data
                 {
                     var digitalAsset = context.DigitalAssets.SingleOrDefault(x => x.Name == "hero.png");
 
-                    heroImageContent = new (ImageContentType.Hero, $"api/DigitalAsset/serve/{digitalAsset.DigitalAssetId}");
+                    heroImageContent = new(ImageContentType.Hero, $"api/DigitalAsset/serve/{digitalAsset.DigitalAssetId}");
 
                     context.ImageContents.Add(heroImageContent);
 
@@ -87,7 +87,7 @@ namespace eShop.Api.Data
             internal static void Seed(EShopDbContext context)
             {
                 for (var i = 1; i <= 4; i++)
-                {       
+                {
                     Save($"macrame-{i}.jpg");
                 }
 

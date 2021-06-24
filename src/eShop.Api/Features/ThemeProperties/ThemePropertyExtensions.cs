@@ -6,7 +6,7 @@ namespace eShop.Api.Features
     {
         public static ThemePropertyDto ToDto(this ThemeProperty themeProperty)
         {
-            return new ()
+            return new()
             {
                 ThemePropertyId = themeProperty.ThemePropertyId,
                 CssCustomPropertyName = themeProperty.CssCustomPropertyName,

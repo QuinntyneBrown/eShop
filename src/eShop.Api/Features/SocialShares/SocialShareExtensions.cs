@@ -6,12 +6,12 @@ namespace eShop.Api.Features
     {
         public static SocialShareDto ToDto(this SocialShare socialShare)
         {
-            return new ()
+            return new()
             {
                 SocialShareId = socialShare.SocialShareId,
                 ShareType = socialShare.ShareType,
                 Url = socialShare.Url
             };
-        }        
+        }
     }
 }

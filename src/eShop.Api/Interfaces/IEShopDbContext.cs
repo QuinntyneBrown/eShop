@@ -26,6 +26,6 @@ namespace eShop.Api.Interfaces
         DbSet<SocialShare> SocialShares { get; }
         DbSet<ThemeProperty> ThemeProperties { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }

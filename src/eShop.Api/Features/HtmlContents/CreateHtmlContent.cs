@@ -39,7 +39,7 @@ namespace eShop.Api.Features
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var htmlContent = new HtmlContent(request.HtmlContent.HtmlContentType,request.HtmlContent.Name, request.HtmlContent.Body);
+                var htmlContent = new HtmlContent(request.HtmlContent.HtmlContentType, request.HtmlContent.Name, request.HtmlContent.Body);
 
                 _context.HtmlContents.Add(htmlContent);
 
